@@ -1,0 +1,78 @@
+<div class='mat-typography' style='width:100%'>
+    <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>Project profile</h1>
+</div>
+
+<div class='content-container'>
+    <mat-card>
+  <span class='project-title'><h2>{{project?.title}}</h2></span>
+    </mat-card>
+  <mat-divider></mat-divider>
+  <mat-card>
+    <div class='project-card-content'>
+        <h4>Description:</h4>
+        <span >{{project?.description}}</span>
+    </div>
+  </mat-card>
+  <mat-card>
+    <div class='project-card-content'>
+        <p>Prefered technologies:</p>
+        <mat-chip-list>
+            <mat-chip color="primary" selected="true"  style='font-size:102%' *ngFor='let tech of project?.technologies'>{{tech}}</mat-chip>
+        </mat-chip-list>
+    </div>
+  </mat-card>
+    <mat-card>
+        <div class='project-card-content'>
+            <h4>Budget:</h4>
+            <span>
+                {{project?.budget?.value}}{{project?.budget?.currency}}
+            </span>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div class='project-card-content'>
+            <h4>Deadline:</h4>
+            <span>
+            {{project?.deadline}}
+            </span>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div class='project-card-content' [ngSwitch]="project?.status">
+            <h4>Status</h4>
+            <span *ngSwitchCase="'waiting'">This project is waiting on team assignment.</span>
+            <span *ngSwitchCase="'inProgres'">This project is in progress. </span>
+            <span *ngSwitchCase="'finished'">This project has been completed.  </span>
+        </div>
+    </mat-card>
+    <mat-card>
+            <div class='project-card-content'>
+                <h4>Project owner</h4>
+                <span>
+                {{projectOwner?.fName}} {{projectOwner?.lName}}
+                </span>
+            </div>
+    </mat-card>
+
+     <div class='action-container mat-typography'>
+        <div *ngIf="project?.status==='waiting'" >
+            <div  class='action-item'>
+                <button (click)='openOfferDialog()' color=primary mat-raised-button >Add offer</button>
+            </div>
+        </div>
+    </div>
+
+    <div class='offers-container'>
+        <h1 class='offers-header mat-typography'>Offers({{teams.length}})</h1>
+        <div class='team-container' *ngFor='let team of teams;let i = index' [class.gray-row]="i%2===0">
+            <div class='team-icon-container mat-typography'>
+              <h1  class='team-name' [routerLink]="['/app/team-profile/'+team._id]">{{ team.name }} </h1>
+            </div>
+            <div class=team-content-container >
+               {{team.description}}
+            </div>
+          </div>
+    </div>
+
+</div>
+  

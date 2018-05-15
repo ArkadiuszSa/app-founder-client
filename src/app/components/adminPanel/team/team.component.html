@@ -1,0 +1,64 @@
+
+<div >
+  <div class='mat-typography' style='width:100%'>
+    <h1 style='font-size: 300%;background:#5E6FC7;color:white;padding:30px'>List of teams</h1>
+  </div>
+<!-- 5E6FC7 to jest kolor tła headera -->
+<!-- #3F51B5 to jest kolor tła głównego menu -->
+<div style='padding:10px 20px 10px 20px;'>
+<div class="example-container mat-elevation-z8">
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<mat-table #table [dataSource]="teamsTableData">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+    <mat-cell *matCellDef="let team"> {{team._id}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Team name </mat-header-cell>
+    <mat-cell *matCellDef="let team"> {{team.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="teamLeaderName">
+    <mat-header-cell *matHeaderCellDef> Team leader name </mat-header-cell>
+    <mat-cell *matCellDef="let team"> {{team.teamLeaderName}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="numberOfMembers">
+    <mat-header-cell *matHeaderCellDef> Number of members </mat-header-cell>
+    <mat-cell *matCellDef="let team"> {{team.numberOfMembers}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="numberOfProjects">
+    <mat-header-cell *matHeaderCellDef> Number of projects </mat-header-cell>
+    <mat-cell *matCellDef="let team"> {{team.numberOfProjects}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let user">
+        <mat-icon style='cursor:pointer' (click)="openDialog('updateTeam',team._id)" svgIcon="edit-icon"></mat-icon>
+        <mat-icon style='cursor:pointer' (click)="deleteUser(team._id)" svgIcon="remove-icon"></mat-icon>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator
+[pageSize]="10"
+[pageSizeOptions]="[5, 10, 20]"
+[showFirstLastButtons]="true">
+</mat-paginator>
+</div>
+
+<div style='margin:auto;text-align: right;padding-top:10px'>
+<button style='width:155px' color=primary mat-raised-button [routerLink]="['/admin/add-new-team']">Add team</button>
+</div>
+
+</div>
+</div>
+

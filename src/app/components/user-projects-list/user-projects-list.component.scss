@@ -1,0 +1,132 @@
+.content-wrapper{
+    margin:auto;
+    width:80%;
+}
+
+.action-container{
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+}
+.item-container{
+    display:flex;
+    width:100%;
+    text-align:center;
+    min-height: 150px;
+    justify-content: flex-start
+}
+h1{
+    font-size:1.4em;
+}
+.add-project-container{
+    margin-top:20px;
+    margin-bottom:100px;
+    .add-project-button{
+        float:right;
+       
+    }
+}
+
+
+.left-column-container{
+    display:flex;
+    flex-direction: column;
+    padding:15px;
+    width:20%;
+    label{
+        font-size:1.5em;
+        align-self: center;
+        margin-top:auto;
+        margin-bottom:auto;
+    }
+}
+.right-column-container{
+    display:flex;
+    flex-direction: column;
+    padding:15px;
+    width:80%;
+    .project-title{
+        font-size:1.5em;
+        align-self:flex-start;
+        margin-bottom:auto;
+        padding:10px;
+    }
+    .project-deadline{
+        font-size:0.8em;
+        font-weight:bold;
+        align-self: flex-start;
+        padding:10px;
+        padding-top:0px;
+    }
+    .project-description{
+        align-self: flex-start;
+        margin-top:auto;
+        margin-bottom:auto;
+        text-align: left;
+        padding:10px;
+        span{
+            text-align: left;
+        }
+    }
+    .project-budget{
+        font-size:1.2em;
+        align-self: baseline;
+        margin-top:auto;
+        padding:10px;
+        padding-bottom:5px
+    }
+}
+
+mat-divider{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.divider{
+    display:none;
+    flex-wrap:wrap;
+    margin-top:100px;
+    margin-bottom: 100px;
+    width:100%;
+}
+
+.gray-background{
+    background: #f2f2f2;
+}
+
+//link animation
+
+h2 > a {
+    font-weight: normal;
+
+    position: relative;
+    color: #3949ab;
+    text-decoration: none;
+  }
+  
+  h2 > a:hover {
+    color: #3949ab;
+    font-weight: normal;
+
+  }
+  h2 > a:before {
+    font-weight: normal;
+
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #3949ab;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.15s ease-in-out 0s;
+    transition: all 0.15s ease-in-out 0s;
+  }
+  h2 > a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }

@@ -1,0 +1,14 @@
+<div class="add-team-container"  >
+        <h2 class=' header mat-typography' >{{dialogHeader}}</h2>
+        
+        <form [formGroup]='newTeamForm' class="add-team-form">
+        <mat-form-field class='form-field'>
+          <input  style='width:400px' class="form-control" formControlName="name"  matInput placeholder="Team name">
+        </mat-form-field>
+      </form>
+      <div class='action-container'>
+          <button mat-raised-button (click)="cancelOnClick()">Cancel</button>
+          <button color=primary mat-raised-button (click)='applyOnClick()' >Apply</button>
+      </div>
+      
+</div>

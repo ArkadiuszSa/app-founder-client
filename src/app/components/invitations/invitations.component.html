@@ -1,0 +1,47 @@
+<div class='mat-typography' style='width:100%'>
+  <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>Invitations</h1>
+</div>
+<div class='content-container'>
+  <div class='invites-container'>
+    <span *ngIf='invitations.length === 0'>
+      Your invitations list is empty.
+    </span>  
+
+    <div class='invite-container' *ngFor='let invitation of invitations;let i = index'>
+      <div class='invite-icon-container mat-typography'>
+        
+        <h1 class='invite-name'>{{ invitation.teamName }}</h1>
+      </div>
+        
+      <div class=invite-content-container [ngSwitch]="invitation.state">
+        <div>
+         {{invitation.description}}
+        </div>
+  
+         <div *ngSwitchCase="'waitingOnUser'"  class=invite-state-container>
+            <button color=primary (click)='changeInviteStatusOnClick(i,"accepted")' mat-raised-button>Accept</button>
+            <button (click)='changeInviteStatusOnClick(i,"rejected")' mat-raised-button>Reject</button>
+         </div>
+         <div *ngSwitchCase="'waitingOnTeam'" class=invite-state-container>
+          Invitation is still in progres.
+         </div>
+         <div *ngSwitchCase="'accepted'" class=invite-state-container>
+          Invitation accepted.
+        </div>
+        <div *ngSwitchCase="'rejected'" class=invite-state-container>
+          Invitation rejected.
+        </div>
+  
+      </div>
+      <div class='remove-icon-container'>
+        <mat-icon (click)='removeInvitationOnClik(i)' style='cursor:pointer'  svgIcon="remove-icon"></mat-icon>
+      </div> 
+   
+      <mat-divider></mat-divider>
+    
+    </div>
+
+
+  
+  </div>
+</div>

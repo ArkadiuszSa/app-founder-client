@@ -1,0 +1,17 @@
+<div class='request-wrapper'>
+    <h1 mat-dialog-title>Invite {{invitedUser?.fName}} {{invitedUser?.lName}} to your team</h1>
+    <div class='request-text-area-container'>
+        <textarea class='mat-typography'  matInput [(ngModel)]="invitationContent" matTextareaAutosize></textarea>
+    </div>
+    <div class='team-choose-container'>
+        <mat-select [disabled]="teams.length===0" placeholder="{{teamSelectPlaceholder}}" [(ngModel)]="chosedTeam" ngDefaultControl>
+            <mat-option *ngFor="let team of teams" [value]="team" >
+              {{ team.name}}
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class='action-container'>
+        <button mat-raised-button (click)="cancelOnClick()">Cancel</button>
+        <button color=primary mat-raised-button [disabled]="teams.length===0" (click)='applyOnClick()' >Apply</button>
+    </div>
+</div>

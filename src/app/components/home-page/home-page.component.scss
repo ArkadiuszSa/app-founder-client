@@ -1,0 +1,298 @@
+::ng-deep body{
+    margin:0px !important;
+  }
+
+.navbar{
+    position: fixed;
+    width:100%;
+    list-style-type: none;
+    min-height:60px;
+    background:#00227b;
+    margin:0px;
+    padding-left:0px;
+    z-index: 11;
+}
+.app-link{
+    cursor:pointer;
+    margin-top:30px;
+    margin-right:10px;
+    float:right;
+    color:white;
+    font-size:1.3em;
+}
+.logo{
+    cursor:pointer;
+    width:150px;
+    height:45px;
+    float:left;
+    padding-left:6px;
+    margin-top:7.5px;
+  }
+
+.content-wrapper{
+    min-width:900px;
+}
+
+.main-photo{
+    width:100%;
+    height:100vh; 
+    z-index: -1;
+}
+
+.main-title{
+    align-self:center;
+    text-shadow: 2px 1px #051228;
+    font-size: 4em;
+    color:#00227b;
+    z-index:13;
+    margin-top:45vh;
+}
+
+.main-container{
+   
+    flex-direction:column;
+    width:100%;
+    height:100vh;
+    overflow: hidden;
+    background: url('../../../assets/photos/main.jpg');
+    background-size:     cover;          
+    background-repeat:   no-repeat;
+    background-position: center center;  
+    display:flex;
+    mask-image: linear-gradient(to bottom,rgba(0, 0, 0, 1.0),rgba(0, 0, 0, 1.0),rgba(0, 0, 0, 1.0),rgba(0, 0, 0, 1.0),rgba(0, 0, 0, 1.0),rgba(0, 0, 0, 1.0), transparent);
+    
+}
+.main-description{
+    font-size:2em;
+    align-self: center;
+    color:#00227b;
+    margin-top:40px;
+
+
+}
+
+.main-arrow{
+    align-self:center;
+    margin-top:auto;
+}
+
+.idea-container{
+    height:100vh;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    .idea-wrapper{
+        width:100%;
+        height:calc(100vh - 150px);
+        display: flex;
+        flex-direction: row;
+        .idea-description-container{
+            width:90%;
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
+            .idea-description{
+                font-size:2.5em;
+                align-self: center;
+                color:#00227b;
+                margin-top:40px;
+                margin-left:20px;
+                text-align:center;
+                line-height: 110%;    
+            }
+        }
+        .idea-image-container{
+            width:100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .idea-image{
+                background: url('../../../assets/photos/project.jpg');
+                background-size:     cover;          
+                background-repeat:   no-repeat;
+                background-position: center center;
+                height:50vh;
+                width:90%;
+                border-radius: 30px;
+               
+              
+                align-self: center;
+            
+            }
+        }
+    }
+
+    
+}  
+
+.worker-container{
+    height:100vh;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    .worker-wrapper{
+        width:100%;
+        height:calc(100vh - 150px);
+        display: flex;
+        flex-direction: row;
+        .worker-content-container{
+            width:90%;
+            display:flex;
+            flex-direction:column;
+            align-items: center;
+            justify-content: center;
+            .worker-description{
+                font-size:2.5em;
+                align-self: center;
+                color:#00227b;
+                margin-top:40px;
+                margin-left:20px;
+                text-align:center;
+                line-height: 110%;    
+            }
+        }
+        .worker-image-container{
+            width:100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .worker-image{
+                background: url('../../../assets/photos/worker.jpg');
+                background-size:     cover;          
+                background-repeat:   no-repeat;
+                background-position: center center;
+                height:50vh;
+                width:90%;
+                border-radius: 30px;
+               
+              
+                align-self: center;
+            
+            }
+        }
+    }
+
+    
+}
+
+.scroller-container{
+    width:100%;
+    height:150px;
+    display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+.team-container{
+    height:100vh;
+    width:100%;
+    display: flex;
+    flex-direction:column-reverse;
+    justify-content: center;
+    .team-content-container{
+        width:100%;
+        display:flex;
+        align-self: center;
+        flex-direction:row;
+        justify-content: center;
+        .team-description{
+            font-size:2.5em;
+            align-self: center;
+            color:#00227b;
+            margin-top:40px;
+            margin-left:20px;
+            text-align:center;
+            line-height: 110%;    
+            cursor:pointer;
+        }
+    }
+    .team-image-container{
+        width:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .team-image{
+            background: url('../../../assets/photos/team.jpg');
+            background-size:     cover;          
+            background-repeat:   no-repeat;
+            background-position: center center;
+            height:40vh;
+            width:75%;
+            align-self: center;
+            margin-top: 40px;
+            border-radius: 30px;
+        
+        }
+    }
+    .redirect-icon{
+        align-self: center;
+        margin-top: 40px;
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        cursor:pointer;
+        circle{
+            fill:red;
+        } 
+    }
+
+    mat-icon > circle{
+        fill:black;
+    }
+}
+
+
+.footer{
+    width:100%;
+    margin-bottom:-150px;
+    height:150px;
+    background:#00227b;
+    color:white;
+    
+  
+    .footer-content-container{
+      height:110px;
+      width:250px;
+      margin-left:auto;
+      display:flex;
+      align-self:center;
+      padding:20px;
+      .footer-content{
+        flex-direction: column;
+        display: flex;
+        margin-top:auto;
+        margin-bottom:auto;
+  
+        span{
+          
+          //vertical-align:center;
+          align-items: center;
+          justify-content: flex-end;
+        }
+        span > *{
+          align-self: auto;
+          vertical-align: middle; 
+    
+        }
+  
+      }
+  
+     
+  
+    }
+     
+    }
+
+    .icon{
+        width:200px;
+        height:200px;
+        align-self: center;
+    }
+
+
+//daj sobie ikonki svg do opisów to będzie spoczi wyglądać tj np dla pracowników komputer a dla debila od pomysłów właśnie świecącą żarówkę
+
+
+
+//
+

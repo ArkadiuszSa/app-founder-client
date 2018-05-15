@@ -1,0 +1,39 @@
+
+
+  .add-project-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    align-self:center; 
+    width:100%;
+    .add-project-form{
+      margin-top: 20px;
+      display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    }
+    .form-field{
+      width:100%;
+      align-self: center;
+    }
+    input{
+      width:100%;
+    }
+  }
+
+  .header{
+    text-align: left;
+    font-size:1.5em;
+   
+  }
+  .action-container{
+    width:100%;
+    margin-top:10px;
+    display:inline-block;
+
+    button{
+        float:right;
+        margin-left:10px;
+    }
+  }

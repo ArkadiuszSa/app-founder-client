@@ -1,0 +1,72 @@
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<div id='container' style=' height: 100%;'>
+
+ <div id='login-panel-container'>
+ <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+
+   <mat-step >
+      <ul >
+          <li>
+          <button id='login-button' color=primary mat-raised-button matStepperNext (click)='loginFlagChange()'  >Log In</button>
+        </li>
+        <li>
+          <button id='sign-up-button'  color=primary mat-raised-button matStepperNext (click)='registerFlagChange()'  >Register</button>
+        </li>
+      </ul> 
+   </mat-step>
+
+   <mat-step >
+
+     <div *ngIf='isLoging; else register' >
+      <form [formGroup]='loginForm' class="step-form-container">
+        <h2 class='mat-typography' style='font-size:200%;padding-bottom:30px;text-align: center;'>Logging to account</h2>
+        <mat-form-field>
+          <input style='width:400px' class="form-control" formControlName="email"  matInput placeholder="Email">
+        </mat-form-field>
+        <mat-form-field>
+          <input class="form-control" type="password" formControlName="password" matInput placeholder="Password">
+        </mat-form-field>
+        <div class='forms-actions-container'>
+            <button class='form-back-button form-button' matStepperPrevious color=primary mat-raised-button >Back</button>
+            <button class='form-submit-button form-button' matStepperNext color=primary mat-raised-button (click)='submitLoginForm()'>Log In</button>
+        </div>
+      </form>
+    </div>
+
+    <ng-template #register>
+      <form [formGroup]='registerForm' class="step-form-container">
+        <h2 class='mat-typography' style='font-size:200%;padding-bottom:30px;text-align: center;'>Add account</h2>
+        <mat-form-field>
+          <input style='width:400px' class="form-control" formControlName="fName"  matInput placeholder="First Name">
+        </mat-form-field>
+        <mat-form-field>
+          <input class="form-control" formControlName="lName" matInput placeholder="Last name">
+        </mat-form-field>
+        <mat-form-field>
+          <input class="form-control" formControlName="email" matInput placeholder="Email">
+        </mat-form-field>
+        <mat-form-field>
+            <input class="form-control" type="password" formControlName="password" matInput placeholder="Password">
+          </mat-form-field>
+        <div class='forms-actions-container'>
+            <button class='form-back-button form-button' matStepperPrevious color=primary mat-raised-button >Back</button>
+            <button class='form-submit-button form-button' matStepperNext color=primary mat-raised-button (click)="submitRegisterForm()" >Submit</button>
+        </div>
+      </form>
+    </ng-template>
+
+   </mat-step>
+
+
+
+ </mat-horizontal-stepper>
+</div>
+
+
+
+        
+<div class='particlesContainer'>
+    <div id="particles-js"></div>
+</div>
+
+</div>

@@ -1,0 +1,69 @@
+<div class='mat-typography' style='width:100%'>
+  <h1 style='font-size: 300%;background:#5E6FC7;color:white;padding:30px'>Adding new team</h1>
+</div>
+
+<div class="form-container" style='margin:auto;padding:auto' >
+  <form [formGroup]='teamForm' class="teamForm">
+  <mat-form-field>
+    <input style='width:400px' class="form-control" formControlName="name"  matInput placeholder="Team name">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea class="form-control" formControlName="description" matInput placeholder="Description of team"></textarea>
+  </mat-form-field>
+    <p class='mat-typography'>List of team members.</p>
+  
+<!--  -->
+
+<mat-table #table [dataSource]="membersDataTable">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user._id}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="fName">
+    <mat-header-cell *matHeaderCellDef> Frist Name </mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.fName}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="lName">
+    <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.lName}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="country">
+    <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.country}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="city">
+    <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.city}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="bDay">
+    <mat-header-cell *matHeaderCellDef> Day of birth </mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.bDay}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let user">
+          <mat-icon style='cursor:pointer' (click)="openDialog('updateUser',user._id)" svgIcon="edit-icon"></mat-icon>
+          <mat-icon style='cursor:pointer' (click)="deleteUser(user._id)" svgIcon="remove-icon"></mat-icon>
+      </mat-cell>
+    </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<div style='margin:auto;text-align: right;padding-top:10px'>
+  <button style='width:155px' color=primary mat-raised-button (click)="openDialog('addNewUser')">Add user</button>
+</div>
+
+<!--  -->
+
+</form>
+
+</div>

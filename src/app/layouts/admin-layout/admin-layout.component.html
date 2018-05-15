@@ -1,0 +1,18 @@
+<div  class='navbar-container mat-typography' style='width:100%; text-align:center;background:#00227b'>
+
+    <ul>
+        <li><button mat-button [routerLink]="['/projects']">Projects</button></li>
+        <li><button mat-button [routerLink]="['/teams']">Teams</button></li>
+        <li><button mat-button [routerLink]="['/users']">Users</button></li>
+        <li><button mat-button [routerLink]="['/']">About</button></li>
+        <li style='float:right;margin:auto;text-align: right'>
+                <mat-icon style='cursor:pointer; float:rigth;margin:auto;text-align: right' [matMenuTriggerFor]="menu" svgIcon="menu-icon"></mat-icon>
+                <mat-menu #menu="matMenu">
+                        <button style=' color:white' mat-menu-item>Settings</button>
+                        <button style='color:white' mat-menu-item>Log out</button>
+                </mat-menu>
+        </li>
+    </ul>
+    
+</div> 
+<router-outlet></router-outlet>

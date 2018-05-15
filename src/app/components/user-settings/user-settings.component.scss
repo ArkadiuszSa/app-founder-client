@@ -1,0 +1,81 @@
+::ng-deep .mat-chip-list-wrapper{
+  display:inline !important;
+  
+}
+
+button{
+  float:right;
+  float:bottom;
+  margin-right:52px;
+}
+.update-icon{
+  float:right;
+  margin-top:25px;
+  margin-left:30px;
+  cursor:pointer;
+}
+.edit-icon{
+  float:right;
+  vertical-align: top;
+}
+label{
+  text-align: right;
+  clear: both;
+  float:left;
+
+  
+  font-weight:bold;
+  font-size:100%;
+  width:200px;
+  text-align: left;
+}
+
+.tech-label{
+  text-align: right;
+  clear: both;
+  float:left;
+  //margin-right:30%;
+  
+  font-weight:bold;
+  font-size:100%;
+  width:180px;
+  text-align: left;
+  display:inline-block
+}
+
+.chip-list-container{
+ margin-right:50px;
+ 
+  margin-left: 200px;
+  // display:inline-block;
+  // background:blue
+  
+}
+
+.edit-icon{
+  // margin-left:250px
+  float:right;
+  cursor:pointer;
+
+}
+.user-profile-element-container{
+  margin-top:10px;
+  margin-bottom:10px;
+  font-size:100%;
+}
+
+.user-profile-container {
+    
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin:auto;
+    margin-top:30px;
+    padding:auto;
+    font-size:150%;
+    min-width:50%;
+    
+    
+  }
+
+

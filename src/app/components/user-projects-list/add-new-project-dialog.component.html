@@ -1,0 +1,14 @@
+<div class="add-project-container"  >
+        <h2 class=' header mat-typography' >{{dialogHeader}}</h2>
+        
+        <form [formGroup]='newProjectForm' class="add-project-form">
+        <mat-form-field class='form-field'>
+          <input  style='width:400px' class="form-control" formControlName="title"  matInput placeholder="Project title">
+        </mat-form-field>
+      </form>
+      <div class='action-container'>
+          <button mat-raised-button (click)="cancelOnClick()">Cancel</button>
+          <button color=primary mat-raised-button (click)='applyOnClick()' >Apply</button>
+      </div>
+      
+</div>

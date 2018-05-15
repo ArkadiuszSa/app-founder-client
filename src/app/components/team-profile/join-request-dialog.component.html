@@ -1,0 +1,10 @@
+<div class='request-wrapper'>
+    <h1 mat-dialog-title>Join request for {{teamName}}</h1>
+    <div class='request-text-area-container'>
+        <textarea  matInput [(ngModel)]="requestContent" matTextareaAutosize></textarea>
+    </div>
+    <div class='action-container'>
+        <button mat-raised-button (click)="cancelOnClick()">Cancel</button>
+        <button color=primary mat-raised-button (click)='applyOnClick()' >Apply</button>
+    </div>
+</div>

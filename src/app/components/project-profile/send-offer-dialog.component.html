@@ -1,0 +1,17 @@
+<div class='request-wrapper'>
+    <h1 mat-dialog-title>Send offer for  {{projectTitle}}</h1>
+    <div class='request-text-area-container'>
+        <textarea class='mat-typography'  matInput  [(ngModel)]="offerDescription" matTextareaAutosize></textarea>
+    </div>
+    <div class='team-choose-container'>
+        <mat-select [disabled]="notNotifiedAnyTeam" placeholder="{{teamSelectPlaceholder}}" [(ngModel)]="chosedTeam" ngDefaultControl>
+            <mat-option *ngFor="let team of userTeams" [value]="team" >
+              {{ team.name}}
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class='action-container'>
+        <button mat-raised-button (click)="cancelOnClick()">Cancel</button>
+        <button color=primary mat-raised-button [disabled]="notNotifiedAnyTeam" (click)='applyOnClick()' >Apply</button>
+    </div>
+</div>

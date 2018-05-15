@@ -1,0 +1,18 @@
+.AddUserDialogContainer {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+  }
+  .AddUserDialogContainer > * {
+    width: 400px;
+    padding:auto;
+    margin:auto;
+
+  }
+
+  .AddUserForm > * {
+    width: 400px;
+    padding:auto;
+    margin:auto;
+
+  }

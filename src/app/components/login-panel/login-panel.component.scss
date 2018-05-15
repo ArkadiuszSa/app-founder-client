@@ -1,0 +1,120 @@
+$varibale:100px;
+
+::ng-deep .mat-horizontal-stepper-header-container{
+  visibility: hidden !important;
+}
+::ng-deep mat-horizontal-stepper{
+  background: transparent !important;
+}
+::ng-deep .forms-actions-container{
+  margin-top:30px !important;
+}
+
+
+#container{
+  margin:0;
+  padding:0;
+  height:100vh;
+  width:100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  #login-panel-container{
+    display: block;
+    margin:auto;
+    text-align: center; 
+    margin-top:20vh;
+    background:transparent;
+    ul{
+      list-style-type: none;
+      margin-top:10vh;
+      #login-button{
+        width:30%;
+        height: 50px;
+        border-top:solid ;
+        border-right:solid;
+        border-left: solid;
+        border-color: white;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        font-size:150%;
+        background:#303f9f;
+        color:white;
+      }
+      
+      #sign-up-button{
+        width:30%;
+        height:50px;
+        border:solid;
+        border-color: white;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        font-size:150%;
+        background: #666ad1;
+        color:white;
+      }
+    }
+    .step-form-container{
+      margin:auto;
+      background:white;
+      width:40%;
+      padding:10px;
+      border:solid;
+      border-radius:30px;
+      .form-button{
+        font-size:150%;
+        margin-top:15px;
+        width:49%;
+        margin:0px;
+        padding:0px;
+        height:50px;
+        display:inline-block;
+      }
+      .form-submit-button{
+        border-bottom-right-radius:20px;
+      }
+      .form-back-button{
+        background:#666ad1;
+        border-bottom-left-radius:20px;
+      }
+    }
+    .step-form-container > * {
+      width: 100%;
+      padding:auto;
+      margin:auto;
+    
+    }
+  }
+  .particlesContainer{
+    margin:0;
+    padding:0;
+    height:100vh;
+    width:100%;
+    background:#26418f;
+    z-index:-1;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    #particles-js{
+      width: 100%;
+      height:100%;
+      z-index:-1;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

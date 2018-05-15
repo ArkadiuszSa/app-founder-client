@@ -1,0 +1,124 @@
+::ng-deep .mat-chip-list-wrapper{
+    display:inline !important;
+    
+  }
+  .remove-project-button{
+    margin-right:0px;
+    margin-top:20px;
+  }
+  button{
+    float:right;
+    float:bottom;
+    margin-right:52px;
+  }
+  .update-icon{
+    float:right;
+    margin-top:25px;
+    margin-left:30px;
+    cursor:pointer;
+  }
+  .edit-icon{
+    float:right;
+    vertical-align: top;
+  }
+  label{
+    text-align: right;
+    clear: both;
+    float:left;
+  
+    
+    font-weight:bold;
+    font-size:100%;
+    width:270px;
+    text-align: left;
+  }
+  
+  .tech-label{
+    text-align: right;
+    clear: both;
+    float:left;
+    font-weight:bold;
+    font-size:100%;
+    width:180px;
+    text-align: left;
+    display:inline-block
+  }
+  
+  .chip-list-container{
+   margin-right:50px;
+    margin-left: 200px;
+  }
+  
+  .edit-icon{
+    float:right;
+    cursor:pointer;
+  
+  }
+  .user-profile-element-container{
+    margin-top:10px;
+    margin-bottom:10px;
+    font-size:100%;
+  }
+  
+  .user-profile-container {
+      
+      display: flex;
+      flex-direction: column;
+      width: 85%;
+      margin:auto;
+      margin-top:30px;
+      padding:auto;
+      font-size:1.3em;
+      min-width:50%;
+      
+      
+    }
+
+    .offers-container{
+      width:100%;
+      display:block;
+      .offers-header{
+          font-size:1.5em;
+          text-decoration:underline;
+      }
+      .team-container{
+          display:flex;
+          flex-direction: row;
+          width:100%; 
+          padding:15px;
+          text-align: left;
+          .team-icon-container{
+              width:20%;
+              font-size:1.3em;
+              display:flex;
+              justify-content: center;
+              align-content: center;
+              align-items: center;
+              text-align:left;
+              cursor:pointer;
+              text-decoration:none;
+              
+          }
+          .team-content-container{
+              display:flex;
+              justify-content: flex-start;
+              align-content: center;
+              align-items: center;
+              width:75%;
+              text-align:left;
+              
+              .team-name{
+                  font-size:200%;
+                  
+              }
+          }
+          .team-icon-container{
+            
+              float:left;
+              margin-right:30px
+          }
+      }
+  }
+  
+  
+  

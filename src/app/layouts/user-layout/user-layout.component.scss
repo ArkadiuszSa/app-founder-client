@@ -1,0 +1,136 @@
+::ng-deep .mat-menu-panel{
+  border:solid;
+  border-width:2px;
+  border-radius: 10px;
+}
+::ng-deep .mat-menu-content{
+  background: #f4f4f4 !important;
+  
+}
+
+::ng-deep body{
+  margin:0px !important;
+}
+.logo{
+  cursor:pointer;
+  width:150px;
+  height:45px;
+  float:left;
+  padding-left:24px;
+
+}
+
+
+
+.navbar-container{
+    margin-top:0px;
+    min-height:55px;
+    width:100%;
+    text-align:center;
+    background:#00227b;
+    .menu-icon-container{
+      float:right;
+      margin:auto;
+      text-align: right;
+      width:30px;
+      .menu-icon{
+        cursor:pointer;
+        float:right;
+        margin:auto;
+        text-align: right;
+
+      }
+      .real-menu{
+        position:absolute;
+        display:'';
+        right:0px;
+        top:0px;
+
+      }
+      
+    }
+  }
+  .menu-button{
+    color:black;
+    font-size:120%;
+    text-align: right;
+    padding-right: 5px;
+    background:#f4f4f4;
+    display:inline-block;
+    mat-icon{
+      fill:black;
+      margin-left:auto;
+      margin-right:15px;
+    } 
+
+  }
+  .menu-description-label{
+    cursor:pointer;
+    margin-top:7px;
+    //margin-right:100px;
+    float:left;
+  }
+  button{
+    display:inline;
+    font-size:1.5em;
+    color:white;
+    text-decoration: none;
+  }
+  ul{
+    margin-bottom:0px;
+    margin-top:0px;
+    padding:7px;
+    
+  }
+  li{
+    display:inline;
+    padding:5px;
+  }
+
+  .footer{
+  width:100%;
+  margin-bottom:-150px;
+  height:150px;
+  background:#00227b;
+  color:white;
+  
+
+  .footer-content-container{
+    height:110px;
+    width:250px;
+    margin-left:auto;
+    display:flex;
+    align-self:center;
+    padding:20px;
+    .footer-content{
+      flex-direction: column;
+      display: flex;
+      margin-top:auto;
+      margin-bottom:auto;
+
+      span{
+        
+        //vertical-align:center;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      span > *{
+        align-self: auto;
+        vertical-align: middle; 
+  
+      }
+
+    }
+
+   
+
+  }
+   
+  }
+.content-container{
+  min-height:calc(100vh - 150px);
+  
+}
+
+
+

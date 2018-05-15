@@ -1,0 +1,58 @@
+<div class='mat-typography' style='width:100%'>
+    <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>User profile</h1>
+</div>
+
+<div class='content-wrapper'>
+    <mat-card>
+  <span class='user-name'><h2>{{user?.fName}} {{user?.lName}}</h2></span>
+    </mat-card>
+  <mat-divider></mat-divider>
+  <mat-card>
+    <div class='user-card-content'>
+        <h4>Description:</h4>
+        <span >{{user?.description}}</span>
+    </div>
+  </mat-card>
+  <mat-card>
+      <div class='user-card-content' [ngSwitch]="project?.status">
+          <h4>Email</h4>
+          <span>
+              {{user?.email}}
+          </span>
+      </div>
+  </mat-card>
+  <mat-card>
+    <div class='user-card-content'>
+        <p>Prefered technologies:</p>
+        <mat-chip-list>
+            <mat-chip color="primary" selected="true"  style='font-size:102%' *ngFor='let tech of user?.technologies'>{{tech}}</mat-chip>
+        </mat-chip-list>
+    </div>
+  </mat-card>
+    <mat-card>
+        <div class='user-card-content'>
+            <h4>Location:</h4>
+            <span>
+                {{user?.city}}, {{user?.country}}
+            </span>
+        </div>
+    </mat-card>
+    <mat-card>
+        <div class='user-card-content'>
+            <h4>Age:</h4>
+            <span>
+            {{user?.age}}
+            </span>
+        </div>
+    </mat-card>
+
+    <div class='action-container mat-typography'>
+            <div  class='action-item'>
+                <button (click)='openUserInvitationDialog()' color=primary mat-raised-button >Invite to team</button>
+            </div>
+    </div>
+
+
+  
+
+</div>

@@ -1,0 +1,65 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {AuthService} from './../../services/auth/auth.service';
+import {MatIconRegistry} from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
+import {GlobalService} from './../../services/global/global.service';
+
+@Component({
+  selector: 'app-user-layout',
+  templateUrl: './user-layout.component.html',
+  styleUrls: ['./user-layout.component.scss']
+})
+export class UserLayoutComponent implements OnInit {
+  private url;
+  private userId;
+  constructor( 
+    private authService: AuthService,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer,
+    private globalService:GlobalService
+
+  ){
+    this.url=globalService.ASSETS_BASE;
+    iconRegistry.addSvgIcon(
+      'logo',
+      sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/logo.svg'));
+    iconRegistry.addSvgIcon(
+      'email-icon',
+      sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/emailIcon.svg'));
+    iconRegistry.addSvgIcon(
+      'location-icon',
+      sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/locationIcon.svg'));
+    iconRegistry.addSvgIcon(
+      'account-icon',
+      sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/accountIcon.svg'));
+    iconRegistry.addSvgIcon(
+      'settings-icon',
+      sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/settingsIcon.svg'));
+    iconRegistry.addSvgIcon(
+      'projects-icon',
+      sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/projectMenuIcon.svg'));
+    iconRegistry.addSvgIcon(
+      'team-icon',
+      sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/teamMenuIcon.svg'));
+    iconRegistry.addSvgIcon(
+      'invitation-icon',
+      sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/messageIcon.svg'));
+    iconRegistry.addSvgIcon(
+      'logout-icon',
+      sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/logoutIcon.svg'));
+
+  }
+
+  ngOnInit() {
+    this.userId=this.authService.getUserId();
+  }
+
+
+  logout(){
+    this.authService.logout();
+  }
+
+
+
+}
+

@@ -1,0 +1,101 @@
+
+<div class='content-wrapper mat-typography'>
+  <ul class='navbar'>
+    <mat-icon class='logo' svgIcon="logo"></mat-icon>
+    <li class='app-link'>
+      <span [routerLink]="['/app/projects']">go to application</span>
+    </li>
+  </ul>
+<div class='main-container'>
+  <span class='main-title'>AppFounder</span>
+  <span class='main-description'>will help you make life easier if..    </span>
+    <section  class='main-arrow' id="arrow" (click)='scroll("idea-section")'>
+      <a ><span></span><span></span><span></span></a>
+    </section>
+</div>
+
+<div id='idea-section' class='idea-container'>
+
+  <div class=idea-wrapper>
+    <div class='idea-description-container'>
+        <mat-icon class='icon'   svgIcon="idea-icon"></mat-icon>
+        <span class='idea-description'>You have a great idea, and you would be glad to find a pearson that help you accomplish it?    </span>
+    </div>
+    <div class='idea-image-container'>
+        <div class='idea-image'>
+
+         </div>
+          
+    </div>
+  </div>
+
+  <div class='scroller-container'>
+      <section  class='main-arrow' id="arrow" (click)='scroll("worker-section")'>
+        <a ><span></span><span></span><span></span></a>
+      </section>
+  </div>
+</div>
+
+  <div id='worker-section' class='worker-container'>
+    <div class='worker-wrapper'>
+        <div  class='worker-image-container'>
+            <div class='worker-image'></div> 
+        </div>
+        <div class='worker-content-container'>
+            <mat-icon class='icon'   svgIcon="worker-icon"></mat-icon>
+            <span class='worker-description'>Or maybe you are a talented programmer, photographer or designer that is loogin for job?     </span>
+        </div>
+    </div>
+    <div class='scroller-container'>
+        <section  class='main-arrow' id="arrow" (click)='scroll("team-section")'>
+          <a ><span></span><span></span><span></span></a>
+        </section>
+    </div>
+  </div>
+
+
+
+
+    <div id='team-section' class='team-container'>
+        <div class='team-content-container' >
+            <span class='team-description' [routerLink]="['/app/projects']">go to application      </span>
+            <mat-icon class='redirect-icon' [routerLink]="['/app/projects']" svgIcon="next-icon"></mat-icon>
+        </div>
+        
+
+        <div class='team-image-container'>
+            <div class='team-image'>
+      
+            </div>
+              
+        </div>
+        <div class='team-content-container'>
+           
+            <span class='team-description'>You can be either a leader and would like to found a team to deal with a bigger tasks?     </span>
+        </div>
+        <mat-icon class='icon'    svgIcon="teamwork-icon"></mat-icon>
+      </div>
+
+
+  
+
+
+</div>
+
+<div class="footer mat-typography'">
+    <div class='footer-content-container'>
+      <div class='footer-content'>
+      <span>Contact:</span>
+      <span>
+        <mat-icon svgIcon="email-icon"></mat-icon>
+        <label>sapek.arkadiusz@gmail.com</label>
+      </span>
+      <span>
+        <mat-icon svgIcon="location-icon"></mat-icon>
+        <label>Katowice, Polska</label>
+      </span>
+    </div>
+  </div>
+  
+    
+  </div>

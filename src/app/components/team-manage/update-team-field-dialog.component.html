@@ -1,0 +1,18 @@
+<div class='content-wrapper'>
+    <h1 mat-dialog-title>Updating team {{fieldData.name}}.</h1>
+    <div mat-dialog-content>
+        <mat-form-field >
+            <input *ngIf="this.fieldData.name=='name';else description" matInput [(ngModel)]="fieldData.value"  >
+            
+            <ng-template #description>
+                <textarea  matInput [(ngModel)]="fieldData.value" matTextareaAutosize></textarea>
+            </ng-template>
+            
+        </mat-form-field>
+    </div>
+    <div class='action-container'>
+        <button mat-raised-button (click)="cancelOnClick()">Cancel</button>
+        <button color=primary mat-raised-button (click)='applyOnClick()' >Apply</button>
+    </div>
+
+</div>

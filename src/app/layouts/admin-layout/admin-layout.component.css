@@ -1,0 +1,57 @@
+/* Structure */
+
+.navbar-container{
+    margin-top:0px;
+  }
+  
+  
+  .example-container {
+      display: flex;
+      flex-direction: column;
+      min-width: 300px;
+    }
+    
+    .example-header {
+      min-height: 64px;
+      padding: 8px 24px 0;
+    }
+    
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+    
+    .mat-table {
+      overflow: auto;
+      max-height: 500px;
+    }
+  
+    li{
+      display:inline;
+      padding:10px
+    }
+  
+    ul{
+      margin-bottom:0px;
+      margin-top:0px;
+      padding:7px;
+    }
+    button{
+      display:inline;
+      font-size:200%;
+      color:white;
+      text-decoration: none;
+      margin-bottom:0px;
+      
+    }
+  
+    ::ng-deep .mat-menu-panel{
+      background: #666ad1 !important;
+      border:solid;
+      border-width:2px;
+      border-radius: 10px;
+    }
+    ::ng-deep .mat-menu-content{
+      background: #666ad1 !important;
+      
+    }

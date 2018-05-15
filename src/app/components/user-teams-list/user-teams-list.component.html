@@ -1,0 +1,33 @@
+<div class='mat-typography' style='width:100%'>
+  <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>User teams</h1>
+</div>
+<div class='content-container'>
+  <div class='teams-container'>
+
+
+    <div class='team-container' *ngFor='let team of userTeams;let i = index'>
+      <div class='team-icon-container mat-typography'>
+        
+        <h1  class='team-name' [routerLink]="['/app/team-profile/'+team._id]">{{ team.name }} </h1>
+      </div>
+        
+      <div class=team-content-container >
+         {{team.description}}
+      </div>
+      <div *ngIf='team.canManage;else canLeave; let i index' class=team-action-container>
+        <button  [routerLink]="['/app/team-manage/'+team._id]"  mat-raised-button>Manage</button>
+     </div>
+     <ng-template #canLeave >
+       <div class=team-action-container>
+        <button (click)='leaveTeamOnClick(i)'  mat-raised-button>Leave team</button>
+      </div>
+     </ng-template>
+   
+      <mat-divider></mat-divider>
+    
+    </div>
+    <button class='add-new-team-button' color=primary (click)='openAddNewTeamDialog()'  mat-raised-button>Add new team</button>
+
+  
+  </div>
+</div>

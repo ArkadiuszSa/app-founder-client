@@ -1,0 +1,20 @@
+<div class='mat-typography' style='width:100%'>
+  <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>Users</h1>
+</div>
+<div class='content-container'>
+  <div class='user-container' *ngFor='let user of users;let i = index' [class.gray-row]="i%2!==0" >
+
+    <div class='user-icon-container mat-typography' >
+      <mat-icon class='user-icon' [routerLink]="['/app/user-profile/'+user._id]"  svgIcon="user-icon"></mat-icon>
+      
+    </div>
+    <div class=user-content-container >
+        <h1 class='user-name mat-typography' [routerLink]="['/app/user-profile/'+user._id]" >{{ user.fName }} {{ user.lName }}</h1>
+      <span class='user-description mat-typography'>{{user.description}}</span>
+
+    </div>
+  
+  </div>
+  
+
+</div>

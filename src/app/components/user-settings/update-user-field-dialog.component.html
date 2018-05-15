@@ -1,0 +1,31 @@
+<div class='content-wrapper'>
+    <h1 mat-dialog-title>Updating user {{fieldData.name}}.</h1>
+    <div mat-dialog-content>
+    <mat-form-field *ngIf="fieldData.name!=='technologies';else technologies">
+        <input matInput [(ngModel)]="fieldData.value"  >
+    </mat-form-field>
+    <ng-template #technologies>
+        <mat-form-field class="tech-container">
+
+            <mat-chip-list #chipList>
+                <mat-chip *ngFor="let techk of techs" [selectable]="selectable"
+                            [removable]="removable" (remove)="remove(techk)">
+                    {{techk}}
+                    <mat-icon svgIcon='remove-chip-icon' matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input  [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)" />
+            </mat-chip-list>
+            
+        </mat-form-field>          
+    </ng-template>
+    </div>
+
+    <div class='action-container'>
+        <button mat-raised-button (click)="cancelOnClick()">Cancel</button>
+        <button color=primary mat-raised-button (click)='applyOnClick()' >Apply</button>
+    </div>
+
+</div>

@@ -1,0 +1,54 @@
+<div class='mat-typography' style='width:100%'>
+  <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>Project manage</h1>
+</div>
+<div class="user-profile-container "  >
+<mat-divider></mat-divider>
+  
+<div class='user-profile-element-container mat-typography'>
+    <label  class='mat-typography'>Title:</label>
+    {{project?.title}}
+    <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+</div>
+<div class='user-profile-element-container mat-typography'>
+  <label  class='mat-typography'>Description:</label>
+  {{project?.description}}
+  <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+</div>
+<div class='user-profile-element-container mat-typography'>
+    <label  class='mat-typography'>Prefered technologies:</label>
+    {{project?.technologies}}
+    <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+</div>
+<div class='user-profile-element-container mat-typography'>
+    <label  class='mat-typography'>Deadline:</label>
+    {{project?.deadline}}
+    <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+</div>
+<div class='user-profile-element-container mat-typography'>
+    <label  class='mat-typography'>Visable:</label>
+    <mat-slide-toggle color=primary  class="mat-typography" [checked]="visabilityState" (click)="changeVisability()" >{{visabilityLabel}}</mat-slide-toggle>
+    
+</div>
+
+  <mat-divider></mat-divider>
+
+  <div class='remove-project-container'>
+        <button class='remove-project-button' color=primary (click)='removeThisProject()'  mat-raised-button>Remove this project</button>
+  </div>
+
+  <div class='offers-container'>
+        <h1 class='offers-header mat-typography'>Offers({{teamsOffers.length}})</h1>
+        <div class='team-container' *ngFor='let teamOffer of teamsOffers;let i = index' [class.gray-row]="i%2===0">
+            <div class='team-icon-container mat-typography'>
+              <h1  class='team-name' [routerLink]="['/app/team-profile/'+teamOffer.team._id]">{{ teamOffer.team.name }} </h1>
+            </div>
+            <div class=team-content-container >
+               {{teamOffer.description}}
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+

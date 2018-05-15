@@ -1,0 +1,70 @@
+::ng-deep .mat-paginator-range-actions{
+    float:left !important;
+}
+::ng-deep .mat-paginator-page-size{
+    float:left !important;
+ }
+
+ span{
+     margin-top:20px;
+     font-size: 2em;
+ }
+
+.content-container{
+    text-align: center;
+    margin-top:20px;
+    .invites-container{
+        display: inline-block;
+        width:90%;
+        .invite-container{
+            width:100%; 
+            padding:15px;
+            text-align: left;
+            .invite-icon-container{
+                display:inline-block;
+                width:10%;
+                vertical-align: top;
+                text-align:left;
+                
+                .invite-icon{
+                    width:100px;
+                    height:100px;
+                }
+            }
+            .invite-content-container{
+                display:inline-block;
+                width:75%;
+                text-align:left;
+                margin-bottom:15px;
+                margin-left:15px;
+                .invite-name{
+                    font-size:200%;
+                    
+                }
+            }
+            .remove-icon-container{
+               // display:inline-block;
+                //width:10px;
+                //margin-left:30px;
+                float:right;
+                margin-right:30px
+            }
+            .invite-state-container{
+                //display:inline-block;
+                margin-top:10px;
+                float:right;
+                font-weight: bold;
+                text-align: left;
+                width:190px
+                // width:150px;
+                
+            }      
+            
+
+
+        }
+
+
+    }
+
+}

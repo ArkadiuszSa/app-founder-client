@@ -1,0 +1,102 @@
+::ng-deep .mat-chip-list-wrapper{
+  display:inline !important;
+}
+
+::ng-deep .mat-table{
+  margin-top:25px !important;
+}
+
+.field-container{
+  display:inline-block;
+  width:75%;
+  text-align:left;
+  margin-bottom:15px;
+  margin-left:15px;
+}
+.remove-project-button{
+  margin-right:0px;
+  margin-top:20px;
+}
+
+button{
+  float:right;
+  float:bottom;
+  margin-right:52px;
+}
+.update-icon{
+  float:none;
+  //float:right;
+  margin-top:25px;
+  margin-left:30px;
+  cursor:pointer;
+}
+.edit-icon{
+  float:right;
+  //vertical-align: top;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+label{
+  text-align: right;
+  clear: both;
+  float:left;
+
+  
+  font-weight:bold;
+  font-size:100%;
+  width:100px;
+  text-align: left;
+}
+
+.tech-label{
+  text-align: right;
+  clear: both;
+  float:left;
+  //margin-right:30%;
+  
+  font-weight:bold;
+  font-size:100%;
+  width:180px;
+  text-align: left;
+  display:inline-block
+}
+
+.chip-list-container{
+ margin-right:50px;
+ 
+  margin-left: 200px;
+  // display:inline-block;
+  // background:blue
+  
+}
+
+.edit-icon{
+  // margin-left:250px
+  //float:right;
+  cursor:pointer; 
+
+}
+.team-manage-panel-element-container{
+  margin-top:10px;
+  margin-bottom:10px;
+  font-size:100%;
+}
+
+.team-manage-panel-container {
+    
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin:auto;
+    margin-top:30px;
+    padding:auto;
+    font-size:100%;
+    min-width:50%;
+    
+    
+  }
+
+
+

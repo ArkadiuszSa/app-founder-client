@@ -1,0 +1,28 @@
+<div class="AddUserDialogContainer" style='margin:auto;padding:auto' >
+  <h2 class='mat-typography' style='font-size:200%;padding-bottom:30px;text-align: center;'>{{dialogHeader}}</h2>
+  
+  <form [formGroup]='newUserForm' class="AddUserForm">
+  <mat-form-field>
+    <input style='width:400px' class="form-control" formControlName="fName"  matInput placeholder="First Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input class="form-control" formControlName="lName" matInput placeholder="Last name">
+  </mat-form-field>
+  <mat-form-field>
+    <input class="form-control" formControlName="email" matInput placeholder="Email">
+  </mat-form-field>
+  <mat-form-field>
+    <input class="form-control" formControlName="country" matInput placeholder="Country">
+  </mat-form-field>
+  <mat-form-field>
+    <input class="form-control" formControlName="city" matInput placeholder="City">
+  </mat-form-field>
+  <mat-form-field>
+    <input class="form-control" formControlName="bDay" matInput placeholder="Date of birth">
+  </mat-form-field>
+  <div style='margin:auto;text-align: right;'>
+    <button class="btn btn-success" type="submit" style='width:155px' color=primary mat-raised-button (click)="closeDialog()">Submit</button>
+</div>
+</form>
+
+</div>

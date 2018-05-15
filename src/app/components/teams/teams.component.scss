@@ -1,0 +1,79 @@
+::ng-deep .mat-paginator-range-actions{
+    float:left !important;
+}
+::ng-deep .mat-paginator-page-size{
+    float:left !important;
+ }
+ .gray-row{
+    background: #f2f2f2;
+ }
+ .action-container{
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ .fixed-width-action-container{
+    width:190px;
+    display: flex;
+ }
+ button{
+     vertical-align: 50%	;
+     margin-left:20px;
+     margin-top:40%;
+     float: right;
+    
+ }
+ span{
+     margin-left:20px;
+     margin-right:20px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     
+ }
+.content-container{
+    text-align: center;
+    .teams-container{
+        display: inline-block;
+        width:75%;
+        .team-container{
+            width:100%; 
+            padding:15px;
+            display: flex;
+            .team-icon-container{
+                display:inline-block;
+                width:20%;
+                cursor:pointer;
+                .team-icon{
+                    width:100px;
+                    height:100px;
+                }
+            }
+            .team-content-container{
+                //display:inline-block;
+                display:flex;
+                text-align: left;
+                //margin-top:50%;
+                width:60%;
+                .team-name{
+                    font-size:200%;
+                    
+                }
+            }   
+            
+
+
+        }
+
+        .paginator-container{
+            width:50%;
+            margin-top:20px;
+            padding:10px;
+            margin:auto;
+        }
+    }
+
+}

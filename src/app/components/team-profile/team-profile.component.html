@@ -1,0 +1,53 @@
+<div class='mat-typography' style='width:100%'>
+  <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>Team profile</h1>
+</div>
+
+<div class='content-wrapper'>
+  <mat-card>
+<span class='project-title'><h2>{{team?.name}}</h2></span>
+  </mat-card>
+<mat-divider></mat-divider>
+<mat-card>
+  <div class='project-card-content'>
+      <h4>Description:</h4>
+      <span >{{team?.description}}</span>
+  </div>
+</mat-card>
+<mat-card>
+        <div class='project-card-content'>
+            <h4>Team leader:</h4>
+            <span >{{team?.leaderName}}</span>
+        </div>
+</mat-card>
+<mat-card>
+    <div class='project-card-content'>
+        <h4>Number of members:</h4>
+        <span >{{team?.membersId.length}}</span>
+    </div>
+</mat-card>
+<mat-card>
+    <div class='project-card-content'>
+        <h4>Number of projects:</h4>
+        <span >{{team?.projectsId.length}}</span>
+    </div>
+</mat-card>
+
+<div class='action-container mat-typography'>
+        <div [ngSwitch]="team?.userRelation" class='fixed-width-action-container'>
+                <div *ngSwitchCase='"notInTeam"' class='action-item'>
+                    <button (click)='openJoinRequestDialog()' color=primary mat-raised-button >Send join request</button>
+                </div>
+                
+                <div *ngSwitchCase="'invitationInProgress'"  class='action-item'>
+                    Invitation is in progress
+                </div>
+                <div *ngSwitchCase="'alreadyInTeam'"  class='action-item'>
+                    You are already in this team
+              </div>
+              <div *ngSwitchCase="'teamLeader'"  class='action-item'>
+               You are a leader of this team
+              </div>
+        </div>
+</div>
+
+</div>

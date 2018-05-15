@@ -1,0 +1,72 @@
+
+<div >
+    <div class='mat-typography' style='width:100%'>
+      <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>Your profile</h1>
+</div>
+<!-- 5E6FC7 to jest kolor tła headera -->
+<!-- #3F51B5 to jest kolor tła głównego menu -->
+<div style='padding:10px 20px 10px 20px;'>
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user._id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="fName">
+      <mat-header-cell *matHeaderCellDef> Frist Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.fName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lName">
+      <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.lName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="country">
+      <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.country}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.city}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="bDay">
+      <mat-header-cell *matHeaderCellDef> Day of birth </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.bDay}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+            <mat-icon style='cursor:pointer' (click)="openDialog('updateUser',user._id)" svgIcon="edit-icon"></mat-icon>
+            <mat-icon style='cursor:pointer' (click)="deleteUser(user._id)" svgIcon="remove-icon"></mat-icon>
+        </mat-cell>
+      </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator #paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20]"
+  [showFirstLastButtons]="true">
+</mat-paginator>
+</div>
+
+<div style='margin:auto;text-align: right;padding-top:10px'>
+  <button style='width:155px' color=primary mat-raised-button (click)="openDialog('addNewUser')">Add user</button>
+</div>
+
+</div>
+</div>
+

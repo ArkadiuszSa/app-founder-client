@@ -1,0 +1,45 @@
+<div >
+    <div class='mat-typography' style='width:100%'>
+      <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>User projects</h1>
+</div>
+  
+  <!-- *ngIf="userProjects.length===0&&teamsProjects.length" -->
+<div class='content-wrapper'>
+    <div class='item-wrapper'>
+      <h1 class='header mat-typography'>Project that your teams are working on:</h1>
+      <div class='item-container' *ngFor='let project of teamsProjects;let i = index' [class.gray-background]="i%2==0">
+      
+        <div class='left-column-container'>
+          <label>{{project.teamName}}</label>
+        </div>
+
+        <div class='right-column-container' >
+          <h2  class='project-title'> <a [routerLink]="['/app/project-profile/'+project._id]">{{project.title}}</a></h2>
+          <span class='project-deadline'>Deadline: {{project.deadline}}</span>
+          <span class='project-description'>{{project.description}}</span>
+          <span class='project-budget'>Budget: {{project.budget.value}}{{project.budget.currency}}</span>
+        </div>
+      </div>
+    
+    </div>
+
+    <div class='item-wrapper'>
+        <h1  class='mat-typography'>Project posted by you:</h1>
+        <div class='item-container' *ngFor='let project of userProjects;let i = index' [class.gray-background]="i%2==0">
+        
+          <div class='right-column-container' >
+            <h2  class='project-title'> <a [routerLink]="['/app/project-profile/'+project._id]">{{project?.title}}</a></h2>
+            <span class='project-deadline'>Deadline: {{project?.deadline}}</span>
+            <span class='project-description'>{{project?.description}}</span>
+            <span class='project-budget'>Budget: {{project.budget?.value}}{{project.budget?.currency}}</span>
+          </div>
+          <div class='action-container'>
+            <button [routerLink]="['/app/project-manage/'+project._id]"    mat-raised-button>Manage</button>
+          </div>
+      </div>
+      </div>
+      <div class='add-project-container'>
+        <button class='add-project-button' color=primary (click)='openAddNewProjectDialog()'  mat-raised-button>Add new project</button>
+      </div>
+    
+</div>

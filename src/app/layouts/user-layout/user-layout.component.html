@@ -1,0 +1,78 @@
+<div class='content-container'>
+<div  class='navbar-container mat-typography' >
+  
+  <ul>
+      <mat-icon class='logo' [routerLink]="['/']" svgIcon="logo"></mat-icon>
+      <li><button mat-button [routerLink]="['/app/projects']">Projects</button></li>
+      <li><button mat-button [routerLink]="['/app/teams']">Teams</button></li>
+      <li><button mat-button [routerLink]="['/app/users']">Users</button></li>
+      <li class='menu-icon-container' >
+        <mat-icon id='menu' class='menu-icon'   [matMenuTriggerFor]="menu" svgIcon="menu-icon" ></mat-icon>
+        <mat-menu class='real-menu' #menu="matMenu" >
+            <button class='menu-button' [routerLink]="['/app/user-profile/'+userId]"  mat-menu-item>
+              <label class='menu-description-label'>Profile</label>
+              <div>
+                <mat-icon svgIcon="account-icon"></mat-icon>
+              </div>
+              
+            </button>
+          <button class='menu-button' [routerLink]="['/app/user-settings']"  mat-menu-item>
+            <label class='menu-description-label'>Settings</label>
+            <div>
+              <mat-icon svgIcon="settings-icon"></mat-icon>
+            </div>
+           
+          </button>
+          <mat-divider></mat-divider>
+          <button class='menu-button' [routerLink]="['/app/user-projects-list']"  mat-menu-item>
+            <label class='menu-description-label'>Projects</label>
+            <div>
+              <mat-icon svgIcon="projects-icon"></mat-icon>
+            </div>
+            </button>
+          <button class='menu-button' [routerLink]="['/app/team-panel']"  mat-menu-item>
+            <label class='menu-description-label'>Teams</label>
+            <div>
+              <mat-icon svgIcon="team-icon"></mat-icon>
+            </div>
+            </button>
+          <button class='menu-button' [routerLink]="['/app/invitations']"  mat-menu-item>
+            <label class='menu-description-label'>Invitations</label>
+            <div>
+              <mat-icon svgIcon="invitation-icon"></mat-icon>
+            </div>
+          </button>
+          <mat-divider></mat-divider>
+          <button (click)='logout()' class='menu-button'  mat-menu-item>
+              <label class='menu-description-label'>Log out</label>
+            <div>
+              <mat-icon   svgIcon="logout-icon"></mat-icon>
+            </div>
+            
+          </button>
+        </mat-menu>
+      </li>
+  </ul>
+  
+</div> 
+<router-outlet></router-outlet>
+
+
+</div>
+<div class="footer mat-typography'">
+  <div class='footer-content-container'>
+    <div class='footer-content'>
+    <span>Contact:</span>
+    <span>
+      <mat-icon svgIcon="email-icon"></mat-icon>
+      <label>sapek.arkadiusz@gmail.com</label>
+    </span>
+    <span>
+      <mat-icon svgIcon="location-icon"></mat-icon>
+      <label>Katowice, Polska</label>
+    </span>
+  </div>
+</div>
+
+  
+</div>

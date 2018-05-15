@@ -1,0 +1,64 @@
+::ng-deep .mat-paginator-range-actions{
+    float:left !important;
+}
+::ng-deep .mat-paginator-page-size{
+    float:left !important;
+ }
+.content-container{
+    text-align: center;
+    margin-top:20px;
+    .teams-container{
+        display: inline-block;
+        width:80%;
+        .team-container{
+            width:90%; 
+            padding:15px;
+            text-align: left;
+            .team-icon-container{
+                display:inline-block;
+                width:10%;
+                vertical-align: top;
+                text-align:left;
+                cursor:pointer;
+                
+            }
+            .team-content-container{
+                display:inline-block;
+                width:55%;
+                text-align:left;
+                margin-bottom:50px;
+                margin-left:40px;
+                .team-name{
+                    font-size:200%;
+                    
+                }
+            }
+            .team-icon-container{
+              
+                float:left;
+                margin-right:30px
+            }
+            .team-action-container{
+                
+                margin-top:10px;
+                float:right;
+                font-weight: bold;
+                text-align: right;
+                width:190px;
+              
+                button{
+                  width:120px;
+                  text-align: center; 
+                }
+            }      
+
+        }
+        .add-new-team-button{
+            float:right;
+            margin-right:80px;
+            margin-top:20px;
+        }
+
+    }
+
+}
