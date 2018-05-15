@@ -22,7 +22,7 @@ import {AuthService} from './../../services/auth/auth.service';
 export class UserSettingsComponent implements OnInit {
   editItemForm:FormGroup;
   private url;
-  private userData={};
+  public userData;
     constructor(
       iconRegistry: MatIconRegistry,
       sanitizer: DomSanitizer,
@@ -92,7 +92,7 @@ export class UpdateUserFieldDialogComponent{
   removable: boolean = true;
   addOnBlur: boolean = true;
   separatorKeysCodes = [ENTER, COMMA];
-  private fieldData;
+ public fieldData;
   techs=[];
 
   constructor(

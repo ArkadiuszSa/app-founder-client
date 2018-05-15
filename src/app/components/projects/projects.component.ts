@@ -12,12 +12,12 @@ import {GlobalService} from './../../services/global/global.service';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  private paginationProperties={
+  public paginationProperties={
     pageSize:10,
     pageSizeOptions:[5, 10, 25, 100],
     length:100
   }
-  private projects:any;
+  public projects:any;
   private dispProjects:any;
   private url;
   

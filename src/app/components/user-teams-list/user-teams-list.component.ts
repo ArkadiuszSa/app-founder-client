@@ -13,7 +13,7 @@ import { FormGroup, FormControl, Validators,ReactiveFormsModule } from '@angular
   styleUrls: ['./user-teams-list.component.scss']
 })
 export class UserTeamsListComponent implements OnInit {
-  private userTeams;
+  public userTeams;
   constructor(
     private teamService: TeamService,
     private authService: AuthService,

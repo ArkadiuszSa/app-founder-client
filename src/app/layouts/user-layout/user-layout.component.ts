@@ -11,7 +11,7 @@ import {GlobalService} from './../../services/global/global.service';
 })
 export class UserLayoutComponent implements OnInit {
   private url;
-  private userId;
+  public userId;
   constructor( 
     private authService: AuthService,
     private iconRegistry: MatIconRegistry,

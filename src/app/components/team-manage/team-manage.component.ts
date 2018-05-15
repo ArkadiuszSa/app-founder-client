@@ -25,13 +25,13 @@ import {ENTER, COMMA} from '@angular/cdk/keycodes';
 })
 export class TeamManageComponent implements OnInit {
   private url;
-  private teamData:any;
+  public teamData:any;
   private teamId:string;
   displayedColumns = ['fName', 'lName', 'email','country','city', 'bDay','actions'];
   public membersDataTable;
   public membersData:Member[];
-  private visabilityLabel='default'; 
-  private visabilityState=false;
+  public visabilityLabel='default'; 
+  public visabilityState=false;
 
   constructor(
     private route: ActivatedRoute, 
@@ -133,7 +133,7 @@ export interface Member {
   styleUrls: ['update-team-field-dialog.component.scss']
 })
 export class UpdateTeamFieldDialogComponent{
-  private fieldData;
+  public fieldData;
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,

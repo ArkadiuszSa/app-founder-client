@@ -20,9 +20,9 @@ import {Observable} from 'rxjs/Rx'
 })
 export class ProjectProfileComponent implements OnInit {
   private projectId;
-  private project;
-  private projectOwner;
-  private teams=[];
+  public project;
+  public projectOwner;
+  public teams=[];
   constructor(
     private route: ActivatedRoute, 
     private projectService:ProjectService,
@@ -80,15 +80,15 @@ export class ProjectProfileComponent implements OnInit {
   styleUrls: ['./send-offer-dialog.component.scss']
 })
 export class SendOfferComponent implements OnInit {
-  private userTeams;
-  private projectTitle;
+  public userTeams;
+  public projectTitle;
   private teams;
-  private chosedTeam;
+  public chosedTeam;
   private projectId;
-  private offerDescription;
+  public offerDescription;
   private notifiedTeams;
-  private notNotifiedAnyTeam:boolean;
-  private teamSelectPlaceholder='Choose team';
+  public notNotifiedAnyTeam:boolean;
+  public teamSelectPlaceholder='Choose team';
 constructor(
   @Inject(MAT_DIALOG_DATA) public data: any,
   public dialogRef: MatDialogRef<SendOfferComponent>,

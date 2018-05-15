@@ -17,7 +17,7 @@ import {Observable} from 'rxjs/Rx'
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  private user:any;
+  public user:any;
   private userId;
   constructor(
     private userService:UserService,
@@ -57,11 +57,12 @@ export class UserProfileComponent implements OnInit {
   styleUrls: ['./join-team-request-dialog.component.scss']
 })
 export class JoinTeamInvitationComponent implements OnInit {
-  private invitedUser;
-  private teams=[];
+  public invitedUser;
+  public teams=[];
   private teamOwnerId;
-  private teamSelectPlaceholder='Choose team';
-  private chosedTeam;
+  public teamSelectPlaceholder='Choose team';
+  public chosedTeam;
+  public invitationContent;
 constructor(
   @Inject(MAT_DIALOG_DATA) public data: any,
   public dialogRef: MatDialogRef<JoinTeamInvitationComponent>,

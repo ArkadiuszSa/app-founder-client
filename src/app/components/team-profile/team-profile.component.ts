@@ -15,7 +15,7 @@ import { Inject } from '@angular/core';
 })
 export class TeamProfileComponent implements OnInit {
   private teamId:string;
-  private team;
+  public team;
   private teamLeaderName:string;
   private teamRealtion;
   constructor(
@@ -82,8 +82,8 @@ export class TeamProfileComponent implements OnInit {
   styleUrls: ['./join-request-dialog.component.scss']
 })
 export class JoinRequestDialogComponent implements OnInit {
-  private requestContent:string;
-  private teamName;
+  public requestContent:string;
+  public teamName;
   private teamId;
 constructor(
   @Inject(MAT_DIALOG_DATA) public data: any,

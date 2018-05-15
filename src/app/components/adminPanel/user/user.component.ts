@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
       sanitizer.bypassSecurityTrustResourceUrl('http://localhost:4000/assets/img/removeIcon.svg'));
   }
   
-  openDialog(action,id): void {
+  openDialog(action,id?): void {
     var data;
     
     if(action==='addNewUser'){

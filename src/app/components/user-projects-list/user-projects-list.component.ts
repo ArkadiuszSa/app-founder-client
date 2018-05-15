@@ -15,8 +15,8 @@ import { FormGroup, FormControl, Validators,ReactiveFormsModule } from '@angular
   styleUrls: ['./user-projects-list.component.scss']
 })
 export class UserProjectsListComponent implements OnInit {
-  private userProjects;
-  private teamsProjects
+  public userProjects;
+  public teamsProjects
   private userTeams;
   private user;
   constructor(

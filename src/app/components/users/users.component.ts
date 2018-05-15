@@ -9,7 +9,7 @@ import {GlobalService} from './../../services/global/global.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  private users;
+  public users;
   private url;
   constructor(
     private userService:UserService,

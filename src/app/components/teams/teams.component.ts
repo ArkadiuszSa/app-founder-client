@@ -19,13 +19,12 @@ import {GlobalService} from './../../services/global/global.service';
 export class TeamsComponent implements OnInit {
   private url;
 
-  private paginationProperties={
+  public paginationProperties={
     pageSize:10,
     pageSizeOptions:[5, 10, 25, 100],
     length:100
   }
-  private teams;
-  private dispTeams=[];
+  public teams;
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,

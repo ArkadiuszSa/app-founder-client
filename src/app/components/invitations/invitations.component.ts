@@ -16,7 +16,7 @@ import {GlobalService} from './../../services/global/global.service';
   styleUrls: ['./invitations.component.scss']
 })
 export class InvitationsComponent implements OnInit {
-  private invitations=[];
+  public invitations=[];
   private url;
   constructor(
     private invitationsService:InvitationsService,

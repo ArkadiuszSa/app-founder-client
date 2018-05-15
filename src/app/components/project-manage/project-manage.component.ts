@@ -15,13 +15,13 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./project-manage.component.scss']
 })
 export class ProjectManageComponent implements OnInit {
-  private project;
+  public project;
   private projectId;
   private offers=[];
   private teams=[];
-  private teamsOffers=[];
-  private visabilityLabel='default'; 
-  private visabilityState=false;
+  public teamsOffers=[];
+  public visabilityLabel='default'; 
+  public visabilityState=false;
   private url;
 
   constructor(
@@ -98,6 +98,10 @@ export class ProjectManageComponent implements OnInit {
     this.projectService.updateProject(project,project._id).subscribe(res=>{
       this.reloadProject();
     })
+  }
+
+  openUpdateFieldDialog(par1?,par2?){
+
   }
 
 
