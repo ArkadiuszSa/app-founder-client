@@ -1,4 +1,3 @@
-
 <div class='content-wrapper mat-typography'>
   <ul class='navbar'>
     <mat-icon class='logo' svgIcon="logo"></mat-icon>
@@ -9,7 +8,7 @@
 <div class='main-container'>
   <span class='main-title'>AppFounder</span>
   <span class='main-description'>will help you make life easier if..    </span>
-    <section  class='main-arrow' id="arrow" (click)='scroll("idea-section")'>
+    <section  class='main-arrow arrow' id="main-arrow" (click)='scroll("idea-section","main-arrow")'>
       <a ><span></span><span></span><span></span></a>
     </section>
 </div>
@@ -30,7 +29,7 @@
   </div>
 
   <div class='scroller-container'>
-      <section  class='main-arrow' id="arrow" (click)='scroll("worker-section")'>
+      <section  class='main-arrow arrow' id="idea-arrow" (click)='scroll("worker-section","idea-arrow")'>
         <a ><span></span><span></span><span></span></a>
       </section>
   </div>
@@ -47,7 +46,7 @@
         </div>
     </div>
     <div class='scroller-container'>
-        <section  class='main-arrow' id="arrow" (click)='scroll("team-section")'>
+        <section  class='main-arrow arrow' id="worker-arrow" (click)='scroll("team-section","worker-arrow")'>
           <a ><span></span><span></span><span></span></a>
         </section>
     </div>

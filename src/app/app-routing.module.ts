@@ -78,7 +78,7 @@ const routes: Routes = [
         component:TeamProfileComponent,
       },
       { 
-        path:'team-panel', //do poprawy
+        path:'user-team-list',
         component:UserTeamsListComponent,
       },
       { 

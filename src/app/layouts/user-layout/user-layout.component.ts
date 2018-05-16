@@ -52,7 +52,22 @@ export class UserLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.userId=this.authService.getUserId();
+    //console.log(window.innerHeight)
   }
+
+  ngAfterViewInit(){
+    //console.log(window.innerHeight)
+
+  }
+  ngAfterViewChecked(){
+    if(document.getElementById("loading-bar-spinner")) {
+      let contentHeight=document.body.clientHeight;
+      let loaderHeight=contentHeight-292;
+      document.getElementById("loading-bar-spinner").style.height=loaderHeight+'px';
+    }
+  
+  
+}
 
 
   logout(){

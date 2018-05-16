@@ -50,6 +50,9 @@ import { AuthInterceptorService } from './services/auth/auth-interceptor.service
 
 import { GlobalService } from './services/global/global.service';
 
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+
+
 import {
   MatButtonModule,
   MatCheckboxModule,
@@ -76,6 +79,8 @@ import {
 } from '@angular/material';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -122,7 +127,8 @@ import { ProjectManageComponent } from './components/project-manage/project-mana
     JoinTeamInvitationComponent,
     HomePageComponent,
     UsersComponent,
-    ProjectManageComponent
+    ProjectManageComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -149,7 +155,10 @@ import { ProjectManageComponent } from './components/project-manage/project-mana
     MatChipsModule,
     MatSelectModule,
     MatSliderModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatProgressSpinnerModule,
+
+    LoadingBarHttpClientModule
 
   ],
   entryComponents:[
@@ -160,7 +169,7 @@ import { ProjectManageComponent } from './components/project-manage/project-mana
     SendOfferComponent,//dopisać dialog
     JoinTeamInvitationComponent,
     AddNewTeamDialogComponent,
-    AddNewProjectDialogComponent
+    AddNewProjectDialogComponent,
   ],
   providers: [
     GlobalService,

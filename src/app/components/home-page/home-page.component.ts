@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 import {GlobalService} from './../../services/global/global.service';
-
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -42,12 +41,13 @@ export class HomePageComponent implements OnInit {
    }
    
 
-  ngOnInit() {
-    
+  ngOnInit(){
+ 
   }
 
-  scroll(section){
+  scroll(section,arrow){
     document.getElementById(section).scrollIntoView({ behavior: 'smooth'});
+    document.getElementById(arrow).style.display="none";
   }
 
 }
