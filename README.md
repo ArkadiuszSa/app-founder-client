@@ -6,5 +6,6 @@ The full tech-stack:
 * Node.js/Express- server
 * MongoDB/MLab- database
 Server and client are hosted on heroku.
+On this time layout is not optimized for small screens. 
 
 

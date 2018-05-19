@@ -82,6 +82,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
+
+
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { TeamProfileComponent,JoinRequestDialogComponent } from './components/team-profile/team-profile.component';
@@ -179,7 +181,6 @@ import { ProjectManageComponent } from './components/project-manage/project-mana
     ProjectService,
     InvitationsService,
     OfferService,
-    
     
     AdminAuthGuardService,
     UserAuthGuardService,

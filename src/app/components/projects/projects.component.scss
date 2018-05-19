@@ -3,17 +3,22 @@ mat-icon{
     height:100px;
 }
 
-.content-wrapper{
+.content-container{
    
-    margin:auto;
-    width:80%;
+    text-align: center;
+    min-height:calc(100vh - 290px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
 }
 .item-container{
     display:flex;
-    width:100%;
+    width:75%;
     text-align:center;
     min-height: 150px;
-    justify-content: flex-start
+    justify-content: flex-start;
 }
 
 .left-column-container{
@@ -62,8 +67,9 @@ mat-icon{
 
 .paginator-container{
     display:flex;
-    align-items: center;
-    justify-content: center;
+    flex-grow: 1;
+    flex-direction: column-reverse;
+    margin-bottom: 20px;
 }
 
 .gray-background{

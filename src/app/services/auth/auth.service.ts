@@ -5,6 +5,8 @@ import {GlobalService} from './../../services/global/global.service';
 import * as jwt from 'jsonwebtoken'
 import {Router} from "@angular/router";
 import * as moment from "moment"
+import {Observable} from 'rxjs/Rx'
+
 
 @Injectable()
 export class AuthService {
@@ -17,13 +19,24 @@ export class AuthService {
     this.url=globalService.API_BASE;
   }
 
-  login(loginFormValues){
-    return this.http.post(this.url+'login',loginFormValues)
-      .subscribe(data=>{
-        this.setSession(data);
-        this.router.navigateByUrl('/app/projects');
-      })
-    
+  
+
+  login(data){
+    console.log(data)
+    this.setSession(data);
+    this.router.navigateByUrl('/app/projects');
+  }
+  loginRequest(loginFormValues){
+    return  this.http.post<any>(this.url+'login',loginFormValues,{observe: 'response'});
+  }
+
+  register(registerFormValues){
+    return this.http.post<any>(this.url+'register',registerFormValues ,{observe: 'response'}).toPromise().then(res=>{
+     if(res.status===200){
+       this.setSession(res.body);
+       this.router.navigateByUrl('/app/projects');
+     }
+    })
   }
 
   public setSession(authResult) {
@@ -45,6 +58,10 @@ export class AuthService {
   logout() {
     localStorage.removeItem("token");
     this.router.navigateByUrl('/login/login-panel');
+  }
+
+  checkEmail(email){
+    return this.http.post<any>(this.url+'check-email',email);
   }
 
 

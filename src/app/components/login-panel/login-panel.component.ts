@@ -1,201 +1,163 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators,ReactiveFormsModule} from '@angular/forms';
+import { Component, OnInit,ViewChild } from '@angular/core';
+import {FormControl, FormGroup, FormBuilder, Validators,ReactiveFormsModule,FormGroupDirective,NgForm, AsyncValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
 import {MatStepperModule} from '@angular/material/stepper';
 import {UserService} from './../../services/user/user.service';
 import {AuthService} from './../../services/auth/auth.service';
 import {Router} from "@angular/router";
+import { invalid } from 'moment';
+import {ErrorStateMatcher} from '@angular/material/core';
+import { Observable } from "rxjs/Observable";
 
+import {setParticlesConfig} from "./../../../assets/configs/particles"
 //import { myFirstParticle } from '../../assets/particlesjs-config'
 //import * as particlesJS from 'particles.js';
 declare var particlesJS: any;
+
+export class ValidateEmailNotTaken {
+  static createValidator(authService: AuthService) {
+    return (control: AbstractControl) => {
+      return authService.checkEmail({email:control.value}).subscribe(res => {
+        console.log(res)
+        if(res.response!=='notFinded'){
+          return {emailTaken:true}
+        }else{
+          return null
+        }
+      });
+    };
+  }
+}
+
+export class User{
+  email:string;
+  password:string;
+  passwordRepeat:string;
+ 
+  constructor(){
+    this.email = '';
+    this.password='';
+    this.passwordRepeat='';
+  }
+}
+
+export function ContainNumber(control:AbstractControl){
+  let containNumberRegex=/\d+/;
+  let containBigLetterRegex=(/[A-Z]/);
+  if( (!containNumberRegex.test(control.value)) || (!containBigLetterRegex.test(control.value)) ){
+    return {notHaveNumber:true};
+  }
+  return null;
+}
+
+
+ 
+
 @Component({
   selector: 'app-login-panel',
   templateUrl: './login-panel.component.html',
   styleUrls: ['./login-panel.component.scss']
 })
 export class LoginPanelComponent implements OnInit  {
-  isLinear = false;
   registerForm: FormGroup;
   loginForm: FormGroup;
   isLoging: boolean;
-
+  //titleAlert:string = 'This field is required';
+  passwordCheck:boolean;
+  usernameIsFree=true;
+  submitedRegister=false;
+  //password;
+  //passwordRepeat;
+  accountExist=false;
+  unknowError=false;
+  invalidLoginData=false;
+  unknowLoginError=false;
+  private user:User;
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ){
     this.isLoging=false;
+    this.registerForm = fb.group({
+     email:new FormControl(null, {
+        validators: [Validators.required, Validators.email],
+        
+        updateOn: 'submit'
+      }),
+     password :new FormControl(null, {
+        validators: [Validators.required, Validators.minLength(8),ContainNumber],
+        updateOn: 'submit'
+      }),
+     passwordRepeat :new FormControl(null, {
+        validators: [Validators.required,Validators.minLength(8),ContainNumber],
+        updateOn: 'submit'
+      })
+    });
+
+    this.loginForm = fb.group({
+      'email':new FormControl(null, {
+         validators: [Validators.required],
+         updateOn: 'submit'
+       }),
+      'password' :new FormControl(null, {
+         validators: [Validators.required],
+         updateOn: 'submit'
+       })
+     });
+
   }
 
-  submitRegisterForm(){
-    this.userService.addNewUser(this.registerForm.value).subscribe();
+  submitRegister(){
+  this.submitedRegister=true
+  if(this.registerForm.value.password===this.registerForm.value.passwordRepeat){
+    this.passwordCheck=true;
+    this.checkEmail();
+  }else{
+    this.passwordCheck=false
   }
-  submitLoginForm(){
-    this.authService.login(this.loginForm.value);
+
+  }
+  async checkEmail(){
+    let email=this.registerForm.value.email;
+    await this.authService.checkEmail({email:email}).toPromise().then(res=>{
+   
+     let response=res.response;
+      if(response==='finded'){
+        this.accountExist=true;
+      }else{
+        this.accountExist=false;
+      }
     
+      if(this.accountExist===false && this.registerForm.status=="VALID"){
+      
+        this.authService.register(this.registerForm.value);
+        this.unknowError=true;
+      }
+    })
+  }
+
+  submitLogin(){
+    this.authService.loginRequest(this.loginForm.value)
+    .finally(()=>{
+        this.invalidLoginData=true;
+    })
+    .subscribe(data=>{
+      if(data.status===200){
+        this.authService.login(data.body);
+      }
+    })
   }
 
   loginFlagChange(){
     this.isLoging=true;
   }
+
   registerFlagChange(){
-    this.isLoging=false;
+     this.isLoging=false;
   }
 
   ngOnInit() {
-    this.registerForm = new FormGroup ({
-      fName: new FormControl('', {
-        validators: Validators.required,
-        updateOn: 'blur'
-      }),
-      lName: new FormControl('', {
-        validators: Validators.required,
-        updateOn: 'blur'
-      }),
-      email: new FormControl('', {
-        validators: Validators.required,
-        updateOn: 'blur'
-      }),
-      password: new FormControl('', {
-        validators: Validators.required,
-        updateOn: 'blur'
-      })
-    });
-
-    this.loginForm = new FormGroup ({
-      email: new FormControl('', {
-        validators: Validators.required,
-        updateOn: 'blur'
-      }),
-      password: new FormControl('', {
-        validators: Validators.required,
-        updateOn: 'blur'
-      })
-    });
-
-
-    particlesJS('particles-js',
-  
-  {
-    "particles": {
-      "number": {
-        "value": 80,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": {
-        "value": "#ffffff"
-      },
-      "shape": {
-        "type": "circle",
-        "stroke": {
-          "width": 0,
-          "color": "#000000"
-        },
-        "polygon": {
-          "nb_sides": 5
-        },
-        "image": {
-          "src": "img/github.svg",
-          "width": 100,
-          "height": 100
-        }
-      },
-      "opacity": {
-        "value": 0.5,
-        "random": false,
-        "anim": {
-          "enable": false,
-          "speed": 1,
-          "opacity_min": 0.1,
-          "sync": false
-        }
-      },
-      "size": {
-        "value": 5,
-        "random": true,
-        "anim": {
-          "enable": false,
-          "speed": 40,
-          "size_min": 0.1,
-          "sync": false
-        }
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#ffffff",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 6,
-        "direction": "none",
-        "random": false,
-        "straight": false,
-        "out_mode": "out",
-        "attract": {
-          "enable": false,
-          "rotateX": 600,
-          "rotateY": 1200
-        }
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": {
-          "enable": true,
-          "mode": "repulse"
-        },
-        "onclick": {
-          "enable": true,
-          "mode": "push"
-        },
-        "resize": true
-      },
-      "modes": {
-        "grab": {
-          "distance": 400,
-          "line_linked": {
-            "opacity": 1
-          }
-        },
-        "bubble": {
-          "distance": 400,
-          "size": 40,
-          "duration": 2,
-          "opacity": 8,
-          "speed": 3
-        },
-        "repulse": {
-          "distance": 200
-        },
-        "push": {
-          "particles_nb": 4
-        },
-        "remove": {
-          "particles_nb": 2
-        }
-      }
-    },
-    "retina_detect": true,
-    "config_demo": {
-      "hide_card": false,
-      "background_color": "#b61924",
-      "background_image": "",
-      "background_position": "50% 50%",
-      "background_repeat": "no-repeat",
-      "background_size": "cover"
-    }
+    particlesJS('particles-js',setParticlesConfig());
   }
-
-);
-  }
-
-
-
 }

@@ -19,17 +19,14 @@
     
     </div>
 
+
+  
+  </div>
   <div class='paginator-container'>
-
-      <mat-paginator [length]="paginationProperties.length"
-      [pageSize]="paginationProperties.pageSize"
-      [pageSizeOptions]="paginationProperties.pageSizeOptions"
-      (page)='reloadTeamsList($event)'>
-      </mat-paginator>
-
-
-  
-  </div>
-  
-  </div>
+    <mat-paginator [length]="paginationProperties.length"
+    [pageSize]="paginationProperties.pageSize"
+    [pageSizeOptions]="paginationProperties.pageSizeOptions"
+    (page)='reloadTeamsList($event)'>
+    </mat-paginator>
+</div>
 </div>

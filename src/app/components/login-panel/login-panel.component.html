@@ -2,7 +2,7 @@
 <div id='container' style=' height: 100%;'>
 
  <div id='login-panel-container'>
- <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+ <mat-horizontal-stepper [linear]="false" #stepper="matHorizontalStepper">
 
    <mat-step >
       <ul >
@@ -18,7 +18,7 @@
    <mat-step >
 
      <div *ngIf='isLoging; else register' >
-      <form [formGroup]='loginForm' class="step-form-container">
+      <form [formGroup]='loginForm' class="step-form-container" (ngSubmit)="submitLogin()">
         <h2 class='mat-typography' style='font-size:200%;padding-bottom:30px;text-align: center;'>Logging to account</h2>
         <mat-form-field>
           <input style='width:400px' class="form-control" formControlName="email"  matInput placeholder="Email">
@@ -26,31 +26,37 @@
         <mat-form-field>
           <input class="form-control" type="password" formControlName="password" matInput placeholder="Password">
         </mat-form-field>
+        <p class="alert"  *ngIf="invalidLoginData">Invalid username or password!</p>
         <div class='forms-actions-container'>
-            <button class='form-back-button form-button' matStepperPrevious color=primary mat-raised-button >Back</button>
-            <button class='form-submit-button form-button' matStepperNext color=primary mat-raised-button (click)='submitLoginForm()'>Log In</button>
+            <button class='form-back-button form-button' matStepperPrevious type="reset" color=primary mat-raised-button >Back</button>
+            <button class='form-submit-button form-button' matStepperNext color=primary mat-raised-button >Log In</button>
         </div>
       </form>
     </div>
 
     <ng-template #register>
-      <form [formGroup]='registerForm' class="step-form-container">
+      <form  [formGroup]='registerForm'   class="step-form-container"  (ngSubmit)="submitRegister()">
         <h2 class='mat-typography' style='font-size:200%;padding-bottom:30px;text-align: center;'>Add account</h2>
         <mat-form-field>
-          <input style='width:400px' class="form-control" formControlName="fName"  matInput placeholder="First Name">
+          <input id='siema' matInput class="form-control" formControlName="email"  placeholder="Email">
+          <mat-error  *ngIf="!accountExist && !registerForm.controls['email'].valid && registerForm.controls['email'].touched">Invalid email!</mat-error>
+        </mat-form-field>
+        <p class="alert" *ngIf="accountExist">Account with this email exist!</p>
+        <mat-form-field>
+          <input class="form-control" type="password" formControlName="password"   matInput placeholder="Password">
+          <mat-error  *ngIf="!registerForm.controls['password'].valid && submitedRegister">Password must have 8 characters, contain number and big letter! </mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input class="form-control" formControlName="lName" matInput placeholder="Last name">
+            <input  class="form-control" type="password" formControlName="passwordRepeat"  matInput placeholder="Repeat password">
+            
         </mat-form-field>
-        <mat-form-field>
-          <input class="form-control" formControlName="email" matInput placeholder="Email">
-        </mat-form-field>
-        <mat-form-field>
-            <input class="form-control" type="password" formControlName="password" matInput placeholder="Password">
-          </mat-form-field>
+        <p class="alert"  *ngIf="!passwordCheck&&submitedRegister"
+            >Those passwords didn't match! </p>
+        <p class="alert" *ngIf="unknownError">Internal server error! </p>
+       
         <div class='forms-actions-container'>
-            <button class='form-back-button form-button' matStepperPrevious color=primary mat-raised-button >Back</button>
-            <button class='form-submit-button form-button' matStepperNext color=primary mat-raised-button (click)="submitRegisterForm()" >Submit</button>
+            <button class='form-back-button form-button' matStepperPrevious color=primary mat-raised-button  type="reset" >Back</button>
+            <button class='form-submit-button form-button' color=primary mat-raised-button type="submit"     >Submit</button>
         </div>
       </form>
     </ng-template>
