@@ -23,6 +23,8 @@ export class UserSettingsComponent implements OnInit {
   editItemForm:FormGroup;
   private url;
   public userData;
+  public visabilityLabel='default'; 
+  public visabilityState=false;
     constructor(
       iconRegistry: MatIconRegistry,
       sanitizer: DomSanitizer,
@@ -42,9 +44,20 @@ export class UserSettingsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.reloadUser();
+  }
+
+  reloadUser(){
     let userId=this.authService.getUserId();
     this.userService.getUser(userId).subscribe(user=>{
       this.userData=user;
+      if(user.visable===true){
+        this.visabilityLabel='You are visable to others.';
+        this.visabilityState=true;
+      }else{
+        this.visabilityLabel='You are not visable to others.';
+        this.visabilityState=false;
+      }
     });
   }
 
@@ -57,28 +70,23 @@ export class UserSettingsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(updatedField => {
-      console.log(updatedField)
       if(updatedField!==undefined){
         this.userData[fieldKey]=updatedField;
         let userId=this.authService.getUserId();
-        this.userService.updateUser(this.userData,userId).subscribe();
+        this.userService.updateUser(this.userData,userId).subscribe(()=>{
+          this.reloadUser();
+        });
       }
     });
   }
 
-
-}
-
-export interface User {
-  _id: string;
-  fName: string;
-  lName: string;
-  email: string;
-  country: string;
-  city: string
-  bDay: string;
-  fruits:[string];
-  
+  changeVisability(){
+    let user=this.userData;
+    user.visable= !user.visable;
+    this.userService.updateUser(user,user._id).subscribe(()=>{
+      this.reloadUser();
+    });
+  }
 }
 
 @Component({
@@ -92,7 +100,7 @@ export class UpdateUserFieldDialogComponent{
   removable: boolean = true;
   addOnBlur: boolean = true;
   separatorKeysCodes = [ENTER, COMMA];
- public fieldData;
+  public fieldData;
   techs=[];
 
   constructor(
@@ -106,8 +114,6 @@ export class UpdateUserFieldDialogComponent{
       iconRegistry.addSvgIcon(
         'update-icon',
         sanitizer.bypassSecurityTrustResourceUrl('http://localhost:4000/assets/img/editIcon.svg'));
-      console.log()
-
       
       if(data.fieldName==='technologies'){
         this.techs=data.fieldValue.slice();
@@ -119,18 +125,10 @@ export class UpdateUserFieldDialogComponent{
         this.fieldData.name=data.fieldName;
         this.fieldData.value=data.fieldValue;
       }
-      
-      // console.log(this.techs)
-      console.log(typeof(this.techs))
-      console.log(this.techs)
-
-
     }
   
   cancelOnClick(): void {
     this.dialogRef.close();
-    // console.log(this.techs);
-    // console.log(this.fieldData)
   }
 
   applyOnClick(){
@@ -155,17 +153,12 @@ export class UpdateUserFieldDialogComponent{
     if (input) {
       input.value = '';
     }
-    // console.log(this.techs)
-    // console.log(this.fieldData)
   }
 
   remove(tech: any): void {
     let index = this.techs.indexOf(tech);
-
     if (index >= 0) {
       this.techs.splice(index, 1);
     }
   }
-
-
 }

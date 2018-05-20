@@ -29,7 +29,7 @@
         <p class="alert"  *ngIf="invalidLoginData">Invalid username or password!</p>
         <div class='forms-actions-container'>
             <button class='form-back-button form-button' matStepperPrevious type="reset" color=primary mat-raised-button >Back</button>
-            <button class='form-submit-button form-button' matStepperNext color=primary mat-raised-button >Log In</button>
+            <button class='form-submit-button form-button' matStepperNext color=primary mat-raised-button >Submit</button>
         </div>
       </form>
     </div>
@@ -48,7 +48,6 @@
         </mat-form-field>
         <mat-form-field>
             <input  class="form-control" type="password" formControlName="passwordRepeat"  matInput placeholder="Repeat password">
-            
         </mat-form-field>
         <p class="alert"  *ngIf="!passwordCheck&&submitedRegister"
             >Those passwords didn't match! </p>
@@ -62,6 +61,7 @@
     </ng-template>
 
    </mat-step>
+   
 
 
 

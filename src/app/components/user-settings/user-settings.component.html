@@ -6,33 +6,33 @@
     
   <div class='user-profile-element-container mat-typography'>
       <label  class='mat-typography'>First name</label>
-      {{userData.fName}}
+      {{userData?.fName}}
       <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
 
   </div>
   <div class='user-profile-element-container mat-typography'>
       <label class='mat-typography'>Last name</label>
-      {{userData.lName}}
+      {{userData?.lName}}
       <mat-icon (click)='openUpdateFieldDialog("last name","lName")' class='edit-icon'    svgIcon="update-icon"  ></mat-icon>
   </div>
   <div class='user-profile-element-container mat-typography'>
       <label class='mat-typography'>Email</label>
-      {{userData.email}}
+      {{userData?.email}}
       <mat-icon (click)='openUpdateFieldDialog("email","email")' class='edit-icon'   svgIcon="update-icon" ></mat-icon>
   </div>
   <div class='user-profile-element-container mat-typography'>
       <label class='mat-typography'>Country</label>
-      {{userData.country}}
+      {{userData?.country}}
       <mat-icon (click)='openUpdateFieldDialog("country","country")' class='edit-icon'   svgIcon="update-icon" ></mat-icon>
   </div>
   <div class='user-profile-element-container mat-typography'>
       <label class='mat-typography'>City</label>
-      {{userData.city}}
+      {{userData?.city}}
       <mat-icon (click)='openUpdateFieldDialog("city","city")' class='edit-icon'   svgIcon="update-icon" ></mat-icon>
   </div>
   <div class='user-profile-element-container mat-typography'>
       <label class='mat-typography'>Birthday</label>
-      {{userData.bDay}}
+      {{userData?.bDay}}
       <mat-icon (click)='openUpdateFieldDialog("birthday","bDay")' class='edit-icon'   svgIcon="update-icon" ></mat-icon>
   </div>
   <div class='user-profile-element-container mat-typography'>
@@ -40,12 +40,16 @@
       <mat-icon (click)='openUpdateFieldDialog("technologies","technologies")'  class='edit-icon'   svgIcon="update-icon" ></mat-icon>
       <div class='chip-list-container'>
         <mat-chip-list>
-        <mat-chip  style='font-size:102%' *ngFor='let tech of userData.technologies'>{{tech}}</mat-chip>
+        <mat-chip  style='font-size:102%' *ngFor='let tech of userData?.technologies'>{{tech}}</mat-chip>
         
         </mat-chip-list>
        
       </div>
       
+  </div>
+  <div class='user-profile-element-container mat-typography'>
+    <label  class='mat-typography'>Visable:</label>
+    <mat-slide-toggle color=primary  class="mat-typography" [checked]="visabilityState" (click)="changeVisability()" >{{visabilityLabel}}</mat-slide-toggle>
   </div>
 
     <mat-divider></mat-divider>
