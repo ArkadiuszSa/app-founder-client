@@ -4,8 +4,8 @@ import { ProjectService } from './../../services/project/project.service';
 import { TeamService } from './../../services/team/team.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { OfferService } from '../../services/offer/offer.service';
-
 import {UserService} from './../../services/user/user.service';
+import {GlobalService} from './../../services/global/global.service';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatFormFieldModule} from '@angular/material';
 import { Inject } from '@angular/core';
@@ -22,16 +22,21 @@ export class ProjectProfileComponent implements OnInit {
   private projectId;
   public project;
   public projectOwner;
+  public actualUserId;
   public teams=[];
   constructor(
     private route: ActivatedRoute, 
     private projectService:ProjectService,
     private userService:UserService,
     private teamService: TeamService,
+    private authService: AuthService,
     private offerService: OfferService,
+    private globalService: GlobalService,
     public dialog: MatDialog
   ){
+    this.globalService.pageTitle='Project profile';
     this.projectId = this.route.snapshot.params.id;
+    this.actualUserId=this.authService.getUserId();
   }
 
   ngOnInit() {
@@ -46,7 +51,11 @@ export class ProjectProfileComponent implements OnInit {
     })
     .subscribe(owner=>{
       this.projectOwner=owner;
+      console.log(this.actualUserId)
+      console.log(this.project.ownerId)
+      console.log(this.actualUserId!==this.project.ownerId)
     })
+
 
     this.offerService.getProjectOffers(this.projectId).concatMap(offers=>{
       return Observable.from(offers) 
@@ -107,12 +116,16 @@ constructor(
     let userId=this.authService.getUserId();
     this.teamService.getLeaderTeams(userId).subscribe(teams=>{
       this.userTeams=teams; 
+      if(teams.length===0){
+        this.notNotifiedAnyTeam=true;
+        this.teamSelectPlaceholder="You are not a leader of any team.";
+      } 
       teams.forEach(team=>{
         this.notifiedTeams.forEach(notifiedTeam=>{
           if(team._id===notifiedTeam._id){
             this.notNotifiedAnyTeam=true;
-            this.teamSelectPlaceholder='You can only send one offer and be a leader of team.';
-          } 
+            this.teamSelectPlaceholder='You can only send one offer on all your teams.';
+          }
         });
       });
     })

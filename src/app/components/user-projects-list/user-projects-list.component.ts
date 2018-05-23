@@ -8,6 +8,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatChipInputEvent,MatChipsModule} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatFormFieldModule} from '@angular/material';
 import { FormGroup, FormControl, Validators,ReactiveFormsModule } from '@angular/forms';
+import {GlobalService} from './../../services/global/global.service';
 
 @Component({
   selector: 'app-user-projects-list',
@@ -24,8 +25,10 @@ export class UserProjectsListComponent implements OnInit {
     private authService: AuthService,
     private invitationService:InvitationsService,
     private projectService:ProjectService,
+    private globalService:GlobalService,
     public dialog: MatDialog
   ){
+    globalService.pageTitle='Projects list'
     this.userProjects=[];
     this.userTeams=[];
     this.user=[];

@@ -4,6 +4,7 @@ import {TeamService} from './../../services/team/team.service';
 import {UserService} from './../../services/user/user.service';
 import {AuthService} from './../../services/auth/auth.service';
 import {InvitationsService} from './../../services/invitations/invitations.service';
+import {GlobalService} from './../../services/global/global.service';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatFormFieldModule} from '@angular/material';
 import { Inject } from '@angular/core';
@@ -25,8 +26,11 @@ export class TeamProfileComponent implements OnInit {
     private invitationService:InvitationsService,
     private authService:AuthService,
     public dialog: MatDialog,
+    public globalService: GlobalService
 
   ){
+    globalService.pageTitle='Team manage';
+
     this.teamId = this.route.snapshot.params.id;
   }
 
@@ -116,7 +120,6 @@ constructor(
     }
     this.invitationService.addNewInvitation(invitation)
     .subscribe(invitation=>{
-      console.log('odpaliło sie');
       this.dialogRef.close();
     })
     

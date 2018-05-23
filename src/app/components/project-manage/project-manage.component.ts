@@ -15,6 +15,7 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./project-manage.component.scss']
 })
 export class ProjectManageComponent implements OnInit {
+  public pageTitle
   public project;
   private projectId;
   private offers=[];
@@ -34,11 +35,9 @@ export class ProjectManageComponent implements OnInit {
     sanitizer: DomSanitizer,
     private router: Router,
     private globalService:GlobalService
-
-
-
   ){
     this.url=globalService.ASSETS_BASE;
+    globalService.pageTitle='Project manage';
     this.projectId=this.route.snapshot.params.id;
     iconRegistry.addSvgIcon(
       'update-icon',
@@ -63,6 +62,8 @@ export class ProjectManageComponent implements OnInit {
   }
 
   reloadOffers(){
+    this.teamsOffers=[];
+    this.teams=[]
     this.offerService.getProjectOffers(this.projectId).concatMap(offers=>{
       this.offers=offers;
       return Observable.from(offers);
@@ -102,6 +103,28 @@ export class ProjectManageComponent implements OnInit {
 
   openUpdateFieldDialog(par1?,par2?){
 
+  }
+
+  acceptOffer(teamOffer){
+    let {team, ...offer}=teamOffer;
+    offer.state='accepted';
+    this.project.status='inProgres';
+    this.projectService.updateProject(this.project,this.project._id).subscribe(res=>{
+      this.reloadProject();
+    })
+    this.offerService.updateOffer(offer._id,offer).subscribe(res=>{
+      this.reloadOffers();
+    })
+    team.projectsId.push(this.project._id);
+    this.teamService.updateTeam(team._id,team).subscribe();
+  }
+
+  rejectOffer(teamOffer){
+    let {team, ...offer}=teamOffer;
+    offer.state='rejected';
+    this.offerService.updateOffer(offer._id,offer).subscribe(res=>{
+      this.reloadOffers();
+    })
   }
 
 

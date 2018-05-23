@@ -3,6 +3,7 @@ import {AuthService} from './../../services/auth/auth.service';
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 import {GlobalService} from './../../services/global/global.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-user-layout',
@@ -10,16 +11,19 @@ import {GlobalService} from './../../services/global/global.service';
   styleUrls: ['./user-layout.component.scss']
 })
 export class UserLayoutComponent implements OnInit {
+  public pageTitle;
   private url;
   public userId;
   constructor( 
     private authService: AuthService,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
-    private globalService:GlobalService
+    private globalService:GlobalService,
+    private cdRef:ChangeDetectorRef
 
   ){
     this.url=globalService.ASSETS_BASE;
+
     iconRegistry.addSvgIcon(
       'logo',
       sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/logo.svg'));
@@ -52,29 +56,22 @@ export class UserLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.userId=this.authService.getUserId();
-    //console.log(window.innerHeight)
   }
 
-  ngAfterViewInit(){
-    //console.log(window.innerHeight)
 
-  }
+
   ngAfterViewChecked(){
     if(document.getElementById("loading-bar-spinner")) {
       let contentHeight=document.body.clientHeight;
       let loaderHeight=contentHeight-292;
       document.getElementById("loading-bar-spinner").style.height=loaderHeight+'px';
     }
-  
-  
-}
+    this.pageTitle=this.globalService.pageTitle;
+    this.cdRef.detectChanges();
 
-
+  }
   logout(){
     this.authService.logout();
   }
-
-
-
 }
 

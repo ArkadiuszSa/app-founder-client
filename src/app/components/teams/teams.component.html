@@ -1,26 +1,16 @@
-<div class='mat-typography' style='width:100%'>
-  <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>Teams</h1>
-</div>
 <div class='content-container'>
   <div class='teams-container'>
-
-
     <div class='team-container' *ngFor='let team of teams;let i = index' [class.gray-row]="i%2!==0" [routerLink]="['/app/team-profile/'+team._id]">
       <div class='team-icon-container mat-typography' >
         <mat-icon class='team-icon' style='cursor:pointer'  svgIcon="team-icon"></mat-icon>
         <h1 class='team-name'  >{{ team.name }}</h1>
-      </div>
-        
+      </div>  
       <div class=team-content-container >
         <span>
           {{team.description}}
         </span>
       </div>
-    
     </div>
-
-
-  
   </div>
   <div class='paginator-container'>
     <mat-paginator [length]="paginationProperties.length"

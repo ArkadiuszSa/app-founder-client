@@ -35,6 +35,7 @@ export class TeamsComponent implements OnInit {
     private globalService:GlobalService
   ){
     this.url=globalService.ASSETS_BASE;
+    globalService.pageTitle='Teams'
     iconRegistry.addSvgIcon(
       'team-icon',
       sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/teamIcon.svg'));

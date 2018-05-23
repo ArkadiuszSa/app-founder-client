@@ -1,6 +1,3 @@
-<div class='mat-typography' style='width:100%'>
-  <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>Project manage</h1>
-</div>
 <div class="user-profile-container "  >
 <mat-divider></mat-divider>
   
@@ -16,12 +13,19 @@
 </div>
 <div class='user-profile-element-container mat-typography'>
     <label  class='mat-typography'>Prefered technologies:</label>
-    {{project?.technologies}}
+    <mat-chip-list>
+        <mat-chip color="primary" selected="true"  *ngFor='let tech of project?.technologies'>{{tech}}</mat-chip>
+    </mat-chip-list>
     <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
 </div>
 <div class='user-profile-element-container mat-typography'>
     <label  class='mat-typography'>Deadline:</label>
     {{project?.deadline}}
+    <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+</div>
+<div class='user-profile-element-container mat-typography'>
+    <label  class='mat-typography'>Status:</label>
+    {{project?.status}}
     <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
 </div>
 <div class='user-profile-element-container mat-typography'>
@@ -42,8 +46,21 @@
             <div class='team-icon-container mat-typography'>
               <h1  class='team-name' [routerLink]="['/app/team-profile/'+teamOffer.team._id]">{{ teamOffer.team.name }} </h1>
             </div>
-            <div class=team-content-container >
+            <div class=offer-content-container >
                {{teamOffer.description}}
+            </div>
+
+            <div class=offer-action-container  [ngSwitch]="teamOffer.state">
+                <div  *ngSwitchCase="'new'">
+                    <button *ngIf='!(this.project.status==="inProgress")' class='remove-project-button' color=primary (click)='rejectOffer(teamOffer)'   mat-raised-button>Reject</button>
+                    <button *ngIf='!(this.project.status==="inProgress")' class='remove-project-button' color=primary (click)='acceptOffer(teamOffer)'   mat-raised-button>Accept</button>
+                </div>
+                <div *ngSwitchCase="'accepted'">
+                      <h1 class='mat-typography'>Accepted</h1>
+                </div>
+                <div *ngSwitchCase="'rejected'">
+                        <h1 class='mat-typography'>Rejected</h1>
+                </div>   
             </div>
         </div>
     </div>

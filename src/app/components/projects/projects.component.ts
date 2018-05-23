@@ -27,6 +27,7 @@ export class ProjectsComponent implements OnInit {
     private projectService: ProjectService,
     private globalService:GlobalService
   ){ 
+    globalService.pageTitle='Projects';
     this.url=globalService.ASSETS_BASE;
     iconRegistry.addSvgIcon(
       'project-icon',

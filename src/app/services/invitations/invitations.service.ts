@@ -28,6 +28,10 @@ export class InvitationsService {
     return this.http.get<any[]>(this.url+'user-invitations/'+userId)
   }
 
+  getTeamInvitations(teamId){
+    return this.http.get<any[]>(this.url+'team-invitations/'+teamId)
+  }
+
   addNewInvitation(invitationData){
     return this.http.post(this.url+'invitation', invitationData)
  }

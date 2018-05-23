@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Inject } from '@angular/core';
-
 import {TeamService} from './../../services/team/team.service';
 import {InvitationsService} from './../../services/invitations/invitations.service';
+import {GlobalService} from './../../services/global/global.service';
 import {AuthService} from './../../services/auth/auth.service';
 import {Observable} from 'rxjs/Rx'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatFormFieldModule} from '@angular/material';
@@ -19,9 +19,10 @@ export class UserTeamsListComponent implements OnInit {
     private authService: AuthService,
     private invitationService:InvitationsService,
     public dialog: MatDialog,
-
+    private globalService:GlobalService
   ){
-    
+    globalService.pageTitle='Teams list'
+
     this.userTeams=[];
   }
 

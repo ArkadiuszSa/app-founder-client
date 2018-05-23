@@ -18,6 +18,8 @@ export class UsersComponent implements OnInit {
     private globalService:GlobalService
   ){
     this.url=globalService.ASSETS_BASE;
+    globalService.pageTitle='Users'
+
     iconRegistry.addSvgIcon(
       'user-icon',
       sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/userIcon.svg')

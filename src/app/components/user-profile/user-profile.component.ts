@@ -3,8 +3,7 @@ import { UserService } from '../../services/user/user.service'
 import { TeamService } from './../../services/team/team.service';
 import {AuthService} from './../../services/auth/auth.service';
 import {InvitationsService} from './../../services/invitations/invitations.service';
-
-
+import {GlobalService} from './../../services/global/global.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatFormFieldModule } from '@angular/material';
 import { Inject } from '@angular/core';
@@ -19,12 +18,17 @@ import {Observable} from 'rxjs/Rx'
 export class UserProfileComponent implements OnInit {
   public user:any;
   private userId;
+  public actualUserId;
   constructor(
     private userService:UserService,
     private authService: AuthService,
     private route: ActivatedRoute, 
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private globalService:GlobalService
+
   ){
+    this.actualUserId=this.authService.getUserId();
+    globalService.pageTitle='Profile'
 
   }
 
@@ -33,8 +37,6 @@ export class UserProfileComponent implements OnInit {
     this.userService.getUser(this.userId).subscribe(user=>{
       this.user=user;
     })
-
-
   }
 
   openUserInvitationDialog(): void {
@@ -43,9 +45,7 @@ export class UserProfileComponent implements OnInit {
       width: "1000px",
       data:{teamOwnerId:teamOwnerId,invitedUser:this.user}
     });
-
     dialogRef.afterClosed().subscribe(result => {
-         
     });
   }
 
@@ -71,11 +71,7 @@ constructor(
   private invitationService:InvitationsService
 ){
   this.invitedUser=data.invitedUser;
-  this.invitedUser=data.invitedUser;
   this.teamOwnerId=data.teamOwnerId;
-
-
-
 }
 
   ngOnInit(){
@@ -87,9 +83,7 @@ constructor(
     .concatMap(teams=>{
       return Observable.from(teams);
     }).subscribe(team=>{
-      console.log(invitations)
       invitations.forEach(invitation=>{
-        console.log(invitation)
         if((team.membersId.indexOf(this.invitedUser._id)===-1)&&(invitation.teamId!==team._id)){ 
           this.teams.push(team);
         }
@@ -99,22 +93,31 @@ constructor(
         this.teams.push(team);
       }
     }
-      console.log(this.teams)
       if(this.teams.length===0) this.teamSelectPlaceholder="You don't have teams to invite this user"
     })
   }
 
-
-
   cancelOnClick(): void {
-
     this.dialogRef.close();
   }
 
   applyOnClick(){
-    
-    //this.invitationService.addNewInvitation()
 
+    let timestamp=moment().format();
+    let invitation={
+      userId:this.invitedUser._id,
+      teamId:this.chosedTeam._id,
+      description:this.invitationContent,
+      state:'waitingOnUser',
+      timestamp: timestamp
+    }
+
+    this.invitationService.addNewInvitation(invitation).subscribe(res=>{
+      console.log(res)
+      this.dialogRef.close('addedInvitation');
+    });
+
+    //this.invitationService.addNewInvitation()
   }
 
 }

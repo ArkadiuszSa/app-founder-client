@@ -34,6 +34,8 @@ export class UserSettingsComponent implements OnInit {
       private globalService:GlobalService
     ){
       this.url=globalService.ASSETS_BASE;
+      globalService.pageTitle='Account data'
+
       iconRegistry.addSvgIcon(
         'remove-chip-icon',
         sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/removeChipIcon.svg'));

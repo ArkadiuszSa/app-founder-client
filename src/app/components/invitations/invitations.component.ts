@@ -28,7 +28,7 @@ export class InvitationsComponent implements OnInit {
     sanitizer: DomSanitizer
   ){
     this.url=globalService.ASSETS_BASE;
-
+    this.globalService.pageTitle='Invitations';
     iconRegistry.addSvgIcon(
       'remove-icon',
       sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/removeIcon.svg')
@@ -36,14 +36,6 @@ export class InvitationsComponent implements OnInit {
   }
   ngOnInit() {
     this.reloadInvitationsList()
-    setTimeout(x=>{
-      console.log(this.invitations)
-      console.log('wchodzi')
-      console.log(this.invitations.length)
-    },300)
-    console.log(this.invitations)
-    console.log('wchodzi')
-    console.log(this.invitations.length)
   }
 
   changeInviteStatusOnClick(i,newState){

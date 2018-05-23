@@ -4,6 +4,7 @@ import { Inject } from '@angular/core';
 import {TeamService} from './../../services/team/team.service';
 import {UserService} from './../../services/user/user.service';
 import {AuthService} from './../../services/auth/auth.service';
+import {InvitationsService} from './../../services/invitations/invitations.service';
 import {GlobalService} from './../../services/global/global.service';
 
 import { ActivatedRoute } from '@angular/router';
@@ -32,7 +33,7 @@ export class TeamManageComponent implements OnInit {
   public membersData:Member[];
   public visabilityLabel='default'; 
   public visabilityState=false;
-
+  public invitations;
   constructor(
     private route: ActivatedRoute, 
     iconRegistry: MatIconRegistry, 
@@ -41,12 +42,14 @@ export class TeamManageComponent implements OnInit {
     private teamService:TeamService,
     private userService:UserService,
     private authService:AuthService,
+    private invitationService:InvitationsService,
     private router: Router,
     private globalService:GlobalService
   ){
     this.teamId = this.route.snapshot.params.id;
     this.membersData=[];
     this.url=globalService.ASSETS_BASE;
+    globalService.pageTitle='Team manage';
     iconRegistry.addSvgIcon(
       'update-icon',
       sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/editIcon.svg'));
@@ -57,6 +60,7 @@ export class TeamManageComponent implements OnInit {
 
   ngOnInit() {
     this.reloadTeam();
+    this.reloadInvitations()
   }
   reloadTeam(){
     this.membersData=[];
@@ -64,10 +68,10 @@ export class TeamManageComponent implements OnInit {
     .concatMap(team=>{
       this.teamData=team;
       if(team.visable===true){
-        this.visabilityLabel='Project is visable to others';
+        this.visabilityLabel='Team is visable to others';
         this.visabilityState=true;
       }else{
-        this.visabilityLabel='Project is not visable to others';
+        this.visabilityLabel='Team is not visable to others';
         this.visabilityState=false;
       }
       return Observable.from(team.membersId);
@@ -81,6 +85,44 @@ export class TeamManageComponent implements OnInit {
 
     })
   }
+
+
+  async reloadInvitations(){
+    this.invitations=[];
+    let invitations=await this.invitationService.getTeamInvitations(this.teamId).toPromise().then(invitations=>{
+      return invitations;
+    })
+
+    invitations.forEach(invitation=>{
+      this.userService.getUser(invitation.userId).toPromise().then(user=>{
+        invitation.user=user;
+        this.invitations.push(invitation)
+      })
+    })
+  }
+
+  changeInviteStatusOnClick(invitation,newState){
+
+    invitation.state=newState;
+    this.invitationService.updateInvitation(invitation._id, invitation)
+    .subscribe(res=>{
+      this.reloadInvitations();
+    })
+
+    if(newState==='accepted'){
+      this.teamService.getTeam(invitation.teamId)
+      .flatMap(team=>{
+        let userId=invitation.userId;
+        team.membersId.push(userId)
+        return this.teamService.updateTeam(invitation.teamId,team);
+      })
+      .subscribe();  
+    }
+    
+
+
+  }
+
 
   openUpdateFieldDialog(fieldName,fieldKey): void {
     let dialogWidth='500px';

@@ -21,6 +21,9 @@
     float:right;
     vertical-align: top;
   }
+  .gray-row{
+    background: #f2f2f2;
+}
   label{
     text-align: right;
     clear: both;
@@ -70,7 +73,7 @@
       padding:auto;
       font-size:1.3em;
       min-width:50%;
-      
+      margin-bottom:30px;
       
     }
 
@@ -99,12 +102,12 @@
               text-decoration:none;
               
           }
-          .team-content-container{
+          .offer-content-container{
               display:flex;
               justify-content: flex-start;
               align-content: center;
               align-items: center;
-              width:75%;
+              width:80%;
               text-align:left;
               
               .team-name{
@@ -112,8 +115,19 @@
                   
               }
           }
+          .offer-action-container{
+            display:flex;
+            flex-direction: row;
+            min-width:200px;
+            justify-content: center;
+            align-items: center;
+            button{
+              margin-left:10px;
+              height:40px;
+            }
+          }
           .team-icon-container{
-            
+
               float:left;
               margin-right:30px
           }

@@ -1,7 +1,3 @@
-<div class='mat-typography' style='width:100%'>
-    <h1 style='font-size: 300%;background:#3949ab;color:white;padding:30px'>Project profile</h1>
-</div>
-
 <div class='content-container'>
     <mat-card>
   <span class='project-title'><h2>{{project?.title}}</h2></span>
@@ -15,7 +11,7 @@
   </mat-card>
   <mat-card>
     <div class='project-card-content'>
-        <p>Prefered technologies:</p>
+        <h4>Prefered technologies:</h4>
         <mat-chip-list>
             <mat-chip color="primary" selected="true"  style='font-size:102%' *ngFor='let tech of project?.technologies'>{{tech}}</mat-chip>
         </mat-chip-list>
@@ -54,12 +50,10 @@
             </div>
     </mat-card>
 
-     <div class='action-container mat-typography'>
-        <div *ngIf="project?.status==='waiting'" >
-            <div  class='action-item'>
-                <button (click)='openOfferDialog()' color=primary mat-raised-button >Add offer</button>
-            </div>
-        </div>
+     <div *ngIf='actualUserId!==project?.ownerId && project?.status==="new"' class='action-container mat-typography'>
+        <div  class='action-item'>
+            <button (click)='openOfferDialog()' color=primary mat-raised-button >Add offer</button>
+        </div>        
     </div>
 
     <div class='offers-container'>
