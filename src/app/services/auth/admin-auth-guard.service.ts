@@ -10,8 +10,6 @@ export class AdminAuthGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let token =localStorage.getItem('token');
     let decodedToken=jwt.decode(token)
-    //let role=decodedToken.role;
-    console.log(decodedToken);
     if(decodedToken==null){
       this.router.navigate(['/login/login-panel']);
       return false;

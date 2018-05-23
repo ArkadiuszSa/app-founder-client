@@ -195,8 +195,6 @@ export class UpdateTeamFieldDialogComponent{
   applyOnClick(){
       this.dialogRef.close(this.fieldData.value);
   }
-
-
 }
 
 

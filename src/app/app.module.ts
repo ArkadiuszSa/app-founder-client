@@ -8,7 +8,6 @@ import {
   HttpClientModule,
   HTTP_INTERCEPTORS 
 } from '@angular/common/http';
-
 import {
   ReactiveFormsModule,
   FormBuilder, 
@@ -16,9 +15,6 @@ import {
   Validators,
   FormsModule
 }from '@angular/forms';
-
-
-
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 
 import { AppComponent } from './app.component';
@@ -74,16 +70,12 @@ import {
   MatSelectModule,
   MatSliderModule,
   MatSlideToggleModule,
-
+  MatNativeDateModule
 
 } from '@angular/material';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
-
-
-
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { TeamProfileComponent,JoinRequestDialogComponent } from './components/team-profile/team-profile.component';
@@ -94,7 +86,7 @@ import { ProjectProfileComponent,SendOfferComponent } from './components/project
 import { UserProfileComponent, JoinTeamInvitationComponent } from './components/user-profile/user-profile.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { UsersComponent } from './components/users/users.component';
-import { ProjectManageComponent } from './components/project-manage/project-manage.component';
+import { ProjectManageComponent, UpdateProjectFieldDialogComponent  } from './components/project-manage/project-manage.component';
 
 
 
@@ -122,6 +114,7 @@ import { ProjectManageComponent } from './components/project-manage/project-mana
     TeamManageComponent,
     UpdateUserFieldDialogComponent,
     UpdateTeamFieldDialogComponent,
+    UpdateProjectFieldDialogComponent,
     UserProjectsListComponent,
     AddNewProjectDialogComponent,
     ProjectProfileComponent,
@@ -159,6 +152,9 @@ import { ProjectManageComponent } from './components/project-manage/project-mana
     MatSliderModule,
     MatSlideToggleModule,
     MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+
 
     LoadingBarHttpClientModule
 
@@ -167,6 +163,7 @@ import { ProjectManageComponent } from './components/project-manage/project-mana
     AddUserDialogComponent,
     UpdateUserFieldDialogComponent,
     UpdateTeamFieldDialogComponent,
+    UpdateProjectFieldDialogComponent,
     JoinRequestDialogComponent,
     SendOfferComponent,//dopisać dialog
     JoinTeamInvitationComponent,
@@ -181,7 +178,8 @@ import { ProjectManageComponent } from './components/project-manage/project-mana
     ProjectService,
     InvitationsService,
     OfferService,
-    
+    MatDatepickerModule,
+
     AdminAuthGuardService,
     UserAuthGuardService,
     

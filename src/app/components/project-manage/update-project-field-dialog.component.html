@@ -1,0 +1,41 @@
+<div class='content-wrapper'>
+    <h1 mat-dialog-title>Updating team {{fieldName}}</h1>
+    <div mat-dialog-content [ngSwitch]="fieldName">
+        
+        <div *ngSwitchCase="'title'">
+            <mat-form-field  >
+                <input   matInput [(ngModel)]="fieldValue"  >
+            </mat-form-field>
+        </div>
+        <div *ngSwitchCase="'description'">
+            <textarea  matInput [(ngModel)]="fieldValue" matTextareaAutosize></textarea>
+        </div>
+        <div *ngSwitchCase="'technologies'">
+            <mat-form-field  >
+                <input matInput  [matChipInputFor]="techChip"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)" />
+            </mat-form-field>
+            <mat-chip-list #techChip>
+                <mat-chip *ngFor="let tech of technologies" [selectable]="selectable" [removable]="removable" (remove)="remove(tech)">
+                    {{tech}}
+                    <mat-icon svgIcon='remove-chip-icon' matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+        <div *ngSwitchCase="'deadline'">
+            <mat-form-field  >
+                    <input matInput [(ngModel)]="fieldValue" [matDatepicker]="picker" placeholder="Choose a deadline">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        
+    </div>
+    <div class='action-container'>
+        <button mat-raised-button (click)="cancelOnClick()">Cancel</button>
+        <button color=primary mat-raised-button (click)='applyOnClick()' >Apply</button>
+    </div>
+
+</div>

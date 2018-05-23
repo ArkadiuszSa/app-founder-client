@@ -1,0 +1,44 @@
+::ng-deep .mat-input-infix .mat-form-field-infix{
+    width:400px !important;
+} 
+::ng-deep .mat-form-field-infix{
+    width:400px !important;
+}
+::ng-deep .mat-dialog-actions{
+    text-align: center !important;
+} 
+
+::ng-deep .mat-chip{
+    margin-bottom:15px !important;
+}
+
+.action-container{
+    margin-top:20px;
+    text-align: center;
+}
+.content-wrapper{
+    margin:auto;
+    width:90%;
+}
+input{
+    margin:auto;
+    width:400px;
+    text-align: center;
+}
+button{
+    margin-right:10px;
+    float:center;
+}
+
+.tech-container{
+    margin:auto;
+    width:100%;
+    input{
+        //text-align:left;   
+        width:100%; 
+        
+    }
+    
+    
+}
+

@@ -16,7 +16,6 @@ export class UserAuthGuardService {
     
     
     if(decodedToken==null){
-      console.log('niema tokena')
       this.router.navigate(['/login/login-panel']);
 
       return false;

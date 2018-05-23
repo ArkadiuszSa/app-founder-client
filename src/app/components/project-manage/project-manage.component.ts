@@ -9,13 +9,20 @@ import { ActivatedRoute } from '@angular/router';
 import {Observable} from 'rxjs/Rx'
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
+import { Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatFormFieldModule} from '@angular/material';
+import {MatChipInputEvent,MatChipsModule} from '@angular/material';
+import {ENTER, COMMA} from '@angular/cdk/keycodes';
+import {MatInputModule,MatInput} from '@angular/material/input';
+
+
 @Component({
   selector: 'app-project-manage',
   templateUrl: './project-manage.component.html',
   styleUrls: ['./project-manage.component.scss']
 })
 export class ProjectManageComponent implements OnInit {
-  public pageTitle
+  public pageTitle;
   public project;
   private projectId;
   private offers=[];
@@ -34,11 +41,14 @@ export class ProjectManageComponent implements OnInit {
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
     private router: Router,
-    private globalService:GlobalService
+    private globalService:GlobalService,
+    public dialog: MatDialog
+
   ){
     this.url=globalService.ASSETS_BASE;
     globalService.pageTitle='Project manage';
     this.projectId=this.route.snapshot.params.id;
+   
     iconRegistry.addSvgIcon(
       'update-icon',
       sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/editIcon.svg'));
@@ -51,6 +61,7 @@ export class ProjectManageComponent implements OnInit {
   reloadProject(){
     this.projectService.getProject(this.projectId).subscribe(project=>{
       this.project=project;
+     
       if(project.visable===true){
         this.visabilityLabel='Project is visable to others';
         this.visabilityState=true;
@@ -101,9 +112,7 @@ export class ProjectManageComponent implements OnInit {
     })
   }
 
-  openUpdateFieldDialog(par1?,par2?){
 
-  }
 
   acceptOffer(teamOffer){
     let {team, ...offer}=teamOffer;
@@ -128,7 +137,95 @@ export class ProjectManageComponent implements OnInit {
   }
 
 
- 
+  openUpdateFieldDialog(fieldName,fieldKey): void {
+    let dialogRef = this.dialog.open(UpdateProjectFieldDialogComponent, {
+      width: '500px',
+      data: {fieldName:fieldName,fieldKey:fieldKey,project:this.project  }
+    });
+
+    dialogRef.afterClosed().subscribe(updatedField => {
+      if(updatedField!==undefined){
+        this.reloadProject();
+      }
+    });
   }
+}
+
+
+@Component({
+  selector: 'update-project-field-dialog.component',
+  templateUrl: 'update-project-field-dialog.component.html',
+  styleUrls: ['update-project-field-dialog.component.scss']
+})
+export class UpdateProjectFieldDialogComponent{
+  public fieldData;
+  public fieldName;
+  public fieldValue;
+  private fieldKey;
+  private project;
+  public technologies;
+  private url;
+  visible: boolean = true;
+  selectable: boolean = true;
+  removable: boolean = true;
+  addOnBlur: boolean = true;
+  separatorKeysCodes = [ENTER, COMMA];
+
+  constructor(
+    globalService:GlobalService,
+    sanitizer: DomSanitizer,
+    public dialogRef: MatDialogRef<UpdateProjectFieldDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private projectService: ProjectService,
+    iconRegistry: MatIconRegistry,
+  ){
+    this.url=globalService.ASSETS_BASE;
+    
+    this.technologies=data.project.technologies;
+    console.log(this.technologies)
+    this.fieldKey=data.fieldKey
+      this.fieldName=data.fieldName;
+      this.fieldValue=data.project[data.fieldKey];
+      this.project=data.project;
+      iconRegistry.addSvgIcon(
+        'remove-chip-icon',
+        sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/removeChipIcon.svg'));
+    }
+  
+  cancelOnClick(): void {
+    this.dialogRef.close();
+  }
+
+  applyOnClick(){
+    this.project[this.fieldKey]=this.fieldValue
+    this.projectService.updateProject(this.project,this.project._id).subscribe();
+    this.dialogRef.close('updated');
+  }
+
+  add(event: MatChipInputEvent): void {
+    let input = event.input;
+    let value = event.value;
+
+    if ((value || '').trim()) {
+      value=value.trim();
+      this.technologies.push( value );
+    }
+
+   
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  remove(tech: any): void {
+    let index = this.technologies.indexOf(tech);
+
+    if (index >= 0) {
+      this.technologies.splice(index, 1);
+    }
+  }
+}
+
+
 
 

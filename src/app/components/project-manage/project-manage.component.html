@@ -4,29 +4,30 @@
 <div class='user-profile-element-container mat-typography'>
     <label  class='mat-typography'>Title:</label>
     {{project?.title}}
-    <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+    <mat-icon (click)='openUpdateFieldDialog("title","title")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
 </div>
 <div class='user-profile-element-container mat-typography'>
   <label  class='mat-typography'>Description:</label>
   {{project?.description}}
-  <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+  <mat-icon (click)='openUpdateFieldDialog("description", "description")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
 </div>
 <div class='user-profile-element-container mat-typography'>
     <label  class='mat-typography'>Prefered technologies:</label>
     <mat-chip-list>
         <mat-chip color="primary" selected="true"  *ngFor='let tech of project?.technologies'>{{tech}}</mat-chip>
     </mat-chip-list>
-    <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+    <mat-icon (click)='openUpdateFieldDialog("technologies", "technologies")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
 </div>
 <div class='user-profile-element-container mat-typography'>
     <label  class='mat-typography'>Deadline:</label>
     {{project?.deadline}}
-    <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+    <mat-icon (click)='openUpdateFieldDialog("deadline", "deadline")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
 </div>
-<div class='user-profile-element-container mat-typography'>
+<div [ngSwitch]="project?.status" class='user-profile-element-container mat-typography'>
     <label  class='mat-typography'>Status:</label>
-    {{project?.status}}
-    <mat-icon (click)='openUpdateFieldDialog("first name","fName")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+    <p *ngSwitchCase="'new'">Project is waiting on team assigment</p>
+    <p *ngSwitchCase="'inProgres'">Realization of project is in progress</p>
+    <p *ngSwitchCase="'finished'">Work on project is finished</p>
 </div>
 <div class='user-profile-element-container mat-typography'>
     <label  class='mat-typography'>Visable:</label>

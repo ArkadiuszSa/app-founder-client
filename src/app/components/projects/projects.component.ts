@@ -40,7 +40,6 @@ export class ProjectsComponent implements OnInit {
       this.projects=res;
     });
     this.projectService.getNumberOfProjects().subscribe(projectsNumber=>{
-      console.log(projectsNumber)
       this.paginationProperties.length=projectsNumber.value;
     })
 

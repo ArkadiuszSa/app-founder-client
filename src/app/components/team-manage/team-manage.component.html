@@ -66,8 +66,7 @@
           <mat-icon style='cursor:pointer' (click)="openDialog('updateUser',user._id)" svgIcon="edit-icon"></mat-icon>
           <mat-icon style='cursor:pointer' (click)="deleteUser(user._id)" svgIcon="remove-icon"></mat-icon>
       </mat-cell>
-    </ng-container>
-
+  </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
