@@ -1,28 +1,90 @@
-<div class='content-container'>
-    
-      <div class='item-container' *ngFor='let project of projects;let i = index' [class.gray-background]="i%2==0">
+<div class='main-container'>
+
+    <div class='sidebar-container'>
       
-        <div class='left-column-container'>
-            <mat-icon   svgIcon="project-icon"></mat-icon>
-        </div>
+        <mat-card class='filters-card'>
+          <mat-card-title class='sidebar-header'>Filters</mat-card-title>
 
-        <div class='right-column-container' >
-          <h2  class='project-title'> <a [routerLink]="['/app/project-profile/'+project._id]">{{project?.title}}</a></h2>
-          <span class='project-deadline'>Deadline: {{project?.deadline}}</span>
-          <span class='project-description'>{{project?.description}}</span>
-          <span class='project-budget'>Budget: {{project.budget?.value}}{{project.budget?.currency}}</span>
-        </div>
+            <mat-form-field class='search-field'>
+                <input matInput matInput placeholder="Search" [(ngModel)]="filtrOptions.search.value" >
+            </mat-form-field>
+
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Budget</mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-form-field class='filtr-field'>
+                <input matInput placeholder="from" type='number' [(ngModel)]="filtrOptions.budget.from">
+              </mat-form-field>
+              -
+              <mat-form-field class='filtr-field'>
+                  <input matInput placeholder="to" type='number' [(ngModel)]="filtrOptions.budget.to">
+                </mat-form-field>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                   Status
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+            
+                <mat-form-field class='status-field'>
+                  <mat-select  [(value)]="filtrOptions.status" >
+                    <mat-option *ngFor="let status of statusOptions"  [value]="status">
+                      {{ status.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-expansion-panel>
+  
+            </mat-accordion>
+
+          <mat-card class='filters-card'>
+            <button class='filter-button' (click)='reloadProjectsList($event)' mat-stroked-button color="primary">Filter</button>
+          </mat-card>
+
+        </mat-card>
     </div>
-   
-    
-
-  <div class='paginator-container'>
-      <mat-paginator [length]="paginationProperties?.length"
-      [pageSize]="paginationProperties?.pageSize"
-      [pageSizeOptions]="paginationProperties?.pageSizeOptions"
-      (page)='reloadProjectsList($event)'>
-      </mat-paginator>
-  </div>
+    <div class='content-container mat-typography'>
+        <div class='sort-container'>
+          <label class='mat-typography'>Sort by:</label>
+          <mat-form-field>
+            <mat-select  [(value)]="sortValue" >
+              <mat-option *ngFor="let option of sortOptions"  [value]="option" (click)='reloadProjectsList()'>
+                {{ option.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div> 
+        <h1 *ngIf='projects?.length===0' class='no-projects-info'>Not found projects for this filters requiments</h1>
+        <div class='items-container'>
+          <div class='item-container' *ngFor='let project of projects;let i = index' [class.gray-background]="i%2==0">
+              <div class='left-column-container'>
+                  <mat-icon   svgIcon="project-icon"></mat-icon>
+              </div>
+        
+              <div class='right-column-container' >
+                <h2  class='project-title'> <a [routerLink]="['/app/project-profile/'+project._id]">{{project?.title}}</a></h2>
+                <span class='project-deadline'>Deadline: {{project?.deadline}}</span>
+                <span class='project-description'>{{project?.description}}</span>
+                <span class='project-budget'>Budget: {{project.budget?.value}}{{project.budget?.currency}}</span>
+              </div>
+            </div>
+        </div>
+          
+      <div class='paginator-container'>
+          <mat-paginator class='paginator' [length]="paginationProperties?.length"
+          [pageSize]="paginationProperties?.pageSize"
+          [pageSizeOptions]="paginationProperties?.pageSizeOptions"
+          (page)='paginationReload($event)'>
+          </mat-paginator>
+      </div>
+    </div>
 
 </div>
 

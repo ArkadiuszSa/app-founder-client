@@ -23,6 +23,11 @@
     {{project?.deadline}}
     <mat-icon (click)='openUpdateFieldDialog("deadline", "deadline")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
 </div>
+<div class='user-profile-element-container mat-typography'>
+    <label  class='mat-typography'>Budget:</label>
+    {{project?.budget?.value}}
+    <mat-icon (click)='openUpdateFieldDialog("budget", "budget.value")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
+</div>
 <div [ngSwitch]="project?.status" class='user-profile-element-container mat-typography'>
     <label  class='mat-typography'>Status:</label>
     <p *ngSwitchCase="'new'">Project is waiting on team assigment</p>

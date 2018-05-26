@@ -51,9 +51,6 @@ export class ProjectProfileComponent implements OnInit {
     })
     .subscribe(owner=>{
       this.projectOwner=owner;
-      console.log(this.actualUserId)
-      console.log(this.project.ownerId)
-      console.log(this.actualUserId!==this.project.ownerId)
     })
 
 

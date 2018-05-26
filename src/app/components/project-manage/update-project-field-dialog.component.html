@@ -7,6 +7,11 @@
                 <input   matInput [(ngModel)]="fieldValue"  >
             </mat-form-field>
         </div>
+        <div *ngSwitchCase="'budget'">
+            <mat-form-field  >
+                <input   matInput [(ngModel)]="fieldValue"  >
+            </mat-form-field>
+        </div>
         <div *ngSwitchCase="'description'">
             <textarea  matInput [(ngModel)]="fieldValue" matTextareaAutosize></textarea>
         </div>

@@ -18,6 +18,9 @@ export class ProjectService {
   getRangeOfProjects(from,to){
    return this.http.get<any[]>(this.url+'projects-range/'+from+'&'+to)
   }
+  getRangeOfProjectsFiltred(from,to,querry){
+    return this.http.post<any>(this.url+'projects-range-filtred/'+from+'&'+to,querry)
+  }
   getNumberOfProjects(){
     return this.http.get<any>(this.url+'projects-number')
   }

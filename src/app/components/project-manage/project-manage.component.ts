@@ -61,7 +61,7 @@ export class ProjectManageComponent implements OnInit {
   reloadProject(){
     this.projectService.getProject(this.projectId).subscribe(project=>{
       this.project=project;
-     
+      console.log(project)
       if(project.visable===true){
         this.visabilityLabel='Project is visable to others';
         this.visabilityState=true;
@@ -179,11 +179,9 @@ export class UpdateProjectFieldDialogComponent{
     private projectService: ProjectService,
     iconRegistry: MatIconRegistry,
   ){
-    this.url=globalService.ASSETS_BASE;
-    
-    this.technologies=data.project.technologies;
-    console.log(this.technologies)
-    this.fieldKey=data.fieldKey
+      this.url=globalService.ASSETS_BASE;
+      this.technologies=data.project.technologies;
+      this.fieldKey=data.fieldKey
       this.fieldName=data.fieldName;
       this.fieldValue=data.project[data.fieldKey];
       this.project=data.project;

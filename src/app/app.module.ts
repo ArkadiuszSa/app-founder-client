@@ -76,6 +76,8 @@ import {
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { TeamProfileComponent,JoinRequestDialogComponent } from './components/team-profile/team-profile.component';
@@ -154,6 +156,7 @@ import { ProjectManageComponent, UpdateProjectFieldDialogComponent  } from './co
     MatProgressSpinnerModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatExpansionModule,
 
 
     LoadingBarHttpClientModule

@@ -19,10 +19,7 @@ export class AuthService {
     this.url=globalService.API_BASE;
   }
 
-  
-
   login(data){
-    console.log(data)
     this.setSession(data);
     this.router.navigateByUrl('/app/projects');
   }

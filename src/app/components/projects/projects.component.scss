@@ -2,20 +2,70 @@ mat-icon{
     width:100px;
     height:100px;
 }
+::ng-deep mat-card{
+    padding:0px !important;
+    padding-bottom: 0px !important; 
+}
+::ng-deep{
+    .filtr-field{
+        max-width: 119px;
+        *{
+            text-align: center;
+        }
+    }
+    .search-field{
+        width: 258px;
+        padding-left: 20px;
+    }
+    .status-field{
+        width: 100%;        
+    }
+    .filters-card{
+        padding-bottom: 0px !important; 
+    }
+    
+}
+::ng-deep mat-paginator-container{
+    justify-content: center !important;
+}
+
+
+.main-container{
+    display:flex;
+    flex-direction: row;
+    min-height:calc(100vh - 300px);
+    .sidebar-container{
+        max-width:300px;
+        flex-grow: 0.15;
+        margin:10px;
+        margin-top: 58px;
+        .filter-button{
+            width:100%;
+        }
+        .sidebar-header{
+            text-align: center;
+        }
+    }
+}
 
 .content-container{
-   
-    text-align: center;
-    min-height:calc(100vh - 290px);
-    display: flex;
+    display:flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width:100%;
+    flex-grow: 0.7;
+    min-height:calc(100vh - 300px);
+    .sort-container{
+
+        text-align: right;
+    }
+    .no-projects-info{
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    
 }
 .item-container{
     display:flex;
-    width:75%;
     text-align:center;
     min-height: 150px;
     justify-content: flex-start;
@@ -66,9 +116,9 @@ mat-icon{
 }
 
 .paginator-container{
-    display:flex;
-    flex-grow: 1;
-    flex-direction: column-reverse;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 20px;
 }
 
