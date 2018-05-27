@@ -23,8 +23,8 @@ export class ProjectsComponent implements OnInit {
     {name:'ending latest',type:'deadline',value:1},
     {name:'newly listed',type:'timestamp',value:-1},
     {name:'latest listed',type:'timestamp',value:1},
-    {name:'lowest budget',type:'budget.value',value:-1},
-    {name:'hightes budget',type:'budget.value',value:1}
+    {name:'lowest budget',type:'budget.value',value:1},
+    {name:'hightes budget',type:'budget.value',value:-1}
   ]
   public filtrOptions={
     search:{
@@ -54,7 +54,7 @@ export class ProjectsComponent implements OnInit {
   private url;
   private from=0;
   private to=10;
-  private querry;
+  private query={sort:{},filtr:{}};
   
   constructor( 
     iconRegistry: MatIconRegistry,
@@ -73,7 +73,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.querry={filtr:this.filtrOptions,sort:this.sortValue}
+    this.query.filtr=JSON.parse(JSON.stringify(this.filtrOptions))
+    this.query.sort=this.sortValue;
     this.reloadProjectsList();
     this.projectService.getNumberOfProjects().subscribe(projectsNumber=>{
       this.paginationProperties.length=projectsNumber.value;
@@ -84,15 +85,15 @@ export class ProjectsComponent implements OnInit {
 
   reloadProjectsList(event?){
     
-   
     if(event!==undefined){
       this.from=0;
       this.to=10;
-      this.paginator.pageIndex=0
-      this.querry=Object.assign({}, {filtr:this.filtrOptions,sort:this.sortValue});
+      this.paginator.pageIndex=0;
+      this.query.filtr=JSON.parse(JSON.stringify(this.filtrOptions))
     }
-
-    this.projectService.getRangeOfProjectsFiltred(this.from,this.to,this.querry).subscribe(res=>{
+    
+    this.query.sort=this.sortValue;
+    this.projectService.getRangeOfProjectsFiltred(this.from,this.to,this.query).subscribe(res=>{
       this.projects=res.projects;
       this.paginationProperties.length=res.length;
       if(res.length<10){
