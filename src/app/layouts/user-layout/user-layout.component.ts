@@ -43,7 +43,7 @@ export class UserLayoutComponent implements OnInit {
       'projects-icon',
       sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/projectMenuIcon.svg'));
     iconRegistry.addSvgIcon(
-      'team-icon',
+      'menu-team-icon',
       sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/teamMenuIcon.svg'));
     iconRegistry.addSvgIcon(
       'invitation-icon',

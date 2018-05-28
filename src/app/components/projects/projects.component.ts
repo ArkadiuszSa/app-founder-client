@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild,Input } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -106,12 +106,11 @@ export class ProjectsComponent implements OnInit {
   paginationReload(event){ 
     this.from=event.pageIndex*event.pageSize;
     this.to=(event.pageIndex+1)*event.pageSize;
-
     this.reloadProjectsList();
-
   }
-setPageSizeOptions(setPageSizeOptionsInput: string) {
-  this.paginationProperties.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-}
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.paginationProperties.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
 
 }

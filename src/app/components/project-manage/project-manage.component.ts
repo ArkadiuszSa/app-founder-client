@@ -61,7 +61,6 @@ export class ProjectManageComponent implements OnInit {
   reloadProject(){
     this.projectService.getProject(this.projectId).subscribe(project=>{
       this.project=project;
-      console.log(project)
       if(project.visable===true){
         this.visabilityLabel='Project is visable to others';
         this.visabilityState=true;
@@ -117,7 +116,7 @@ export class ProjectManageComponent implements OnInit {
   acceptOffer(teamOffer){
     let {team, ...offer}=teamOffer;
     offer.state='accepted';
-    this.project.status='inProgres';
+    this.project.status='inProgress';
     this.projectService.updateProject(this.project,this.project._id).subscribe(res=>{
       this.reloadProject();
     })

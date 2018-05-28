@@ -1,22 +1,58 @@
-<div class='content-container'>
-  <div class='teams-container'>
-    <div class='team-container' *ngFor='let team of teams;let i = index' [class.gray-row]="i%2!==0" [routerLink]="['/app/team-profile/'+team._id]">
-      <div class='team-icon-container mat-typography' >
-        <mat-icon class='team-icon' style='cursor:pointer'  svgIcon="team-icon"></mat-icon>
-        <h1 class='team-name'  >{{ team.name }}</h1>
-      </div>  
-      <div class=team-content-container >
-        <span>
-          {{team.description}}
-        </span>
+<div class='main-container'>
+
+    <div class='sidebar-container'>
+        <mat-card class='filters-card'>
+          <mat-card-title class='sidebar-header'>Filters</mat-card-title>
+
+            <mat-form-field class='search-field'>
+                <input matInput matInput placeholder="Search" [(ngModel)]="filtrOptions.search.value"  >
+            </mat-form-field>
+            <button class='filter-button' (click)='reloadTeamsList($event)'  mat-stroked-button color="primary">Filter</button>
+
+  
+        </mat-card>
+
+    </div>
+    <div class='content-container mat-typography'>
+        <div class='sort-container'>
+            <label class='mat-typography'>Sort by:</label>
+            <mat-form-field>
+              <mat-select  [(value)]="sortValue" >
+                <mat-option *ngFor="let option of sortOptions"  [value]="option" (click)='reloadTeamsList()'>
+                  {{ option.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div> 
+        <h1 *ngIf='teams?.length===0' class='no-projects-info'>Not found teams for this filters requiments</h1>
+        <div class='items-container'>
+
+          <div class='team-container' *ngFor='let team of teams;let i = index' [class.gray-row]="i%2!==0" >
+            <div class='team-icon-container mat-typography' >
+              <mat-icon class='team-icon' style='cursor:pointer'  svgIcon="team-icon"></mat-icon>
+             
+            </div>  
+            <div class=team-content-container >
+                <h2  class='team-name'> <a [routerLink]="['/app/team-profile/'+team._id]">{{team.name}}</a></h2>
+              <span>
+                  {{team.description}}
+              </span>
+            </div>
+          </div>
+
+        </div>
+          
+      <div class='paginator-container'>
+          <mat-paginator class='paginator' [length]="paginationProperties?.length"
+          [pageSize]="paginationProperties?.pageSize"
+          [pageSizeOptions]="paginationProperties?.pageSizeOptions"
+          (page)='paginationReload($event)'>
+          </mat-paginator>
       </div>
     </div>
-  </div>
-  <div class='paginator-container'>
-    <mat-paginator [length]="paginationProperties.length"
-    [pageSize]="paginationProperties.pageSize"
-    [pageSizeOptions]="paginationProperties.pageSizeOptions"
-    (page)='reloadTeamsList($event)'>
-    </mat-paginator>
+
 </div>
-</div>
+
+
+
+  

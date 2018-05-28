@@ -70,9 +70,19 @@
         
               <div class='right-column-container' >
                 <h2  class='project-title'> <a [routerLink]="['/app/project-profile/'+project._id]">{{project?.title}}</a></h2>
-                <span class='project-deadline'>Deadline: {{project?.deadline}}</span>
+                <span class='project-deadline'>
+                  <label>Deadline:</label>
+                  {{project?.deadline}}
+                </span>
+                <span class='project-budget'>
+                  <label>Budget:</label>
+                 {{project.budget?.value}}{{project.budget?.currency}}
+                </span>
+                <span class='project-description'>
+                    <label>Description:</label>
+                </span>
                 <span class='project-description'>{{project?.description}}</span>
-                <span class='project-budget'>Budget: {{project.budget?.value}}{{project.budget?.currency}}</span>
+                
               </div>
             </div>
         </div>

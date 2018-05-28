@@ -21,6 +21,10 @@ export class TeamService {
   return this.http.get<any[]>(this.url+'teams-range/'+from+'&'+to)
  }
 
+ getRangeOfTeamsFiltred(from,to,querry){
+  return this.http.post<any>(this.url+'teams-range-filtred/'+from+'&'+to,querry)
+}
+
  getNumberOfTeams(){
   return this.http.get<any>(this.url+'teams-number')
  }
