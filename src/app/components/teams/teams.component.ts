@@ -77,6 +77,11 @@ export class TeamsComponent implements OnInit {
     this.query.sort=this.sortValue;
     this.teamService.getRangeOfTeamsFiltred(this.from,this.to,this.query).subscribe(res=>{
       this.teams=res.teams;
+      this.teams.forEach(team => {
+        team.registredDiff=this.globalService.getTimeDiff(team.timestamp);
+        console.log(team.addedDiff)
+      });
+
       this.paginationProperties.length=res.length;
       if(res.length<10){
         this.from=0;

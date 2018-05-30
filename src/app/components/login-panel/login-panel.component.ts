@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 import { invalid } from 'moment';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { Observable } from "rxjs/Observable";
-
+import {GlobalService} from './../../services/global/global.service';
 import {setParticlesConfig} from "./../../../assets/configs/particles"
 //import { myFirstParticle } from '../../assets/particlesjs-config'
 //import * as particlesJS from 'particles.js';
@@ -61,12 +61,10 @@ export class LoginPanelComponent implements OnInit  {
   registerForm: FormGroup;
   loginForm: FormGroup;
   isLoging: boolean;
-  //titleAlert:string = 'This field is required';
   passwordCheck:boolean;
   usernameIsFree=true;
   submitedRegister=false;
-  //password;
-  //passwordRepeat;
+
   accountExist=false;
   unknowError=false;
   invalidLoginData=false;
@@ -75,6 +73,7 @@ export class LoginPanelComponent implements OnInit  {
   constructor(
     private userService: UserService,
     private authService: AuthService,
+    private globalService:GlobalService,
     private router: Router,
     private fb: FormBuilder
   ){
@@ -130,8 +129,9 @@ export class LoginPanelComponent implements OnInit  {
       }
     
       if(this.accountExist===false && this.registerForm.status=="VALID"){
-      
-        this.authService.register(this.registerForm.value);
+        let user=this.registerForm.value;
+        user.timestamp=this.globalService.createTimestamp();
+        this.authService.register(user);
         this.unknowError=true;
       }
     })

@@ -12,6 +12,12 @@ padding-bottom:5px !important;
     width:75%;
     padding-bottom:100px;
     padding-top:50px;
+    .project-card-content{
+        margin-left:30px;
+        width:90%;
+        margin-top:15px;
+        margin-bottom:15px;
+    }
     .project-title{
         margin:auto;
         text-align: center;
@@ -20,12 +26,7 @@ padding-bottom:5px !important;
         
         
         
-        .project-card-content{
-            margin-left:30px;
-            width:90%;
-            margin-top:15px;
-            margin-bottom:15px;
-        }
+        
         p{
             font-weight: bold;
         }
@@ -44,7 +45,7 @@ padding-bottom:5px !important;
         display:block;
         .offers-header{
             font-size:1.5em;
-            text-decoration:underline;
+            
         }
         .team-container{
             display:flex;

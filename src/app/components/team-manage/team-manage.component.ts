@@ -66,6 +66,7 @@ export class TeamManageComponent implements OnInit {
     this.membersData=[];
     this.teamService.getTeam(this.teamId)
     .concatMap(team=>{
+      console.log(team)
       this.teamData=team;
       if(team.visable===true){
         this.visabilityLabel='Team is visable to others';
@@ -85,6 +86,18 @@ export class TeamManageComponent implements OnInit {
 
     })
   }
+
+  deleteMember(user){
+    let index=this.teamData.membersId.indexOf(user._id)
+    let team=this.teamData;
+    team.membersId.splice(index,1)
+    this.teamService.updateTeam(team._id,team).subscribe(res=>{
+        this.reloadTeam();
+    })
+
+  }
+
+
 
 
   async reloadInvitations(){

@@ -9,7 +9,6 @@ import {GlobalService} from './../../services/global/global.service';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatFormFieldModule} from '@angular/material';
 import { Inject } from '@angular/core';
-import * as moment from "moment"
 import {Observable} from 'rxjs/Rx'
 
 
@@ -47,6 +46,7 @@ export class ProjectProfileComponent implements OnInit {
     this.teams=[];
     this.projectService.getProject(this.projectId).flatMap(project=>{
       this.project=project;
+      console.log(project)
       return this.userService.getUser(project.ownerId)
     })
     .subscribe(owner=>{
@@ -101,7 +101,8 @@ constructor(
   private userService: UserService,
   private teamService: TeamService,
   private authService: AuthService,
-  private offerService: OfferService
+  private offerService: OfferService,
+  private globalService: GlobalService
 ){
   this.projectTitle=data.projectTitle;
   this.projectId=data.projectId;
@@ -134,7 +135,7 @@ constructor(
   }
 
   applyOnClick(){
-    let timestamp=moment().format();
+    let timestamp=this.globalService.createTimestamp()
     let offer={
       projectId:this.projectId,
       teamId:this.chosedTeam._id,

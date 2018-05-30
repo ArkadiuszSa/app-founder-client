@@ -14,3 +14,6 @@ Main concept assumed functionality like:
 * Team leader can make offer to the project owner. Project owner chooses form offers.
 
 
+##Time
+Timestamps of models are storaged in databse in default moment.js format. The are displayed in format "DD-MM-YYYY"
+

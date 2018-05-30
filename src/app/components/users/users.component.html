@@ -1,17 +1,60 @@
-<div class='content-container'>
-  <div class='user-container' *ngFor='let user of users;let i = index' [class.gray-row]="i%2!==0" >
 
-    <div class='user-icon-container mat-typography' >
-      <mat-icon class='user-icon' [routerLink]="['/app/user-profile/'+user._id]"  svgIcon="user-icon"></mat-icon>
+
+
+
+<div class='main-container'>
+
+    <div class='sidebar-container'>
+        <mat-card class='filters-card'>
+            <mat-card-title class='sidebar-header'>Filters</mat-card-title>
+              <mat-form-field class='search-field'>
+                  <input matInput matInput placeholder="Search"  [(ngModel)]="filtrOptions.search.value"   >
+              </mat-form-field>
+              <button class='filter-button' (click)='reloadUsersList($event)'   mat-stroked-button color="primary">Filter</button>
+          </mat-card>
+    </div>
+    <div class='content-container mat-typography'>
+        <div class='sort-container'>
+            <label class='mat-typography'>Sort by:</label>
+            <mat-form-field>
+                <mat-select [(value)]="sortValue"   >
+                  <mat-option *ngFor="let option of sortOptions"  [value]="option" (click)='reloadUsersList()' >
+                      {{ option.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div> 
       
-    </div>
-    <div class=user-content-container >
-        <h1 class='user-name mat-typography' [routerLink]="['/app/user-profile/'+user._id]" >{{ user.fName }} {{ user.lName }}</h1>
-      <span class='user-description mat-typography'>{{user.description}}</span>
+        <h1 *ngIf='users?.length===0' class='no-users-info'>Not found users for this filters requiments</h1>
+
+            <div class='user-container' *ngFor='let user of users;let i = index' [class.gray-row]="i%2!==0" >
+
+              <div class='user-icon-container mat-typography' >
+                <mat-icon class='user-icon'  svgIcon="user-icon"></mat-icon>
+                
+              </div>
+              <div class=user-content-container >
+                  <h2 class=' mat-typography'  ><a [routerLink]="['/app/user-profile/'+user._id]">{{ user.fName }} </a></h2>
+                  <span class='project-deadline'>
+                    <label>Registred:</label>
+                    {{user?.registredDiff}}
+                  </span>
+                <span class='user-description mat-typography'>{{user.description}}</span>
+          
+              </div>
+              
+            </div>
+
+          
+          <div class='paginator-container'>
+              <mat-paginator class='paginator' [length]="paginationProperties?.length"
+              [pageSize]="paginationProperties?.pageSize"
+              [pageSizeOptions]="paginationProperties?.pageSizeOptions"
+              (page)='paginationReload($event)'>
+              </mat-paginator>
+          </div>
 
     </div>
-  
-  </div>
-  
+   
 
 </div>

@@ -100,6 +100,7 @@ export class AddNewProjectDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<AddNewProjectDialogComponent>,
     private authService:AuthService,
     private projectService:ProjectService,
+    private globalService:GlobalService
 
   ){
 
@@ -121,6 +122,7 @@ export class AddNewProjectDialogComponent implements OnInit {
   applyOnClick(){
     let project=this.newProjectForm.value;
     project.ownerId=this.authService.getUserId();
+    project.timestamp=this.globalService.createTimestamp();
     this.projectService.addNewProject(project).subscribe();
     this.dialogRef.close('added');
   }

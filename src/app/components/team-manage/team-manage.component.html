@@ -63,8 +63,7 @@
   <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> </mat-header-cell>
       <mat-cell *matCellDef="let user">
-          <mat-icon style='cursor:pointer' (click)="openDialog('updateUser',user._id)" svgIcon="edit-icon"></mat-icon>
-          <mat-icon style='cursor:pointer' (click)="deleteUser(user._id)" svgIcon="remove-icon"></mat-icon>
+          <mat-icon *ngIf='user._id!==teamData.teamLeaderId' style='cursor:pointer' (click)="deleteMember(user)" svgIcon="remove-icon"></mat-icon>
       </mat-cell>
   </ng-container>
 

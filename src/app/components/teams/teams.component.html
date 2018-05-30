@@ -34,6 +34,10 @@
             </div>  
             <div class=team-content-container >
                 <h2  class='team-name'> <a [routerLink]="['/app/team-profile/'+team._id]">{{team.name}}</a></h2>
+                <span class='project-deadline'>
+                  <label>Registred:</label>
+                  {{team?.registredDiff}}
+                </span>
               <span>
                   {{team.description}}
               </span>

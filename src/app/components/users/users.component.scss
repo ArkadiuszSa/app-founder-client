@@ -1,31 +1,203 @@
-.content-container{
-    width:90%;
-    margin:auto;
+// mat-icon{
+//     width:100px;
+//     height:100px;
+// }
+// ::ng-deep mat-card{
+//     padding:0px !important;
+//     padding-bottom: 0px !important; 
+// }
+// ::ng-deep{
+//     .filtr-field{
+//         max-width: 119px;
+//         *{
+//             text-align: center;
+//         }
+//     }
+//     .search-field{
+//         width: 258px;
+//         padding-left: 20px;
+//     }
+//     .status-field{
+//         width: 100%;        
+//     }
+//     .filters-card{
+//         padding-bottom: 0px !important; 
+//     }
     
+// }
+// ::ng-deep mat-paginator-container{
+//     justify-content: center !important;
+// }
+
+
+// .content-container{
+//     width:90%;
+//     margin:auto;
+    
+//     .user-container{
+//         margin:auto;
+//         width:80%;
+//         display:flex;
+//         flex-direction: row;
+//         max-height:110px;
+//         overflow: hidden;
+//     }
+//     .user-icon-container{
+//      display:flex;
+
+//     }
+//     .user-content-container{
+//         display:flex;
+//         flex-direction:column;
+//         .user-name{
+//             cursor: pointer;
+//             font-size:1.2em;
+//             font-weight:bold;
+//         }
+//     }
+// }
+// .user-icon{
+//     cursor: pointer;
+//     height: 100px;
+//     width: 100px;
+// }
+/////////////////
+
+::ng-deep mat-card{
+    padding:0px !important;
+    padding-bottom: 0px !important; 
+}
+
+mat-icon{
+    width:100px;
+    height:100px;
+}
+::ng-deep mat-paginator{
+    *{
+        align-self: center !important;
+        justify-content: center !important;
+    }
+   
+}
+
+.main-container{
+    display:flex;
+    flex-direction: row;
+    min-height:calc(100vh - 300px);
+    .sidebar-container{
+        max-width:300px;
+        flex-grow: 0.15;
+        margin:10px;
+        margin-top: 58px;
+        text-align: center;
+        .search-field{
+            width: 258px;
+        }    
+        .filter-button{
+            width:100%;
+        }
+        .sidebar-header{
+            text-align: center;
+        }
+    }
+    .content-container{
+        flex-grow:0.75;
+        width:40%;
+        display: flex;
+        flex-direction: column;
+        .no-users-info{
+            text-align: center;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .sort-container{
+
+            text-align: right;
+        }
+        .users-wrapper{
+           
+            min-height:calc(100vh - 300px);
+        }
     .user-container{
-        margin:auto;
-        width:80%;
+       
+      
         display:flex;
         flex-direction: row;
-        max-height:110px;
+        height:200px;
         overflow: hidden;
+        
     }
     .user-icon-container{
+     
      display:flex;
-
+     padding:15px;
+     width:20%;
+     justify-content: center;
+     align-items: center;
     }
     .user-content-container{
+        width:80%;
         display:flex;
         flex-direction:column;
         .user-name{
             cursor: pointer;
-            font-size:1.2em;
-            font-weight:bold;
+            font-size:1.5em;
+            align-self:flex-start;
+            margin-bottom:auto;
+            padding:10px;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
         }
     }
+    }
+   
 }
-.user-icon{
-    cursor: pointer;
-    height: 100px;
-    width: 100px;
+
+.paginator-container{
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    align-self: center !important;
+    justify-content: center !important;
 }
+
+.gray-background{
+    background: #f2f2f2;
+}
+//link animation
+
+h2 > a {
+    font-weight: normal;
+
+    position: relative;
+    color: #3949ab;
+    text-decoration: none;
+  }
+  
+  h2 > a:hover {
+    color: #3949ab;
+    font-weight: normal;
+
+  }
+  h2 > a:before {
+    font-weight: normal;
+
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #3949ab;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.15s ease-in-out 0s;
+    transition: all 0.15s ease-in-out 0s;
+  }
+  h2 > a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }

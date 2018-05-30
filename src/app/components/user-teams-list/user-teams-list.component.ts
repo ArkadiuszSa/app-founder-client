@@ -7,6 +7,7 @@ import {AuthService} from './../../services/auth/auth.service';
 import {Observable} from 'rxjs/Rx'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatFormFieldModule} from '@angular/material';
 import { FormGroup, FormControl, Validators,ReactiveFormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-user-teams-list',
   templateUrl: './user-teams-list.component.html',
@@ -78,7 +79,8 @@ export class AddNewTeamDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddNewTeamDialogComponent>,
     private teamService:TeamService,
-    private authService:AuthService
+    private authService:AuthService,
+    private globalService:GlobalService
   ){
 
   }
@@ -98,11 +100,9 @@ export class AddNewTeamDialogComponent implements OnInit {
 
   applyOnClick(){
     let team=this.newTeamForm.value;
+    team.timestamp=this.globalService.createTimestamp();
     team.teamLeaderId=this.authService.getUserId();
-
-    this.teamService.addNewTeam(team).subscribe(res=>{
-      console.log(res);
-    })
+    this.teamService.addNewTeam(team).subscribe()
     this.dialogRef.close('added');
   }
 

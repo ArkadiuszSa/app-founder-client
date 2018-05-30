@@ -24,6 +24,10 @@ export class UserService {
      
  }
 
+ getRangeOfUsersFiltred(from,to,querry){
+  return this.http.post<any>(this.url+'users-range-filtred/'+from+'&'+to,querry)
+}
+
  addNewUser(userData){
     return this.http.post(this.url+'user', userData)
     

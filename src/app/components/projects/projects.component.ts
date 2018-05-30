@@ -95,6 +95,9 @@ export class ProjectsComponent implements OnInit {
     this.query.sort=this.sortValue;
     this.projectService.getRangeOfProjectsFiltred(this.from,this.to,this.query).subscribe(res=>{
       this.projects=res.projects;
+      this.projects.forEach(project => {
+        project.addedDiff=this.globalService.getTimeDiff(project.timestamp);
+      });
       this.paginationProperties.length=res.length;
       if(res.length<10){
         this.from=0;

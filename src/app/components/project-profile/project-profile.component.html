@@ -20,8 +20,11 @@
     <mat-card>
         <div class='project-card-content'>
             <h4>Budget:</h4>
-            <span>
+            <span *ngIf='project?.budget?.value!=="to negotiation"'>
                 {{project?.budget?.value}}{{project?.budget?.currency}}
+            </span>
+            <span *ngIf='project?.budget?.value==="to negotiation"'>
+                {{project?.budget?.value}}
             </span>
         </div>
     </mat-card>

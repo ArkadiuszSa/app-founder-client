@@ -68,7 +68,8 @@ constructor(
   public dialogRef: MatDialogRef<JoinTeamInvitationComponent>,
   private userService: UserService,
   private teamService: TeamService,
-  private invitationService:InvitationsService
+  private invitationService:InvitationsService,
+  private globalService:GlobalService
 ){
   this.invitedUser=data.invitedUser;
   this.teamOwnerId=data.teamOwnerId;
@@ -103,7 +104,7 @@ constructor(
 
   applyOnClick(){
 
-    let timestamp=moment().format();
+    let timestamp=this.globalService.createTimestamp()
     let invitation={
       userId:this.invitedUser._id,
       teamId:this.chosedTeam._id,

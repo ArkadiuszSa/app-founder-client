@@ -4,7 +4,6 @@ import 'rxjs/add/observable/of';
 import {Observable} from 'rxjs/Rx'
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
-
 import {TeamService} from './../../services/team/team.service';
 import {AuthService} from './../../services/auth/auth.service';
 import {InvitationsService} from './../../services/invitations/invitations.service';

@@ -95,6 +95,7 @@ constructor(
   private userService: UserService,
   private authService: AuthService,
   private invitationService: InvitationsService,
+  private globalService:GlobalService
 
 ){
   this.teamName=data.teamName;
@@ -111,12 +112,13 @@ constructor(
 
   applyOnClick(){
     let userId=this.authService.getUserId();
+    let timestamp=this.globalService.createTimestamp();
     let invitation={
       userId:userId,
       teamId:this.teamId,
       state:'waitingOnTeam',
       description:this.requestContent,
-      date:'noDate'
+      timestamp:timestamp
     }
     this.invitationService.addNewInvitation(invitation)
     .subscribe(invitation=>{

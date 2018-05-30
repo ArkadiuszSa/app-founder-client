@@ -74,11 +74,19 @@
                   <label>Deadline:</label>
                   {{project?.deadline}}
                 </span>
-                <span class='project-budget'>
-                  <label>Budget:</label>
-                 {{project.budget?.value}}{{project.budget?.currency}}
+                <span class='project-deadline'>
+                  <label>Added:</label>
+                  {{project?.addedDiff}}
                 </span>
-                <span class='project-description'>
+                <span *ngIf='project?.budget?.value!=="to negotiation"' class='project-budget'>
+                  <label>Budget:</label>
+                 {{project.budget?.value}} {{project.budget?.currency}}
+                </span>
+                <span *ngIf='project?.budget?.value==="to negotiation"' class='project-budget'>
+                  <label>Budget:</label>
+                  {{project?.budget?.value}}
+                </span>
+                <span  class='project-description'>
                     <label>Description:</label>
                 </span>
                 <span class='project-description'>{{project?.description}}</span>
