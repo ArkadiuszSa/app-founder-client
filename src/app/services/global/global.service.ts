@@ -4,23 +4,15 @@ import { isDevMode } from '@angular/core';
 
 @Injectable()
 export class GlobalService {
-  public readonly  API_BASE;
-  public readonly  ASSETS_BASE;
+
   public pageTitle;
 
-  constructor(){
-    if(isDevMode()){
-      console.log('devMode')
-
-      this.API_BASE='http://localhost:4000/api/';
-      this.ASSETS_BASE='http://localhost:4000/assets/';
-    }else{
-      console.log('NotDevMode')
-      this.API_BASE='https://app-founder-server.herokuapp.com/api/';
-      this.ASSETS_BASE='https://app-founder-server.herokuapp.com/assets/';
-    } 
-    console.log(isDevMode())
-  }
+  // public API_BASE='http://localhost:4000/api/';
+  // public ASSETS_BASE='http://localhost:4000/assets/';
+    
+  public API_BASE='https://app-founder-server.herokuapp.com/api/';
+  public ASSETS_BASE='https://app-founder-server.herokuapp.com/assets/';
+    
 
   changeTimestampFormat(date){
     return moment(date).format("DD-MM-YYYY");
