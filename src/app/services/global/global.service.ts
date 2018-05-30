@@ -10,12 +10,16 @@ export class GlobalService {
 
   constructor(){
     if(isDevMode()){
+      console.log('devMode')
+
       this.API_BASE='http://localhost:4000/api/';
       this.ASSETS_BASE='http://localhost:4000/assets/';
     }else{
+      console.log('NotDevMode')
       this.API_BASE='https://app-founder-server.herokuapp.com/api/';
       this.ASSETS_BASE='https://app-founder-server.herokuapp.com/assets/';
     } 
+    console.log(isDevMode())
   }
 
   changeTimestampFormat(date){
