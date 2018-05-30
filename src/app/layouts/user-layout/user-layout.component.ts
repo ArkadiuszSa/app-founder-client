@@ -25,6 +25,9 @@ export class UserLayoutComponent implements OnInit {
     this.url=globalService.ASSETS_BASE;
 
     iconRegistry.addSvgIcon(
+      'menu-icon',
+      sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/menuIcon.svg'));
+    iconRegistry.addSvgIcon(
       'logo',
       sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/logo.svg'));
     iconRegistry.addSvgIcon(
