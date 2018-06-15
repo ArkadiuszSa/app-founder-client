@@ -32,7 +32,6 @@
                    Status
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-            
                 <mat-form-field class='status-field'>
                   <mat-select  [(value)]="filtrOptions.status" >
                     <mat-option *ngFor="let status of statusOptions"  [value]="status">
@@ -41,13 +40,11 @@
                   </mat-select>
                 </mat-form-field>
               </mat-expansion-panel>
-  
             </mat-accordion>
 
           <mat-card class='filters-card'>
             <button class='filter-button' (click)='reloadProjectsList($event)' mat-stroked-button color="primary">Filter</button>
           </mat-card>
-
         </mat-card>
     </div>
     <div class='content-container mat-typography'>
@@ -64,35 +61,36 @@
         <h1 *ngIf='projects?.length===0' class='no-projects-info'>Not found projects for this filters requiments</h1>
         <div class='items-container'>
           <div class='item-container' *ngFor='let project of projects;let i = index' [class.gray-background]="i%2==0">
-              <div class='left-column-container'>
-                  <mat-icon   svgIcon="project-icon"></mat-icon>
-              </div>
-        
-              <div class='right-column-container' >
-                <h2  class='project-title'> <a [routerLink]="['/app/project-profile/'+project._id]">{{project?.title}}</a></h2>
-                <span class='project-deadline'>
-                  <label>Deadline:</label>
-                  {{project?.deadline}}
-                </span>
-                <span class='project-deadline'>
-                  <label>Added:</label>
-                  {{project?.addedDiff}}
-                </span>
-                <span *ngIf='project?.budget?.value!=="to negotiation"' class='project-budget'>
-                  <label>Budget:</label>
-                 {{project.budget?.value}} {{project.budget?.currency}}
-                </span>
-                <span *ngIf='project?.budget?.value==="to negotiation"' class='project-budget'>
-                  <label>Budget:</label>
-                  {{project?.budget?.value}}
-                </span>
-                <span  class='project-description'>
-                    <label>Description:</label>
-                </span>
-                <span class='project-description'>{{project?.description}}</span>
-                
-              </div>
+            <div class='left-column-container'>
+                <mat-icon   svgIcon="project-icon"></mat-icon>
             </div>
+            <div class='right-column-container' >
+              <h2  class='project-title'> <a [routerLink]="['/app/project-profile/'+project._id]">{{project?.title}}</a></h2>
+              <span *ngIf='project.deadline' class='project-deadline'>
+                <label>Deadline:</label>
+                {{project?.deadline}}
+              </span>
+              <span *ngIf='!project.deadline' class='project-deadline'>
+                <label>Deadline:</label>
+                indefinite
+              </span>
+              <span class='project-deadline'>
+                <label>Added:</label>
+                {{project?.addedDiff}}
+              </span>
+              <span *ngIf='project?.budget?.value!=="to negotiation"' class='project-budget'>
+                <label>Budget:</label>
+                {{project.budget?.value}} {{project.budget?.currency}}
+              </span>
+              <span *ngIf='project?.budget?.value==="to negotiation"' class='project-budget'>
+                <label>Budget:</label>
+                {{project?.budget?.value}}
+              </span>
+              <span class='project-description'>
+                <p>{{project?.description}}</p>
+              </span>
+            </div>
+          </div>
         </div>
           
       <div class='paginator-container'>
@@ -102,8 +100,8 @@
           (page)='paginationReload($event)'>
           </mat-paginator>
       </div>
+    
     </div>
-
 </div>
 
 

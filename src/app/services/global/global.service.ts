@@ -7,14 +7,17 @@ export class GlobalService {
 
   public pageTitle;
 
-  // public API_BASE='http://localhost:4000/api/';
-  // public ASSETS_BASE='http://localhost:4000/assets/';
+  public API_BASE='http://localhost:4000/api/';
+  public ASSETS_BASE='http://localhost:4000/assets/';
     
-  public API_BASE='https://app-founder-server.herokuapp.com/api/';
-  public ASSETS_BASE='https://app-founder-server.herokuapp.com/assets/';
+  // public API_BASE='https://app-founder-server.herokuapp.com/api/';
+  // public ASSETS_BASE='https://app-founder-server.herokuapp.com/assets/';
     
 
   changeTimestampFormat(date){
+    return moment(date).format("DD-MM-YYYY");
+  }
+  covertDateToDisplay(date){
     return moment(date).format("DD-MM-YYYY");
   }
 

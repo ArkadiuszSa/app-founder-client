@@ -1,11 +1,9 @@
-<div class='content-wrapper'>
+<div class='content-wrapper mat-typography'>
     <h1 mat-dialog-title>Updating user {{fieldData.name}}.</h1>
-    <div mat-dialog-content>
-    <mat-form-field *ngIf="fieldData.name!=='technologies';else technologies">
-        <input matInput [(ngModel)]="fieldData.value"  >
-    </mat-form-field>
-    <ng-template #technologies>
-        <mat-form-field class="tech-container">
+    <div [ngSwitch]='fieldData.name' mat-dialog-content>
+   
+    
+        <mat-form-field *ngSwitchCase='"technologies"' class="tech-container">
 
             <mat-chip-list #chipList>
                 <mat-chip *ngFor="let techk of techs" [selectable]="selectable"
@@ -20,12 +18,21 @@
             </mat-chip-list>
             
         </mat-form-field>          
-    </ng-template>
+        <div class='description-container' *ngSwitchCase='"description"'>
+            <textarea matInput [(ngModel)]="fieldData.value"  matTextareaAutosize> </textarea>
+        </div>
+        <mat-form-field *ngSwitchCase="'birthday'">
+            <input matInput [(ngModel)]="fieldData.value" [matDatepicker]="picker" placeholder="Choose a birth day">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field *ngSwitchDefault>
+            <input matInput [(ngModel)]="fieldData.value"  >
+        </mat-form-field>
     </div>
 
     <div class='action-container'>
         <button mat-raised-button (click)="cancelOnClick()">Cancel</button>
         <button color=primary mat-raised-button (click)='applyOnClick()' >Apply</button>
     </div>
-
 </div>

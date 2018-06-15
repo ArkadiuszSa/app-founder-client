@@ -1,10 +1,6 @@
-
-
-
-
 <div class='main-container'>
 
-    <div class='sidebar-container'>
+    <div class='sidebar-container mat-typography'>
         <mat-card class='filters-card'>
             <mat-card-title class='sidebar-header'>Filters</mat-card-title>
               <mat-form-field class='search-field'>
@@ -16,7 +12,7 @@
     <div class='content-container mat-typography'>
         <div class='sort-container'>
             <label class='mat-typography'>Sort by:</label>
-            <mat-form-field>
+            <mat-form-field class='sort-field'>
                 <mat-select [(value)]="sortValue"   >
                   <mat-option *ngFor="let option of sortOptions"  [value]="option" (click)='reloadUsersList()' >
                       {{ option.name }}
@@ -27,21 +23,28 @@
       
         <h1 *ngIf='users?.length===0' class='no-users-info'>Not found users for this filters requiments</h1>
 
-            <div class='user-container' *ngFor='let user of users;let i = index' [class.gray-row]="i%2!==0" >
+            <div class='user-container' *ngFor='let user of users;let i = index' [class.gray-background]="i%2!==0" >
 
-              <div class='user-icon-container mat-typography' >
-                <mat-icon class='user-icon'  svgIcon="user-icon"></mat-icon>
-                
-              </div>
-              <div class=user-content-container >
-                  <h2 class=' mat-typography'  ><a [routerLink]="['/app/user-profile/'+user._id]">{{ user.fName }} </a></h2>
-                  <span class='project-deadline'>
-                    <label>Registred:</label>
-                    {{user?.registredDiff}}
-                  </span>
-                <span class='user-description mat-typography'>{{user.description}}</span>
-          
-              </div>
+                <div class='user-icon-container mat-typography' >
+                    <mat-icon class='user-icon'  svgIcon="user-icon"></mat-icon>
+                    
+                </div>
+                <div class=user-content-container >
+                    <h2 class='name-header-field'><a [routerLink]="['/app/user-profile/'+user._id]">{{ user.fName }} </a></h2>
+                    <span class='field-span'>
+                        <label>Registred:</label>
+                        {{user?.registredDiff}}
+                    </span>
+                    <span class='field-span description-field mat-typography'>
+                        <p class='description-paragraph'>{{user.description}}</p>
+                    </span>
+                    <span class='technologies-field'>
+                        <mat-chip-list>
+                            <mat-chip color="primary" selected="true"   *ngFor='let tech of user?.technologies'>{{tech}}</mat-chip>
+                        </mat-chip-list>
+                    </span>
+            
+                </div>
               
             </div>
 

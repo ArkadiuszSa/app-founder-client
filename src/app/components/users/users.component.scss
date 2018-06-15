@@ -1,76 +1,11 @@
-// mat-icon{
-//     width:100px;
-//     height:100px;
-// }
-// ::ng-deep mat-card{
-//     padding:0px !important;
-//     padding-bottom: 0px !important; 
-// }
-// ::ng-deep{
-//     .filtr-field{
-//         max-width: 119px;
-//         *{
-//             text-align: center;
-//         }
-//     }
-//     .search-field{
-//         width: 258px;
-//         padding-left: 20px;
-//     }
-//     .status-field{
-//         width: 100%;        
-//     }
-//     .filters-card{
-//         padding-bottom: 0px !important; 
-//     }
-    
-// }
-// ::ng-deep mat-paginator-container{
-//     justify-content: center !important;
-// }
-
-
-// .content-container{
-//     width:90%;
-//     margin:auto;
-    
-//     .user-container{
-//         margin:auto;
-//         width:80%;
-//         display:flex;
-//         flex-direction: row;
-//         max-height:110px;
-//         overflow: hidden;
-//     }
-//     .user-icon-container{
-//      display:flex;
-
-//     }
-//     .user-content-container{
-//         display:flex;
-//         flex-direction:column;
-//         .user-name{
-//             cursor: pointer;
-//             font-size:1.2em;
-//             font-weight:bold;
-//         }
-//     }
-// }
-// .user-icon{
-//     cursor: pointer;
-//     height: 100px;
-//     width: 100px;
-// }
-/////////////////
-
 ::ng-deep mat-card{
     padding:0px !important;
     padding-bottom: 0px !important; 
 }
 
 mat-icon{
-    width:100px;
-    height:100px;
+    width:110px;
+    height:110px;
 }
 ::ng-deep mat-paginator{
     *{
@@ -78,6 +13,9 @@ mat-icon{
         justify-content: center !important;
     }
    
+}
+.gray-background{
+    background: #f2f2f2;
 }
 
 .main-container{
@@ -92,6 +30,7 @@ mat-icon{
         text-align: center;
         .search-field{
             width: 258px;
+            padding-left:0px;
         }    
         .filter-button{
             width:100%;
@@ -102,7 +41,7 @@ mat-icon{
     }
     .content-container{
         flex-grow:0.75;
-        width:40%;
+        width:60%;
         display: flex;
         flex-direction: column;
         .no-users-info{
@@ -111,16 +50,15 @@ mat-icon{
             margin-bottom: auto;
         }
         .sort-container{
-
             text-align: right;
+            .sort-field{
+                max-width:180px;
+            }
         }
         .users-wrapper{
-           
             min-height:calc(100vh - 300px);
         }
     .user-container{
-       
-      
         display:flex;
         flex-direction: row;
         height:200px;
@@ -139,19 +77,40 @@ mat-icon{
         width:80%;
         display:flex;
         flex-direction:column;
-        .user-name{
-            cursor: pointer;
-            font-size:1.5em;
-            align-self:flex-start;
-            margin-bottom:auto;
-            padding:10px;
-            margin-bottom: 0px;
-            padding-bottom: 0px;
+        .field-span{
+            label{
+                font-weight:bold;
+            }
+        }
+        .name-header-field{
+            margin-bottom:4px;
+            margin-top:8px
+        }
+        .registred-field{
+            margin-bottom: 10px;
+
+        }
+        .description-field{
+            overflow:hidden;
+            max-height: 65px;
+            margin-top:16px;
+            margin-bottom:10px;
+           .description-paragraph{
+            overflow: hidden;
+            max-height: 60px;
+           }
+        }
+        .technologies-field{
+            max-height:32px;
+            overflow: hidden;
+            margin-top: auto;
+            margin-bottom: 10px;
         }
     }
     }
    
 }
+
 
 .paginator-container{
     margin-top: auto;

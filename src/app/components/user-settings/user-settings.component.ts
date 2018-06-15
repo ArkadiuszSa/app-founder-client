@@ -12,8 +12,6 @@ import {GlobalService} from './../../services/global/global.service';
 import {UserService} from './../../services/user/user.service';
 import {AuthService} from './../../services/auth/auth.service';
 
-
-
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-settings.component.html',
@@ -23,6 +21,7 @@ export class UserSettingsComponent implements OnInit {
   editItemForm:FormGroup;
   private url;
   public userData;
+  public descriptionShort;
   public visabilityLabel='default'; 
   public visabilityState=false;
     constructor(
@@ -44,7 +43,6 @@ export class UserSettingsComponent implements OnInit {
         sanitizer.bypassSecurityTrustResourceUrl(this.url+'img/editIcon.svg'));
     }
 
-
   ngOnInit() {
     this.reloadUser();
   }
@@ -53,6 +51,11 @@ export class UserSettingsComponent implements OnInit {
     let userId=this.authService.getUserId();
     this.userService.getUser(userId).subscribe(user=>{
       this.userData=user;
+      this.userData.bDay=this.globalService.covertDateToDisplay(this.userData.bDay);
+      if(typeof(this.userData.description)!=='undefined'&&this.userData.description.length>70){
+       this.descriptionShort=this.userData.description.substr(0,65)+'...';
+      }
+
       if(user.visable===true){
         this.visabilityLabel='You are visable to others.';
         this.visabilityState=true;
@@ -64,7 +67,7 @@ export class UserSettingsComponent implements OnInit {
   }
 
   openUpdateFieldDialog(fieldName,fieldKey): void {
-    let dialogWidth=(fieldName==='technologies')?('700px'):('500px');
+    let dialogWidth=(fieldName==='technologies'||fieldName==='description')?('700px'):('500px');
     let fieldValue=this.userData[fieldKey];
     let dialogRef = this.dialog.open(UpdateUserFieldDialogComponent, {
       width: dialogWidth,

@@ -20,13 +20,13 @@
     }
     .search-field{
         width: 258px;
-        padding-left: 20px;
     }
     .status-field{
         width: 100%;        
     }
     .filters-card{
         padding-bottom: 0px !important; 
+        text-align: center !important;
     }
     
 }
@@ -66,13 +66,26 @@
         padding:15px;
         display:flex;
         flex-direction: column;
-        
+        .team-registred{ 
+            label{
+                font-weight:bold;
+            }
+        }
+        .team-description{
+            overflow: hidden;
+            margin-top: 10px;
+            max-height: 65px;
+        }
+        .team-name{
+            margin-top: 5px;
+            margin-bottom: 6px;
+        }
     }   
 }
     
     .paginator-container{
         display:flex;
-        flex-grow: 1;
+        //flex-grow: 1;
         flex-direction: column-reverse;
         margin-bottom: 20px;
 

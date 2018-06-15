@@ -4,12 +4,10 @@
 ::ng-deep .mat-paginator-page-size{
     float:left !important;
  }
-
  span{
      margin-top:20px;
      font-size: 2em;
  }
-
 .content-container{
     text-align: center;
     margin-top:20px;
@@ -22,7 +20,8 @@
             text-align: left;
             .invite-icon-container{
                 display:inline-block;
-                width:10%;
+                width:15%;
+                min-width:200px;
                 vertical-align: top;
                 text-align:left;
                 
@@ -43,28 +42,16 @@
                 }
             }
             .remove-icon-container{
-               // display:inline-block;
-                //width:10px;
-                //margin-left:30px;
                 float:right;
                 margin-right:30px
             }
             .invite-state-container{
-                //display:inline-block;
                 margin-top:10px;
                 float:right;
                 font-weight: bold;
                 text-align: left;
-                width:190px
-                // width:150px;
-                
+                width:190px                
             }      
-            
-
-
         }
-
-
     }
-
 }

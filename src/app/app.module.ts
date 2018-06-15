@@ -47,6 +47,7 @@ import { AuthInterceptorService } from './services/auth/auth-interceptor.service
 import { GlobalService } from './services/global/global.service';
 
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import {NgxMaskModule} from 'ngx-mask'
 
 
 import {

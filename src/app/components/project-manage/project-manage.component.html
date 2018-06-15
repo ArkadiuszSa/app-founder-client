@@ -24,8 +24,14 @@
     <mat-icon (click)='openUpdateFieldDialog("deadline", "deadline")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
 </div>
 <div class='user-profile-element-container mat-typography'>
-    <label  class='mat-typography'>Budget:</label>
-    {{project?.budget?.value}}
+    <span *ngIf='project?.budget?.value!=="to negotiation"' class='project-budget'>
+        <label>Budget:</label>
+        {{project?.budget?.value}} {{project?.budget?.currency}}
+      </span>
+      <span *ngIf='project?.budget?.value==="to negotiation"' class='project-budget'>
+        <label>Budget:</label>
+        {{project?.budget?.value}}
+      </span>
     <mat-icon (click)='openUpdateFieldDialog("budget", "budget.value")'   class='edit-icon'   svgIcon="update-icon" ></mat-icon>
 </div>
 <div [ngSwitch]="project?.status" class='user-profile-element-container mat-typography'>

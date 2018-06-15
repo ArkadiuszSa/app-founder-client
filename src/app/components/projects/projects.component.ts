@@ -97,6 +97,10 @@ export class ProjectsComponent implements OnInit {
       this.projects=res.projects;
       this.projects.forEach(project => {
         project.addedDiff=this.globalService.getTimeDiff(project.timestamp);
+        if(project.deadline) project.deadline=this.globalService.covertDateToDisplay(project.deadline);
+        if(typeof(project.description)!=='undefined'&&project.description.length>300){
+          project.description=project.description.substr(0,300)+'...'
+        }
       });
       this.paginationProperties.length=res.length;
       if(res.length<10){

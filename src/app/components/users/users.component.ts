@@ -71,6 +71,12 @@ export class UsersComponent implements OnInit {
       this.users=res.users;
       this.users.forEach(user => {
         user.registredDiff=this.globalService.getTimeDiff(user.timestamp);
+        if(typeof(user.description)!=='undefined'&&user.description.length>300){
+          user.description=user.description.substr(0,300)+'...'
+        }
+        if(user.technologies.length>4){
+          user.technologies=user.technologies.slice(0,8)
+        }
       });
 
       this.paginationProperties.length=res.length;

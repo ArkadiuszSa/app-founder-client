@@ -11,6 +11,9 @@
 ::ng-deep .mat-chip{
     margin-bottom:15px !important;
 }
+.mat-dialog-content{
+    text-align:center;
+}
 
 .action-container{
     margin-top:20px;
@@ -18,7 +21,7 @@
 }
 .content-wrapper{
     margin:auto;
-    width:90%;
+    
 }
 input{
     margin:auto;
@@ -41,4 +44,25 @@ button{
     
     
 }
+
+.description-container{
+    width:100%;
+    max-width:100%;
+    display:flex;
+    align-content: center;
+    align-items: center;
+}
+
+textarea{
+    max-height:580px;
+    align-self: center;
+    resize: vertical;
+    border:solid;
+    border-width: 0.2px;
+    border-color:#dcdcdc;
+    margin-bottom: 15px;
+    width:100%;
+    min-height:300px;
+    max-height:60vh;
+ }
 

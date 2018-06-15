@@ -22,10 +22,7 @@ label{
   text-align: right;
   clear: both;
   float:left;
-
-  
   font-weight:bold;
-  font-size:100%;
   width:200px;
   text-align: left;
 }
@@ -33,11 +30,7 @@ label{
 .tech-label{
   text-align: right;
   clear: both;
-  float:left;
-  //margin-right:30%;
-  
   font-weight:bold;
-  font-size:100%;
   width:180px;
   text-align: left;
   display:inline-block
@@ -45,37 +38,34 @@ label{
 
 .chip-list-container{
  margin-right:50px;
- 
-  margin-left: 200px;
-  // display:inline-block;
-  // background:blue
+margin-left: 200px;
   
 }
 
 .edit-icon{
-  // margin-left:250px
   float:right;
   cursor:pointer;
-
 }
 .user-profile-element-container{
   margin-top:10px;
   margin-bottom:10px;
-  font-size:100%;
 }
 
 .user-profile-container {
-    
+  
     display: flex;
     flex-direction: column;
     width: 70%;
     margin:auto;
     margin-top:30px;
     padding:auto;
-    font-size:150%;
     min-width:50%;
-    
-    
+    max-width:1100px;
+    min-width:700px;
+    font-size:1.5em;
+    .chip{
+      margin-bottom:3px;
+    }
   }
 
 

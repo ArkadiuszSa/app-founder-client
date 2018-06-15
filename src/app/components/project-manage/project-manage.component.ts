@@ -31,7 +31,8 @@ export class ProjectManageComponent implements OnInit {
   public visabilityLabel='default'; 
   public visabilityState=false;
   private url;
-
+  minDate = new Date(2019, 0, 1);
+  
   constructor(
     private projectService: ProjectService,
     private userService: UserService,
@@ -61,6 +62,7 @@ export class ProjectManageComponent implements OnInit {
   reloadProject(){
     this.projectService.getProject(this.projectId).subscribe(project=>{
       this.project=project;
+      this.project.deadline=this.globalService.covertDateToDisplay(this.project.deadline);
       if(project.visable===true){
         this.visabilityLabel='Project is visable to others';
         this.visabilityState=true;
