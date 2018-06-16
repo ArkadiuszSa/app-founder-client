@@ -14,9 +14,10 @@ Main concept assumed functionality like:
 * Invitation system where user can be in multiple teams
 * Team leader can make offer to the project owner. Project owner chooses from offers.
 
-
 On this time app is not finished. I must admit that this app deviates from main angular guide.   
 In plan:
-* make separation of services and move them to every component folder
+* crate core folder
+* make separation of services and move some of them to every component folder
 * move most of component logic to services
 * start to using interfaces and classes
+
