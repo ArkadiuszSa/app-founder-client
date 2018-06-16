@@ -15,4 +15,8 @@ Main concept assumed functionality like:
 * Team leader can make offer to the project owner. Project owner chooses from offers.
 
 
-On this time app is not finished. I must admit that this app deviates from main angular guide.  
+On this time app is not finished. I must admit that this app deviates from main angular guide.   
+In plan:
+* make separation of services and move them to every component folder
+* move most of component logic to services
+* start to using interfaces and classes

@@ -39,47 +39,14 @@ import { AuthService } from './services/auth/auth.service';
 import { ProjectService } from './services/project/project.service';
 import { InvitationsService } from './services/invitations/invitations.service';
 import { OfferService } from './services/offer/offer.service';
-
 import { UserAuthGuardService } from './services/auth/user-auth-guard.service';
 import { AdminAuthGuardService } from './services/auth/admin-auth-guard.service';
 import { AuthInterceptorService } from './services/auth/auth-interceptor.service';
-
 import { GlobalService } from './services/global/global.service';
 
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
-import {NgxMaskModule} from 'ngx-mask'
-
-
-import {
-  MatButtonModule,
-  MatCheckboxModule,
-  MatCardModule,
-  MatDatepickerModule,
-  MatGridListModule, 
-  MatTableModule, 
-  MatFormFieldModule,
-  MatInputModule,
-  MatPaginator,
-  MatPaginatorModule,
-  MatDialogModule, 
-  MatIconModule, 
-  MatMenuModule,
-  MatDialog,
-  MatIconRegistry,
-  MatChipInputEvent,
-  MatChipsModule,
-  MatSelectModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatNativeDateModule
-
-} from '@angular/material';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatExpansionModule} from '@angular/material/expansion';
-
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { MaterialModule } from './material.module'
+import { MatDatepickerModule }  from '@angular/material'
 
 import { TeamProfileComponent,JoinRequestDialogComponent } from './components/team-profile/team-profile.component';
 import { UserTeamsListComponent,AddNewTeamDialogComponent } from './components/user-teams-list/user-teams-list.component';
@@ -136,29 +103,8 @@ import { ProjectManageComponent, UpdateProjectFieldDialogComponent  } from './co
     ReactiveFormsModule,
     FormsModule,
 
-    MatButtonModule,
-    MatCheckboxModule, 
-    MatCardModule, 
-    MatGridListModule, 
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatDialogModule,
-    MatIconModule,
-    MatIconModule, 
-    MatMenuModule,
-    MatStepperModule,
-    MatDividerModule,
-    MatChipsModule,
-    MatSelectModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatProgressSpinnerModule,
+    MaterialModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    MatExpansionModule,
-
 
     LoadingBarHttpClientModule
 
