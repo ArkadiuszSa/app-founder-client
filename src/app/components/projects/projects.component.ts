@@ -4,6 +4,8 @@ import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatPaginatorModule, PageEvent,MatPaginator} from '@angular/material/paginator';
 import {ProjectService} from './../../services/project/project.service';
+import {ProjectsService} from '../projects/projects.service';
+
 import {GlobalService} from './../../services/global/global.service';
 
 @Component({
@@ -40,17 +42,14 @@ export class ProjectsComponent implements OnInit {
       value:''
     }
   }
-
   public statusOptions=[
     {name:'status',value:''},
     {name:'new',value:'new'},
     {name:'in progress',value:'inProgress'},
     {name:'finished',value:'finished'}
   ]
-  
   public sortValue;  
   public projects:any;
-  private dispProjects:any;
   private url;
   private from=0;
   private to=10;
@@ -60,6 +59,7 @@ export class ProjectsComponent implements OnInit {
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
     private projectService: ProjectService,
+    private projectsService: ProjectsService,
     private globalService:GlobalService
   ){ 
     this.filtrOptions.status=this.statusOptions[0];
@@ -73,39 +73,29 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.query.filtr=JSON.parse(JSON.stringify(this.filtrOptions))
     this.query.sort=this.sortValue;
     this.reloadProjectsList();
     this.projectService.getNumberOfProjects().subscribe(projectsNumber=>{
       this.paginationProperties.length=projectsNumber.value;
     })
-
   }
 
-
   reloadProjectsList(event?){
-    
     if(event!==undefined){
       this.from=0;
       this.to=10;
       this.paginator.pageIndex=0;
       this.query.filtr=JSON.parse(JSON.stringify(this.filtrOptions))
     }
-    
     this.query.sort=this.sortValue;
-    this.projectService.getRangeOfProjectsFiltred(this.from,this.to,this.query).subscribe(res=>{
-      this.projects=res.projects;
-      this.projects.forEach(project => {
-        project.addedDiff=this.globalService.getTimeDiff(project.timestamp);
-        if(project.deadline) project.deadline=this.globalService.covertDateToDisplay(project.deadline);
-        if(typeof(project.description)!=='undefined'&&project.description.length>300){
-          project.description=project.description.substr(0,300)+'...'
-        }
-      });
+    this.projectsService.getFiltredProjectsRange(this.from,this.to,this.query).subscribe(res=>{
+      this.projects=res.list;
       this.paginationProperties.length=res.length;
       if(res.length<10){
-        this.from=0;
-        this.to=10;
+            this.from=0;
+            this.to=10;
       }
     })
   }
