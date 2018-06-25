@@ -30,7 +30,7 @@
                     
                 </div>
                 <div class=user-content-container >
-                    <h2 class='name-header-field'><a [routerLink]="['/app/user-profile/'+user._id]">{{ user.fName }} </a></h2>
+                    <h2 class='name-header-field'><a [routerLink]="['/app/user-profile/'+user._id]">{{ user.fName+' '+user.lName }} </a></h2>
                     <span class='field-span'>
                         <label>Registred:</label>
                         {{user?.registredDiff}}

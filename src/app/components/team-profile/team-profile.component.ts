@@ -29,7 +29,7 @@ export class TeamProfileComponent implements OnInit {
     public globalService: GlobalService
 
   ){
-    globalService.pageTitle='Team manage';
+    globalService.pageTitle='Team profile';
 
     this.teamId = this.route.snapshot.params.id;
   }
@@ -46,6 +46,7 @@ export class TeamProfileComponent implements OnInit {
     });
 
     await this.userService.getUser(teamLeaderId).toPromise().then(teamLeader=>{
+      console.log(teamLeader)
       this.team.leaderName=teamLeader.fName+' '+teamLeader.lName;
     });
 

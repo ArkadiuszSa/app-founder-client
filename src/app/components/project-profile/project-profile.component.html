@@ -39,7 +39,7 @@
     <mat-card>
         <div class='project-card-content' [ngSwitch]="project?.status">
             <h4>Status</h4>
-            <span *ngSwitchCase="'waiting'">This project is waiting on team assignment.</span>
+            <span *ngSwitchCase="'new'">This project is waiting on team assignment.</span>
             <span *ngSwitchCase="'inProgres'">This project is in progress. </span>
             <span *ngSwitchCase="'finished'">This project has been completed.  </span>
         </div>

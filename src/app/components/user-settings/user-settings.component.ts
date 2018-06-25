@@ -54,6 +54,8 @@ export class UserSettingsComponent implements OnInit {
       this.userData.bDay=this.globalService.covertDateToDisplay(this.userData.bDay);
       if(typeof(this.userData.description)!=='undefined'&&this.userData.description.length>70){
        this.descriptionShort=this.userData.description.substr(0,65)+'...';
+      }else{
+        this.descriptionShort=this.userData.description;
       }
 
       if(user.visable===true){
