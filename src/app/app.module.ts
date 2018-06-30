@@ -44,6 +44,7 @@ import { AdminAuthGuardService } from './services/auth/admin-auth-guard.service'
 import { AuthInterceptorService } from './services/auth/auth-interceptor.service';
 import { GlobalService } from './services/global/global.service';
 import { ProjectsService } from'./components/projects/projects.service';
+import { HomePageService } from'./components/home-page/home-page.service';
 
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { MaterialModule } from './material.module'
@@ -130,6 +131,7 @@ import { ProjectManageComponent, UpdateProjectFieldDialogComponent  } from './co
     ProjectsService,
     InvitationsService,
     OfferService,
+    HomePageService,
     MatDatepickerModule,
 
     AdminAuthGuardService,

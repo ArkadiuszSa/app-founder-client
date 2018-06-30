@@ -19,7 +19,8 @@ import {
   MatSelectModule,
   MatSliderModule,
   MatSlideToggleModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSnackBarModule
 
   } from '@angular/material'
 
@@ -51,6 +52,7 @@ import { NgModule } from '@angular/core'
         MatSliderModule,
         MatSlideToggleModule,
         MatProgressSpinnerModule,
+        MatSnackBarModule,
         
         MatNativeDateModule,
         MatExpansionModule,
@@ -78,6 +80,7 @@ import { NgModule } from '@angular/core'
         MatDatepickerModule,
         MatNativeDateModule,
         MatExpansionModule,
+        MatSnackBarModule
     ],
   })
   export class MaterialModule {}

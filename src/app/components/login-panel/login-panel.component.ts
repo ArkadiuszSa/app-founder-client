@@ -9,15 +9,12 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import { Observable } from "rxjs/Observable";
 import {GlobalService} from './../../services/global/global.service';
 import {setParticlesConfig} from "./../../../assets/configs/particles"
-//import { myFirstParticle } from '../../assets/particlesjs-config'
-//import * as particlesJS from 'particles.js';
 declare var particlesJS: any;
 
 export class ValidateEmailNotTaken {
   static createValidator(authService: AuthService) {
     return (control: AbstractControl) => {
       return authService.checkEmail({email:control.value}).subscribe(res => {
-        console.log(res)
         if(res.response!=='notFinded'){
           return {emailTaken:true}
         }else{

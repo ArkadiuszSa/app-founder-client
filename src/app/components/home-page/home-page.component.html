@@ -1,93 +1,115 @@
-<div class='content-wrapper mat-typography'>
-  <ul class='navbar'>
-    <mat-icon class='logo' svgIcon="logo"></mat-icon>
-    <li class='app-link'>
-      <span [routerLink]="['/app/projects']">go to application</span>
-    </li>
-  </ul>
 <div class='main-container'>
-  <span class='main-title'>AppFounder</span>
-  <span class='main-description'>will help you make life easier if..    </span>
-    <section  class='main-arrow arrow' id="main-arrow" (click)='scroll("idea-section","main-arrow")'>
-      <a ><span></span><span></span><span></span></a>
-    </section>
-</div>
-
-<div id='idea-section' class='idea-container'>
-
-  <div class=idea-wrapper>
-    <div class='idea-description-container'>
-        <mat-icon class='icon'   svgIcon="idea-icon"></mat-icon>
-        <span class='idea-description'>You have a great idea, and you would be glad to find a pearson that help you accomplish it?    </span>
-    </div>
-    <div class='idea-image-container'>
-        <div class='idea-image'></div>
-    </div>
-  </div>
-
-  <div class='scroller-container'>
-      <section  class='main-arrow arrow' id="idea-arrow" (click)='scroll("worker-section","idea-arrow")'>
-        <a ><span></span><span></span><span></span></a>
-      </section>
-  </div>
-</div>
-
-  <div id='worker-section' class='worker-container'>
-    <div class='worker-wrapper'>
-        <div  class='worker-image-container'>
-            <div class='worker-image'></div> 
-        </div>
-        <div class='worker-content-container'>
-            <mat-icon class='icon'   svgIcon="worker-icon"></mat-icon>
-            <span class='worker-description'>Or maybe you are a talented programmer, photographer or designer that is looking for job?     </span>
-        </div>
-    </div>
-    <div class='scroller-container'>
-        <section  class='main-arrow arrow' id="worker-arrow" (click)='scroll("team-section","worker-arrow")'>
-          <a ><span></span><span></span><span></span></a>
-        </section>
-    </div>
-  </div>
-
-    <div id='team-section' class='team-container'>
-        <div class='team-content-container' >
-            <span class='team-description' [routerLink]="['/app/projects']">go to application      </span>
-            <mat-icon class='redirect-icon' [routerLink]="['/app/projects']" svgIcon="next-icon"></mat-icon>
-        </div>
-        
-
-        <div class='team-image-container'>
-            <div class='team-image'>
-            </div>
-              
-        </div>
-        <div class='team-content-container'>
-           
-            <span class='team-description'>You can be either a leader and would like to found a team to deal with a bigger tasks?     </span>
-        </div>
-        <mat-icon class='icon'    svgIcon="teamwork-icon"></mat-icon>
-      </div>
-
-
-  
-
-
-</div>
-
-<div class="footer mat-typography'">
-    <div class='footer-content-container'>
-      <div class='footer-content'>
-      <span>Contact:</span>
-      <span>
-        <mat-icon svgIcon="email-icon"></mat-icon>
-        <label>sapek.arkadiusz@gmail.com</label>
-      </span>
-      <span>
-        <mat-icon svgIcon="location-icon"></mat-icon>
-        <label>Katowice, Polska</label>
-      </span>
-    </div>
-  </div>
-  
+    <ul class='toolbar-list'>
+        <li class='toolbar-list-element main-logo-element'><mat-icon class='main-logo' svgIcon="logo"></mat-icon></li>
+        <li [routerLink]="['/']" class='toolbar-list-element'>Home</li>
+        <li class='toolbar-list-element'>Contact</li>
+        <li [routerLink]="['/app/projects']" class='toolbar-list-element application-link'>Go to application</li>
+    </ul>
     
-  </div>
+    <div class="slider gallery items-3">
+        <div id="item-1" class="control-operator"></div>
+        <div id="item-2" class="control-operator"></div>
+        <div id="item-3" class="control-operator"></div>
+        
+        <figure class="item slide-1"></figure>
+        <figure class="item slide-2"></figure>
+        <figure class="item slide-3"></figure>
+        
+        <div class="controls">
+            <div class='slide-label-1'>
+                <p class='slider-paragraph'>
+                    <span class='slider-text'>{{actualSliderText}}</span>
+                    <span class='slider-switch'>
+                            <a (click)='switchSlide(1)' href="#item-1" class="control-button">•</a>
+                            <a (click)='switchSlide(2)' href="#item-2" class="control-button">•</a>
+                            <a (click)='switchSlide(3)' href="#item-3" class="control-button">•</a>
+                    </span>
+                </p>    
+            </div>
+            <div class='marker-triangle'></div>
+        </div>
+    </div>
+</div>
+
+<div class='separator'></div>
+<div class='separator'></div>
+
+<div class='profits-cards'>
+    <div class='card idea-card'>
+        <div class='img-icon idea-bulb-img'></div>
+        <p class='card-paragraph'>Everything revolves around your idea.Our task is to enable you to find the best people for its implementation.</p>
+    </div>
+    <div class=' card work-card'>
+        <div class='img-icon worker-img'></div>
+        <p class='card-paragraph'>If you are rather a individualist we certainly find suitable jobs for you according to your skills.</p>
+    </div>
+
+    <div class=' card team-card'>
+        <div class='img-icon team-img'></div>
+        <p class='card-paragraph'>We belive that you can organize work in an eve more flexible way. We encourage you to set up a team to meet the bigger challenges.</p>
+    </div>
+
+</div>
+
+<div class='separator'></div>
+
+<div class='statistics-container'>
+    <div class=' statistic-card users-statistic'>
+        <p class='statistic-paragraph'>Number of users which trusted us:</p>
+        <div class='circle'>
+            {{usersNumber}}
+        </div>
+    </div>
+    <div class=' statistic-card teams-statistic'>
+        <p class='statistic-paragraph'>Number of teams created by users:</p>
+        <div class='circle'>
+            {{teamsNumber}}
+        </div>
+    </div>
+    <div class='statistic-card projects-statistic'>
+        <p class='statistic-paragraph'>Number of users who entrusted us with their projects:</p>
+        <div class='circle'>
+            {{projectsNumber}}
+        </div>
+    </div>
+</div>
+
+<div class='separator'></div>
+<div class='separator'></div>
+
+<div class='contact-container'>
+    <p class='contact-paragraph'>If you have question you can send mesage to us. If you do't have any questions you can move to the aplicaton by the link on the top. </p>
+    <form class='form-container' [formGroup]='messageForm' (ngSubmit)='sendEmail()'>
+        <mat-form-field >
+            <input formControlName="userEmail" matInput placeholder="Your email">
+        </mat-form-field>
+        <mat-form-field >
+            <textarea formControlName="message" matInput placeholder="Your mesage"></textarea>
+        </mat-form-field>
+        <button  color=primary mat-stroked-button type="submit">Send</button>
+    </form>        
+</div>
+
+<div class='footer'>
+    <div class='author-container'>
+        <p class='email-paragraph'>
+            <mat-icon svgIcon="email-icon"></mat-icon>
+            arkadiusz.sapek@gmail.com
+        </p>
+        <p class='email-paragraph'>
+            <mat-icon svgIcon="location-icon"></mat-icon>
+            Katowice, Polska
+        </p>
+    </div>
+    <p class='cookies-paragraph'>This website uses cookies to give you the best, most revelant experience. If you continue without chanching your settings, we will assume that you are happy to receive all cookies on this website. You can chage which cookies are set at any time.</p>
+</div>
+
+
+<!--  -->
+<div class=''>
+
+</div>
+
+
+
+
