@@ -14,7 +14,7 @@ import {FormControl, FormGroup, FormBuilder, Validators,ReactiveFormsModule,Form
 export class HomePageComponent implements OnInit {
   private fullImagePath = '/assets/photos/main.jpg'
   private url;
-  private messageForm: FormGroup;
+  public messageForm: FormGroup;
   private sliderTextsList=[
     'Hire profesionalists to work for you',
     'Find interesting well-paid jobs.',
