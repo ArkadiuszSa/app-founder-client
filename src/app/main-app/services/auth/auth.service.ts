@@ -53,7 +53,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem("token");
-    this.router.navigateByUrl('/login/login-panel');
+    this.router.navigateByUrl('/app/login/login-panel');
   }
 
   checkEmail(email){

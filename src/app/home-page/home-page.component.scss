@@ -51,7 +51,17 @@
             }
         }
         .application-link{
-            margin-left:auto;
+           
+            display:flex;
+        }
+        .application-link > * {
+            margin-right:5px ;
+        }
+        .contact-link{
+            margin-left: auto;
+            margin-right: 25px;
+            display:flex;
+            min-height:24px;
         }
     }
 
@@ -134,8 +144,12 @@
     .toolbar-list{
         font-size: 1.1em !important;
         flex-flow:wrap;
-        .toolbar-list-element{
-            margin-left:auto;
+        .contact-link{
+            margin-right:10px !important;
+        }
+        .application-link{
+            margin-left:auto !important;
+            margin-right:10px !important;
         }
     }
     .main-logo-element{
@@ -172,12 +186,12 @@
         padding-left:30px;
         padding-right:30px;
         width:25%;
-        height:40vh;
+        height:400px;
         
         display:flex;
         flex-direction:column;
         align-items: center;
-        font-size:1.3em;
+        font-size:1.2em;
         color:white;
         background: rgba(19,94,179, 0.96);
         box-shadow: 4px 4px 7px -2px black;
@@ -186,8 +200,8 @@
     .idea-bulb-img{
         height:200px;
         width:200px;
-        margin-top:auto;
-        margin-bottom:auto;
+        margin-top:20px;
+        margin-bottom:20px;
         overflow: hidden;
         background:url('../../assets/photos/idea-bulb.png');
         background-size:     cover;          
@@ -197,8 +211,8 @@
     .worker-img{
         height:200px;
         width:200px;
-        margin-top:auto;
-        margin-bottom:auto;
+        margin-top:20px;
+        margin-bottom:20px;
         overflow: hidden;
         background:url('../../assets/photos/worker.png');
         background-size:     cover;          
@@ -207,9 +221,9 @@
     }
     .team-img{
         height:200px;
-        width:187px;
-        margin-top:auto;
-        margin-bottom:auto;
+        width:200px;
+        margin-top:20px;
+        margin-bottom:20px;
         overflow: hidden;
         background:url('../../assets/photos/team.png');
         background-size:     cover;          
@@ -230,7 +244,10 @@
     .img-icon{
         margin-top:20px !important;
         height:150px !important;
-        width:140px !important;
+        width:150px !important;
+    }
+    .card{
+        font-size:1.2em !important;
     }
 }
 @media only screen and (max-width: 817px) {
@@ -251,7 +268,7 @@
     .img-icon{
         margin-top:20px !important;
         height:150px !important;
-        width:140px !important;
+        width:150px !important;
     }
     .card-paragraph{
         margin: 5px !important;
@@ -266,8 +283,6 @@
     margin-bottom:40px;
     display:flex;
     text-align: center;
-    //background: rgba(19,94,179, 0.96);
-    // 
     overflow: hidden;
     background: 
     linear-gradient(
@@ -278,7 +293,6 @@
     background-size:     cover;          
     background-repeat:   no-repeat;
     background-position: center center; 
-    // 
     font-family:'Arimo';
     font-size:1.3em;
     color:white;
