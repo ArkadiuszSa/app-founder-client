@@ -1,6 +1,6 @@
 # App-Founder [Live](https://app-founder.herokuapp.com)
 
-Server and client are hosted on heroku. After some time, the application is put to sleep by Heroku due to inactivity. I try to ping the client but it may happen that you will have to wait a moment to load. 
+Server and client are hosted on heroku. After some time, the application is put to sleep by Heroku due to inactivity and need more time to get up. App may also not get up due to the monthly activity limit on heroku.
 
 This project was created to learn developing SPA with MEAN software bundle. 
 The main tech-stack:
